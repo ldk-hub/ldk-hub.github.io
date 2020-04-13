@@ -1,3 +1,8 @@
+---
+title: "MS 클라우드 서버 실제 운영 사례 및 노하우"
+date: 2020-04-09 08:26:28 -0400
+categories: jekyll update
+---
 
 ### Azure 클라우드 정리
 1. 클라우드 보안 TIP
