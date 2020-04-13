@@ -1,5 +1,5 @@
 main:
   - title: "블로그 방문하기"
     url: https://devinlife.com/
-  - title: "About"
-    url: /about/
+  - title: "post"
+    url: /posts/
