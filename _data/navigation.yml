@@ -1,7 +1,7 @@
 main:
   - title: "프로젝트 리뷰"
-    url: https://devinlife.com/
+    url: /project/
   - title: "스터디"
     url: /posts/
-  - title: ""
-    url: /posts/
+  - title: "히스토리"
+    url: /review/
