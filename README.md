@@ -1,4 +1,4 @@
-# ldk-hub.github.io
+[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io)
 
 ## 2020.04.09 개인 블로그 개설
  - 블로그 개설 후 첫 포스트 업로드
