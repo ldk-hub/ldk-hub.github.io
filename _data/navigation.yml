@@ -1,7 +1,5 @@
 main:
-  - title: "프로젝트 리뷰"
-    url: /project/
-  - title: "스터디"
+  - title: "시스템"
     url: /posts/
   - title: "포스트리뷰"
     url: https://ldk-hub.github.io/
