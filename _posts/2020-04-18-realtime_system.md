@@ -1,4 +1,10 @@
 
+---
+title: "실시간 모니터링 시스템 구축 리뷰"
+date: 2020-04-18 10:03:28 -0400
+categories: jekyll update
+---
+
 
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2019_12_27_16_59_23_687](https://user-images.githubusercontent.com/12209348/71508393-f957b100-28ca-11ea-96b7-cc9c693cf0a9.gif)
