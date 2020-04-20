@@ -16,10 +16,10 @@ minimal_mistakes_skin    : "air" # "air", "aqua","default", "contrast", "neon", 
 
 # Site Settings
 locale                   : "en-US"
-title                    : "LDK Devlog 코딩 스터디"
+title                    : "Devlog"
 title_separator          : 
 subtitle                 : "LDK`s Coding Study Story"
-name                     : "Lee Dong_ok"
+name                     : "개발 "
 description              : "An amazing website."
 url                      : "https://ldk-hub.github.io"        # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -94,7 +94,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "이동옥_Lee Dong-ok"
+  name             : "이동옥 Lee Dong-ok"
   avatar           : "/assets/images/profile.PNG" # path of avatar image, e.g. 
   bio              : "Developer"
   location         : "Korea, Seoul"
