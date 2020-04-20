@@ -95,7 +95,7 @@ analytics:
 # Site Author
 author:
   name             : "이동옥_Lee Dong-ok"
-  avatar           : "/assets/images/sample.jpg" # path of avatar image, e.g. 
+  avatar           : "/assets/images/profile.PNG" # path of avatar image, e.g. 
   bio              : "Developer"
   location         : "Korea, Seoul"
   email            : 
