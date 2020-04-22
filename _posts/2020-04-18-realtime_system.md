@@ -41,3 +41,58 @@ categories: jekyll update
 
 ### RealTime Monitoring Page
 ![screencapture-localhost-9110-secondery-2019-08-14-13_06_51](https://user-images.githubusercontent.com/12209348/62994062-f7013700-be94-11e9-9c0b-ac9eab6c3510.png)
+
+
+
+### 완료내역
+1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa)
+2. 샘플데이터 게시판목록 호출 완료(mybatis)
+3. 일정계획표 페이지 - 풀캘린더 구글 공휴일 정보 api 연동 완료
+4. 일정관리테이블, 회원정보 상세 테이블, 회원 권한 조인용 테이블 생성 완료
+5. 테이블명 수정 기존 테이블, 관리자페이지 테이블 명 구분 완료
+6. 시큐리티 회원가입 개발 완료
+7. 대시보드 내 시큐리티 principal 정보 호출
+8. 패스워드 분실 SMTP 비밀번호 찾기 로직 완료
+9. 메인페이지  지도 api 다음서비스 종료로 인한 카카오로 변경 완료
+10. 메인페이지 실시간도로교통정보, 자전거 도로 정보 기능 추가 완료
+11. TUI GRID 데이터 제어 완료 
+12. 메인페이지 회원정보 통계 수치 호출 완료
+13. 사이드바 시계 기능 추가 완료
+14. 시스템 테이블 및 데이터 로그 설정(log4jdbc)완료
+15. 커스터마이징 용 대시보드 페이지 추가 완료
+16. 대시보드 관리페이지 개발완료
+17. 실시간 모니터링용 페이지개발완료
+18. 시스템 다크테마 변경완료
+19. read.me 뱃지 추가 및 링크 적용 및 시스템 이미지 최신화 작업 완료
+20. 이미지 업로드 처리 로직 추가 
+21. tui-grid에서 저장된 이미지 호출 완료
+22. sigar 라이브러리 연동작업 완료
+23. 차트게이지 정보데이터 실시간 모니터링 완료
+24. echart -> amchart4 반영완료
+
+### 개발이슈
+1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
+2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 
+3. 풀캘린더 일정 등록 및 삭제 로직 개발 중
+4. local 장비 서버 및 pc 정보 차트연동
+5. 세계 인구수 정보 보다 다음(카카오) 지도 api를 통한 지역정보를 가져오는게 효율적일것으로 판단하여 변경 
+6. 시각적효과를 위한 백그라운드 컬러 검정(Dark)계열로 변경
+7. 사이드바 시계 30초 단위 컬러변경 기능 추가
+9. tui-grid 업데이트 bootstrap-timepicker 업데이트 완료
+10. 이미지 처리시 서버의 OS에 따라 path 설정 및 처리방식이 다름.
+11. 기존 oracle -> postgresql DB변환 하였음.
+12. echart경우 중국어라서 한계점이 많았음. ->amchart4같은 경우 최근 이슈되기도하고 반응형에서도 대응이 확실하여 전환결정.
+
+### API리스트
+ - System table : Datatables, tui grid
+ - 날씨, 지도 : daum maps, Skycons
+ - 차트 : amcharts4
+ - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
+ - 기타 : Dropzone, NProgress, iCheck, Flot
+  
+### 개발환경
+  - language : JAVA1.8
+  - framework : Spring Boot, Spring Security
+  - DB : OracleDB, Postgresql-DB
+  - UI : gentelella, Tiles3, Bootstrap
+  - etc : Mybatis, jpa, lombok
