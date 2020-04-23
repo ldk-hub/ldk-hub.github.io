@@ -11,8 +11,8 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "ldk-hub/minimal-mistakes"
-minimal_mistakes_skin    : "air" # "air", "aqua","default", "contrast", "neon", "dirt", , "mint", "plum", "sunrise"
+remote_theme           : "ldk-hub/minimal-mistakes" # 원격테마 설정
+minimal_mistakes_skin    : "air" # "air", "aqua","default", "contrast", "neon", "dirt", , "mint", "plum", "sunrise" 테마내부 디자인변경
 
 # Site Settings
 locale                   : "en-US"
@@ -51,8 +51,8 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : true # , false (default)
-search_full_content      : true # , false (default)
+search                   : true # , false (default) #사이트 내부 검색기능 추가
+search_full_content      : true # , false (default) #검색범위 확대기능 사이트전체
 search_provider          : # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
@@ -207,7 +207,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 5 # amount of posts to show # 한화면에 보여질 포스트갯수 제한
 paginate_path: /page:num/
 timezone:  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
