@@ -34,7 +34,7 @@ categories: jekyll update
 
 ## Schedule Page
 ![screencapture-localhost-9110-calendar-2019-08-13-11_04_55](https://user-images.githubusercontent.com/12209348/62910147-6524fb80-bdba-11e9-96c3-aeff500369ea.png)
-설명 : 스케줄 관리 및 일정 파악용도
+설명 : 스케줄 관리 및 일정 파악용도(공휴일 정보 구글 캘린더 API 연동) 
 
 ## user custom page
 ![screencapture-localhost-9110-mypage-2019-08-14-13_08_24](https://user-images.githubusercontent.com/12209348/62994061-f668a080-be94-11e9-9d0d-b53208b15b30.png)
