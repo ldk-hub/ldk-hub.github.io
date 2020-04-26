@@ -4,45 +4,49 @@ date: 2020-04-18 10:03:28 -0400
 categories: jekyll update
 ---
 
-종합 정보 집계 모니터링 시스템 구축 프로젝트
+## 개발 컨셉 
+ 종합 관리 프로그램으로 실시간 모니터링, 지도 및 교통현황, 데이터 차트, 통계 및 집계정보, 스케줄관리 등 다양한 정보를 관리 및 응용할 수 있는 시스템 으로 초기 기반만 구성하여 여러 다양한 비즈니스 모델을 응용하여 가변적으로 사용할 수 있도록 모델링을 구축함.
 
-1. 로그인 , 시큐리티, 비밀번호 찾기, 회원가입 페이지 구축
+
+
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2019_12_27_16_59_23_687](https://user-images.githubusercontent.com/12209348/71508393-f957b100-28ca-11ea-96b7-cc9c693cf0a9.gif)
+기능: 로그인, 시큐리티, 비밀번호 찾기, 회원가입 페이지
 
 
-2. 패스워드 암복호화 정보
 ## Encrypt the member account information password
 ![1](https://user-images.githubusercontent.com/12209348/41805983-90200564-76ee-11e8-8c9d-ae10c214f873.PNG)
+기능 : 계정정보 패스워드 암복호화 관리
 
-3. 실시간으로 로컬 하드웨어 정보 캐치업 해오는 기능 구현
+3. 
 ## local PC(server) infomation(CPU, Memory etc.)
 
 ![CPU측정](https://user-images.githubusercontent.com/12209348/71538778-79862100-2974-11ea-891f-e0706ec22af9.gif)
 
 ![default](https://user-images.githubusercontent.com/12209348/43362948-91c6f26e-9332-11e8-9ef2-5738fb58c32e.PNG)
+기능 : 실시간으로 로컬 하드웨어 정보 캐치업 해오는 기능 (응용 >>서버의 정보를 실시간으로 관리할 수 있음)
 
-4. 통합 정보 시스템의 메인 대시보드 화면
 ## Main Page
 ![녹화_2019_12_28_13_50_01_980](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif)
 
 ![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
-
+기능 : 통합 정보 시스템의 메인 대시보드 화면(집계, 통계, 지도, 차트 등 다양한정보를 한눈에 쉽게 파악이 가능함)
 
 ## Data Edit Page
 ![screencapture-localhost-9090-hyopage-2019-08-10-11_53_15](https://user-images.githubusercontent.com/12209348/62841157-bca26900-bcdf-11e9-894a-2d77cfc81e2f.png)
+기능 : 다양한 정보 데이터를 관리 할 수 있는 샘플링을 구성(차트, 그리드, 파일관리 등)
 
 ## Schedule Page
 ![screencapture-localhost-9110-calendar-2019-08-13-11_04_55](https://user-images.githubusercontent.com/12209348/62910147-6524fb80-bdba-11e9-96c3-aeff500369ea.png)
+기능 : 스케줄 관리 및 일정 파악용도
 
 ## user custom page
 ![screencapture-localhost-9110-mypage-2019-08-14-13_08_24](https://user-images.githubusercontent.com/12209348/62994061-f668a080-be94-11e9-9d0d-b53208b15b30.png)
-
+기능 : 로그인한 사용자의 개인정보를 기록또는 관리할 수 있는 목적 구현
 
 ### RealTime Monitoring Page
 ![screencapture-localhost-9110-secondery-2019-08-14-13_06_51](https://user-images.githubusercontent.com/12209348/62994062-f7013700-be94-11e9-9c0b-ac9eab6c3510.png)
-
-
+기능 : 실시간으로 정보를 가져와 집계하고 그리드에 해당정보를 띄워 실시간으로 파악할 수 있는 UI
 
 ### 완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa)
@@ -83,16 +87,7 @@ categories: jekyll update
 11. 기존 oracle -> postgresql DB변환 하였음.
 12. echart경우 중국어라서 한계점이 많았음. ->amchart4같은 경우 최근 이슈되기도하고 반응형에서도 대응이 확실하여 전환결정.
 
-### API리스트
- - System table : Datatables, tui grid
- - 날씨, 지도 : daum maps, Skycons
- - 차트 : amcharts4
- - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
- - 기타 : Dropzone, NProgress, iCheck, Flot
-  
-### 개발환경
-  - language : JAVA1.8
-  - framework : Spring Boot, Spring Security
-  - DB : OracleDB, Postgresql-DB
-  - UI : gentelella, Tiles3, Bootstrap
-  - etc : Mybatis, jpa, lombok
+
+자세한 개발 프로젝트 내역은 
+https://ldk-hub.github.io/jekyll/update/realtime_system/
+에서 확인하실 수 있습니다.
