@@ -2,6 +2,7 @@
 title: "MS 클라우드 서버  "
 date: 2020-04-09 08:26:28 -0400
 categories: jekyll update
+comments: true
 ---
 ### MS-Azure Cloud Platform as a Service 교육 
 ### 서버 엔지니어 파트(2019.01.30)
