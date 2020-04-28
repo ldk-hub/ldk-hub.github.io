@@ -2,6 +2,7 @@
 title: "실시간 모니터링 시스템 구축 리뷰"
 date: 2020-04-18 10:03:28 -0400
 categories: jekyll update
+comments: true
 ---
 
 ## 개발 컨셉 
