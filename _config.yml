@@ -90,6 +90,8 @@ analytics:
     tracking_id          :
     anonymize_ip         : # true, false (default)
 
+# 댓글기능추가
+disqus-shortname: ldk-hub
 
 # Site Author
 author:
