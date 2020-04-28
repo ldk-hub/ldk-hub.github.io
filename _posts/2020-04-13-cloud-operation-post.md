@@ -2,6 +2,7 @@
 title: "MS 클라우드 서버 실제 운영 사례 및 노하우"
 date: 2020-04-13 08:26:28 -0400
 categories: jekyll update
+comments: true
 ---
 
 ### Azure 클라우드 정리
