@@ -1,5 +1,5 @@
 ---
-title: "MS 클라우드 서버  "
+title: "MS 클라우드 서버 실무 운영자 교육"
 date: 2020-04-09 08:26:28 -0400
 categories: jekyll update
 comments: true
