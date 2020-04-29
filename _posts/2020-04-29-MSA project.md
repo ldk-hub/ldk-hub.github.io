@@ -1,7 +1,7 @@
 ---
 title: "마이크로서비스 아키텍처 스터디"
 date: 2020-04-29 10:03:28 -0400
-categories: jekyll update
+categories: MSA MicroServiceArchitecture
 ---
 
 ## Micro Service Architecture (MSA) - 마이크로서비스 아키텍처란? 
