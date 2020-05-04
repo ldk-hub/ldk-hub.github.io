@@ -46,10 +46,4 @@ categories: MSA
    - RIBBON : 로드밸런싱 기능
    - EUREKA : 유레카 서버에서 유레카 클라이언트 대상으로 중앙 관리를 할 수 있는 구조
    
-  * 예제개발 진행예정 항목리스트
-   - 기존의 adminDashBoard프로젝트를 2분할하여 MSA로 구성계획 및 설계안 작성
-   - 두개의 DBMS로 분할 postgresql, oracle DB 
-   - 유입이 많을 것같은 서비스를 별도의 서비스로 분할하여 
-   - 모노리틱으로 구성된 프로젝트를 MSA로 구성하는 방향으로 컨셉을 잡아 설계
-   
 Saas 구조 - 12 팩터 앱 자세한 내용 : https://12factor.net/ko/
