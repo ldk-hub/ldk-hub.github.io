@@ -16,4 +16,9 @@ categories: 초보시절
 
 실행예제
 ![TestCase2](https://user-images.githubusercontent.com/12209348/81933760-db47de80-9628-11ea-9232-42c043209ef8.jpg)
+ - 
 ![TestCase](https://user-images.githubusercontent.com/12209348/81933767-dc790b80-9628-11ea-83b2-f9a723cd6718.jpg)
+ - 
+ 
+ 수집되는 정보 IP, ID, PW를 기반으로 시스템로그에 채팅기록을 수집할 수 있다.
+ 자바 소켓으로 통신이 되는 구조.
