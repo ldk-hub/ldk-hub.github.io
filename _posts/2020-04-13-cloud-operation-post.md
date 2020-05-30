@@ -1,10 +1,20 @@
 ---
+# 포스트제목
 title: "MS 클라우드 서버 실제 운영 사례"
-date: 2020-04-13 08:26:28 -0400
-categories: jekyll update
-comments: true
+# 포스팅 작성자
+author: ["이동옥"] 
+# 포스팅 공개일 - 정렬기준 포스팅날짜순서에 따라 기재됨.(주의 미래날짜는 기입X)
+date: 2020-05-13 08:26:28 -0400
+# 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
+# abstract:
+# 태그를 입력
+# tags: ["클라우드","교육"]
+categories: 클라우드 서버
+# 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
+# image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
+# 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
+draft: "no"
 ---
-
 ### Azure 클라우드 운영
 1. 클라우드 보안 TIP
  클라우드 초기 구성 시 공용IP의 노출될 위험성을 위해 프라이빗 IP주소를 구성해서 별도로 관리해야함.
