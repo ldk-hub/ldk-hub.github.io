@@ -38,7 +38,7 @@ comments:
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
     appid                :
-    num_posts            : 10 # 5 (default)
+    num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
   utterances:
     theme                : # "github-light" (default), "github-dark"
@@ -208,7 +208,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show # 한화면에 보여질 포스트갯수 제한
+paginate: 10 # amount of posts to show # 한화면에 보여질 포스트갯수 제한
 paginate_path: /page:num/
 timezone:  # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
