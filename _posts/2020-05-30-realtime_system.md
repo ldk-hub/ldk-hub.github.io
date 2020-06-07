@@ -7,6 +7,7 @@ author: ["이동옥"]
 date: 2020-05-30 08:26:28 -0400
 # 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
 # abstract:
+background:'/assets/images/notebook.jpg'
 # 태그를 입력
 tags: ["API연동","자바개발"]
 categories: 대시보드
@@ -14,7 +15,7 @@ categories: 대시보드
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
-background: '/assets/images/notebook.jpg'
+
 ---
 
 ## 개발 컨셉 
