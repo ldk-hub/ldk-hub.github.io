@@ -1,7 +1,5 @@
 # 블로그  개발 히스토리 
 
-[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io)
-
 ## 2020년 4월
  - 블로그 시스템 구성 소스 연동
  - 블로그 및 테스트 포스트 업로드
