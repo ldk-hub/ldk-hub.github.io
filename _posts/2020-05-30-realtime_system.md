@@ -16,7 +16,7 @@ categories: 대시보드
 draft: "no"
 ---
 
-## 개발 컨셉 
+## 개발 컨셉 [![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/대시보드/realtime_system/.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/대시보드/realtime_system/)
  종합 관리 프로그램으로 실시간 모니터링, 지도 및 교통현황, 데이터 차트, 통계 및 집계정보, 스케줄관리 등 다양한 정보를 관리 및 응용할 수 있는 시스템 으로 초기 기반만 구성하여 여러 다양한 비즈니스 모델을 응용하여 가변적으로 사용할 수 있도록 모델링을 구축함.
 
 
