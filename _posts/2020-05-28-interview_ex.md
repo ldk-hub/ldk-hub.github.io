@@ -16,9 +16,9 @@ categories: 열공해야한다.
 draft: "no"
 ---
 
-[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/)
 
-## 기술면접예시
+
+## 기술면접예시[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/)
 #### 1. GIT나 SVN에 대해서 차이점은?.  
 형상관리 툴 (중앙집중관리)
  - SVN : 직관적,사용자가 Commit하는순간 모든 사람에게 공유됨. 모든사람이 중앙서버의 같은자료를 받음.
