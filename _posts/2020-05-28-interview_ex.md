@@ -16,7 +16,7 @@ categories: 열공해야한다.
 draft: "no"
 ---
 
-[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/)
+[![HitCount](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/.svg)](http://hits.dwyl.io/ldk-hub/ldk-hub.github.io/열공해야한다interview_ex/)
 
 ## 기술면접예시
 #### 1. GIT나 SVN에 대해서 차이점은?.  
