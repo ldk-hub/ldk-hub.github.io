@@ -21,8 +21,8 @@ draft: "no"
 
 ## 소스 관련 리뷰 :eyes:
 자세한 개발 프로젝트 내역은 
-https://ldk-hub.github.io/jekyll/update/realtime_system/
-에서 확인하실 수 있습니다.
+https://github.com/ldk-hub/DashBoard
+에서 확인하실 수 있습니다.  
 
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2019_12_27_16_59_23_687](https://user-images.githubusercontent.com/12209348/71508393-f957b100-28ca-11ea-96b7-cc9c693cf0a9.gif)
