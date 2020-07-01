@@ -126,6 +126,68 @@ ALTER INDEX [인덱스명] REBUILD;
 
 ## pl/sql  
 
+프로그램 내부에서 처리하기 힘든 부분을 DB 프로시저로 대신 처리하는 방안
+예시 - 지속적인 데이터를 수집하여 insert 시킬때 해당 테이블에 트리거를 설정하여 다음 동작을 취할 수 있도록 프로세스화 시키는 방법
+
+```
+
+-- pl/pgsql으로 테스트하였음.
+-- 트리거 및 펑션 샘플 예시
+--1. 테이블 생성
+create table t1(c1 integer, c2 date);
+create table t2 (like t1); -- t1과 같은 구조를 t2테이블을 생성
+create table t3 (like t2); -- t2와 같은 구조를 t3테이블을 생성
+
+--2. 트리거 생성 (t1테이블의 insert되는 데이터를 t2테이블에 insert하는 트리거)
+CREATE TRIGGER t1_trg
+after insert on t1
+--referencing new table as new_table
+FOR EACH ROW
+EXECUTE PROCEDURE insert_t1_tr(); -- t1에 insert되는 데이터가 있으면 Row마다 insert_t1_tr이라고 하는 트리거 프로시저를 실행한다.
+
+3. 함수 생성 (t2테이블에 insert된 데이터 중 키 값에 부합하는 t2테이블의 데이터를 t3에 insert하는 함수 생성)
+CREATE OR REPLACE FUNCTION insert_t1_tr() RETURNS TRIGGER 
+AS $$
+DECLARE
+ v_c1 int4 DEFAULT 0;
+ v_c2 date;
+
+BEGIN
+IF (TG_OP = 'INSERT') THEN
+INSERT INTO t2 VALUES(NEW.*); -- T1테이블에 Insert된 변경 데이터를 T2테이블로 Insert
+
+SELECT c1, c2 INTO v_c1, v_c2
+FROM t2
+WHERE c1 = NEW.c1; -- T2테이블에 Insert된 데이터를 NEW라고 하는 객체에 저장하고 있으며, 그 값 중 C1컬럼에 해당하는 값을 조건으로 T2테이블을 조회하여 v_c1, v_c2변수에 저장
+
+INSERT INTO t3 (c1, c2)
+VALUES (v_c1, v_c2);
+
+END IF; -- 위에서 저장된 v_c1, v_c2변수값을 t3테이블에 저장
+RETURN NULL;
+
+END
+
+$$ LANGUAGE plpgsql;
+-- DB안 테이블에 대해 select할 수 있는 계정 생성
+--user생성
+create user iot_select password 'test_user';
+
+--search_path 변경
+alter user test_user search_path to '퍼블릭명',"$user",public;
+
+--스키마에 대한 권한 부여
+grant usage on schema iot_dev to test_user;
+
+--해당 유저(test_public2)로 접속 한 후에 test_user user에게 권한 부여
+grant select on all tables in schema "test_public2" to "test_user";
+
+--해당 권한 부여시점 이후에 테이블에 적용될 수 있도록 권한 부여
+ALTER DEFAULT PRIVILEGES IN SCHEMA "test_public2" GRANT select on tables TO "test_user"
+```
+
+위의 예시는 Table 및 View에 대한 권한이며, 
+Function 및 Sequence, Tablespace에 대한 권한은 따로 부여해야됨.
 
 
 ## 옵티마이저  
