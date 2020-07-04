@@ -61,7 +61,7 @@ https://github.com/ldk-hub/DashBoard
 
 ### 진행예정
 1. TDD 적용 예정
-2. JPA 
+2. JPA 확대적용
 
 ### 완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa사용)
