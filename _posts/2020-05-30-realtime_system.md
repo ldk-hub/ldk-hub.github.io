@@ -59,6 +59,10 @@ https://github.com/ldk-hub/DashBoard
 ![screencapture-localhost-9110-secondery-2019-08-14-13_06_51](https://user-images.githubusercontent.com/12209348/62994062-f7013700-be94-11e9-9c0b-ac9eab6c3510.png)
 설명 : 실시간 모니터링 정보 집계 및 관리 목적 페이지 구성 완료(그리드형)
 
+### 진행예정
+1. TDD 적용 예정
+2. JPA 
+
 ### 완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa사용)
 2. 샘플데이터 게시판목록 호출 완료(mybatis사용)
