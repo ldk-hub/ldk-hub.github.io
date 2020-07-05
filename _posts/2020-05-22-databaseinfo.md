@@ -118,12 +118,6 @@ ORDER BY I.BLEVEL DESC
 ALTER INDEX [인덱스명] REBUILD;
 ```
 
-## 외부조인, 내부조인  
-
-
-
-
-
 ## pl/sql  
 
 프로그램 내부에서 처리하기 힘든 부분을 DB 프로시저로 대신 처리하는 방안
