@@ -33,6 +33,9 @@ https://github.com/ldk-hub/DashBoard
 ![1](https://user-images.githubusercontent.com/12209348/41805983-90200564-76ee-11e8-8c9d-ae10c214f873.PNG)
 설명 : 계정정보 패스워드 암복호화 기능구현 완료
 
+## Hybrid Web 반응형웹 
+![녹화_2020_07_06_20_37_57_94](https://user-images.githubusercontent.com/12209348/86919343-0bac8480-c163-11ea-964d-27a09acf5618.gif)
+
 ## local PC(server) infomation(CPU, Memory etc.)
 ![CPU측정](https://user-images.githubusercontent.com/12209348/71538778-79862100-2974-11ea-891f-e0706ec22af9.gif)
 설명 : 실시간으로 로컬 하드웨어 정보 캐치업 해오는 기능 (응용 >>서버의 정보를 실시간으로 관리할 수 있음)
