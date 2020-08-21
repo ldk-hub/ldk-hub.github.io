@@ -28,3 +28,54 @@ draft: "no"
 bfs, 그리디
 
 
+
+## remind   
+알고리즘 구현 과정 퍼포먼스 관련  
+
+### 입출력관련 속도이슈  Scanner VS BufferedReader  
+- Scanner 속도가 느림 하지만 코드상 표현이 간결함 (스캐너경우 import java.util.Scanner 또는 java.util.*)를사용
+- BufferedReader 통째로 입력받아야함. 하지만 선언문이많아 코드 가독성이 떨어짐  
+
+### 사용방안  
+단순로직일경우 BufferedReader를 사용하여 퍼포먼스측면으로 사용  
+다소 복합적인(파싱) 로직일 경우 Scanner를 사용하는것이 코드 더 효율적일 수 있음.   
+
+## 팁
+정수, 나머지값 등 판별
+a % b == 0 
+
+
+
+## 버블정렬
+```
+public static void main(String[] args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int[] b = new int[a];
+				
+		for(int i=0; i<a; i++){
+			b[i] = sc.nextInt();
+		}
+		//여까지 입력받은 값 담아두기
+		
+		//법을정렬 시좍
+		for(int j=0; j<a; j++){
+			for(int k=0; k<a-j-1;k++){
+			 if(b[k]>b[k+1]){
+				int temp =b[k+1];
+				 b[k+1]=b[k];
+				 b[k]=temp;
+			 }
+			}
+		}
+		
+		for(int q=0; q<b.length;q++){
+			System.out.print(b[q]+" ");
+		}
+		
+	}
+}
+```
+
+
+ 
