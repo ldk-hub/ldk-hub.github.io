@@ -37,7 +37,7 @@ https://github.com/ldk-hub/DashBoard
 ![kakao login](https://user-images.githubusercontent.com/12209348/93009603-05e97a00-f5be-11ea-80b7-857aaf9ce214.PNG)  
 
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
-![녹화_2019_12_27_16_59_23_687](https://user-images.githubusercontent.com/12209348/71508393-f957b100-28ca-11ea-96b7-cc9c693cf0a9.gif)
+![녹화_2020_09_17_19_58_26_640](https://user-images.githubusercontent.com/12209348/93462004-93133280-f920-11ea-9e8b-f371971def37.gif)  
 
 ## local PC(server) infomation(CPU, Memory etc.)
 
