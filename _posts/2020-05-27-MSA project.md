@@ -14,6 +14,7 @@ categories: MSA
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
+toc: true
 ---
 ## Micro Service Architecture (MSA) - 마이크로서비스 아키텍처란? 
 대용량 트래픽을 커버리지하기 위한 서버 중앙화 다중클라이언트 대상으로 실시간 배포를 할 수 있는 강점이 있음. 서비스 로스타임이 없다.(즉시반영)
