@@ -14,6 +14,7 @@ categories: spring 세미나
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
+toc: true
 ---
 ## POST STORY
 문서 정리 중 고대 유물을 발견하여 포스팅 하게 되었다. 한국의 스프링 사용자의 모임 세미나를 참석하였다.
