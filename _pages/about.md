@@ -1,6 +1,6 @@
 ---
 permalink: /about/
-title: "About"
+title: "개발자 이력"
 excerpt: "About Me"
 search: true
 last_modified_at: 2020-05-25T06:22:00+09:00
@@ -8,12 +8,25 @@ toc: true
 ---
 
 
-# 블로그 개발자 이력
+# 개발자 이력 소개
 
-## 학력  
-1. 학사대학교 졸업	학점은행제  
-2. 전문대 졸업	수원과학대학  
-3. 고등학교 졸업	경기영상과학고등학교  
+
+## 기술 스킬셋
+language : JAVA
+framework : Spring FrameWork, Spring Boot, Spring Security
+DB : OracleDB, Postgresql-DB
+UI : gentelella, Tiles3, Bootstrap
+etc : Mybatis, jpa, lombok
+Server : 온프레임, 클라우드(Azure)
+OS : 리눅스, 윈도우서버 등
+
+## API 활용 경험
+System table : Datatables, toast-grid
+날씨, 지도 : kakao maps, Skycons
+차트 : amcharts4
+캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
+인증 : Oauth2.0 (with. kakao)
+기타 : Dropzone, NProgress, iCheck, Flot
 
 ## 교육이수 이력
 2013.10.01 ~ 2014.01.31	중앙정보기술인재개발원  
@@ -22,6 +35,12 @@ JAVA기반 웹 시스템 개발, MVC패턴, 포트폴리오(분석, 설계, 구�
 2019.01.15 ~ 2019.01.18	 microsoft  	
 MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워크 구성, 스토리지 관리, Paas 등 클라우드 관리의 기초에 대한 전반적인 교육을 수료
 
+
+## 개인프로젝트 
+![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
+
+바로가기 : https://github.com/ldk-hub/DashBoard
+
 ## 보유 자격증
 1. 정보처리기사
 2. 컴활1급
@@ -29,7 +48,7 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 4. MOS MASTER
 5. 정보기기운용기능사
 
-## 프로젝트 개발 실무 경력  
+## 실무 프로젝트 경력  
 프로젝트 : 화재수신반 실시간 조작감시 시스템 구축, 최적기동 시스템 개발, 냉설비 관리 시스템 개발  
 업무 : 에너지 사업 및 실시간 감시 웹 기반 설계 및 시스템 개발, 운영  
 환경 : Java, 자바스크립트, 제이쿼리, AJAX, 스프링부트, 부트스트랩, JPA, 마이바티스, 포스트그레스DB, Tui-grid 등  
@@ -49,4 +68,5 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 솔루션 : 웹스퀘어, 오즈리포트 툴, 제니퍼MR  
 환경 : JAVA, 제이쿼리, AJAX, 스프링FW, 오라클, 마이바티스, SVN, 자바스크립트  
 온프레임 서버 : 제우스, 웹투비, 리눅스, 윈도우 서버  
+
 
