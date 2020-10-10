@@ -12,21 +12,25 @@ toc: true
 
 
 ## 기술 스킬셋
-language : JAVA
-framework : Spring FrameWork, Spring Boot, Spring Security
-DB : OracleDB, Postgresql-DB
-UI : gentelella, Tiles3, Bootstrap
-etc : Mybatis, jpa, lombok
-Server : 온프레임, 클라우드(Azure)
-OS : 리눅스, 윈도우서버 등
+```
+language : JAVA  
+framework : Spring FrameWork, Spring Boot, Spring Security  
+DB : OracleDB, Postgresql-DB  
+UI : gentelella, Tiles3, Bootstrap  
+etc : Mybatis, jpa, lombok  
+Server : 온프레임, 클라우드(Azure)  
+OS : 리눅스, 윈도우서버 등  
+```
 
 ## API 활용 경험
-System table : Datatables, toast-grid
-날씨, 지도 : kakao maps, Skycons
-차트 : amcharts4
-캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
-인증 : Oauth2.0 (with. kakao)
-기타 : Dropzone, NProgress, iCheck, Flot
+```
+System table : Datatables, toast-grid  
+날씨, 지도 : kakao maps, Skycons  
+차트 : amcharts4  
+캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS  
+인증 : Oauth2.0 (with. kakao)  
+기타 : Dropzone, NProgress, iCheck, Flot  
+```
 
 ## 교육이수 이력
 2013.10.01 ~ 2014.01.31	중앙정보기술인재개발원  
@@ -37,9 +41,9 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 
 
 ## 개인프로젝트 
-![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
+![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)  
 
-바로가기 : https://github.com/ldk-hub/DashBoard
+바로가기 : https://github.com/ldk-hub/DashBoard  
 
 ## 보유 자격증
 1. 정보처리기사
