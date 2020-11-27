@@ -23,8 +23,9 @@ toc: true
 
 프로젝트 개요 : MSA 프로젝트를 직접 구성해보고 앱에서 각종 제어를 실습해보는 목적으로 프로젝트를 진행 중. 
 
-프로젝트 목적 MSA의 기능 구현 및 샘플케이스 구성  
+MSA 프로젝트 시스템 
 ![5555](https://user-images.githubusercontent.com/12209348/100360711-a804f400-303c-11eb-8894-5ee68281bd39.PNG)
+MSA 프로젝트 구성도
 ![44](https://user-images.githubusercontent.com/12209348/100360714-a9ceb780-303c-11eb-9a9b-4eb6f40f746e.PNG)
 
 MSA는 만능이 아님 서비스 환경적으로  서비스 사용자가 많았을 경우에 적합한 기술이다.  
