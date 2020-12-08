@@ -103,4 +103,14 @@ toc: true
 ### 하이브리드 아키텍처(이해를 위한 구성도)
 ![1](https://user-images.githubusercontent.com/12209348/101274031-0d47aa80-37de-11eb-8177-ca587b04f6a4.PNG)
 
-   
+
+### JeAS(just Enough Application Service) 꼭필요한 만큼의 애플리케이션 서버
+ - MSA에서 사용할 수 있는 런타임 종류가 있음.
+ 
+ - MSA에서는 다양한 환경이존재해 필요하지 않은 구성요소가 많아져 무거워질 수있어 JeAS를 사용한다.
+ - 애플리케이션 서버의 구성 요소 중 애플리케이션 실행을 위해 필요한 부분만을 패키징한 것을 의미한다.
+
+
+### 마이크로서비스 아키텍처의 런타임으로 JeAS사용하기
+![44](https://user-images.githubusercontent.com/12209348/101485766-fdc38f80-399e-11eb-9dcb-1bdadec31da6.PNG)
+
