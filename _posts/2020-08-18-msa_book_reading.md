@@ -114,3 +114,9 @@ toc: true
 ### 마이크로서비스 아키텍처의 런타임으로 JeAS사용하기
 ![44](https://user-images.githubusercontent.com/12209348/101485766-fdc38f80-399e-11eb-9dcb-1bdadec31da6.PNG)
 
+### JeAS 장점
+ - 패키지 크기 감소
+ - 할당된 메모리 감소
+ - 보안 풋프린트 감소
+ - 애플리케이션 분리증대
+ - 업그레이드 단순화
