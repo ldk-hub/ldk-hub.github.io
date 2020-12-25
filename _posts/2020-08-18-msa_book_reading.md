@@ -137,3 +137,33 @@ toc: true
 다양한 스타터를 제공하여 빠르게 시스템을 구성할 수있도록 구성되어있음.
 
 ### 손테일
+
+
+기존 유형과 다른 컨트롤러 구조
+
+```
+@RestController
+public class CartController
+  @RequestMapping(
+    method= RequestMethod.GET, // Http GET 요청의 `/`URL 경로를 통해 이메서드를 사용한다.
+    path="/",
+    produces = "application/json")
+  public List<CartItem> all() throws Exception {} 
+  
+   @RequestMapping(
+    method= RequestMethod.GET, 
+    path="/add",
+    produces = "application/json")
+  public String addOrUpdateItem(
+    @RequestParam("Item") String itemName, // item이라는 이름의 URL 질의 파라미터가 이 메서드 파라미터에 매핑된다.
+    @RequestParam("qty") Integer qty) throws Exception{
+    }
+  
+  @RequestMapping(
+    method= RequestMethod.GET, 
+    path="/get/{itemName}",   // 이 종단점에 대한 URL 결로 변수가 /get/ 뒤에온다.
+    produces = "application/json")
+  public CartItem getItem(
+     @PathVariavle("itemName") String itemName) throws Exception{ // URL 경로 변수가 메서드 파라미터에 맵핑된다.
+     }
+```
