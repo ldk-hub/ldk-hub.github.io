@@ -136,7 +136,7 @@ toc: true
 ### 스프링부트-> 옵션화한 스프링 마이크로서비스
 다양한 스타터를 제공하여 빠르게 시스템을 구성할 수있도록 구성되어있음.
 
-### 손테일
+
 
 
 기존 유형과 다른 컨트롤러 구조
@@ -167,3 +167,8 @@ public class CartController
      @PathVariavle("itemName") String itemName) throws Exception{ // URL 경로 변수가 메서드 파라미터에 맵핑된다.
      }
 ```
+
+위와 같이 @GET, @Produces, @Path 등의 정보를 한꺼번에 지정한다.  다른차이점은 @QueryParam, @PathParam 대신 
+@RequestParam, @PathVariable을 사용한다는 것이다.
+
+### 손테일
