@@ -172,3 +172,58 @@ public class CartController
 @RequestParam, @PathVariable을 사용한다는 것이다.
 
 ### 손테일
+JAX-RS, JMS, CDI 마이크로서비스에서 꼭 필요한 항목을 집중시킨 기능이며  
+https://thorntail.io/generator/   
+에서 기능을 제공한다.  
+
+#### 손테일 플러그인 설정
+```
+   <plugin>
+     <groupId>io.thorntail</groupId>
+     <artifactId>thorntail-maven-plugin</artifactId>
+     <version2.2.0</version>
+     <executions>
+      <execution>
+       <goals>
+         <goal>package</goal>
+       </goals>
+      </execution>
+      </executions>
+   </plugin>
+```
+
+```
+// 스코프 안에 Java EE 웹 API를 추가한다.
+<dependency>
+   <groupId>javax</groupId>
+   <artifactId> javaee-web-api</artifactId>
+   <version>7.0</version>
+   <scope>provided</scope>
+</dependency>
+
+```
+
+```
+//손테일을 사용하는 JaxrsApplication
+@ApplicationPath("/")
+public class JaxrsApplication extends Application{
+
+}
+```
+
+
+### JeAS를 채택하기 위한 고려사항
+ 1. 기업이나 개발자가 JavaEE나 스프링에 대한 경험, 지식이있는가
+ 2. 프로덕션에서 가장 선호하는 패키징 방식이 무엇인가
+ 3. 해당 프레임워크의 JeAS가 아닌 런타임을 사용해본 경험이 있는가?
+ 
+### JeAS 관련 
+- JeAS를 사용하면 마이크로서비스와 함께 사용하기에 꼭 필요한 런타임만을 패키징할수있다.
+이는 손테일이 ㄷ가장 커스텀화를 잘할수 있는 JeAS 런타임이다.
+- JeAS 런타임을 사용하면서 필요한 부분만선택하면 엔터프라이즈 자바 애플리케이션 서버에서 필요한 부분만 골라 사용할 수 있다.
+- JeAS 런타임은 RESTful 마이크로서비스를 전개할 때 최고의 전개 방법이다.
+- 마이크로프로파일은 클라우드 네이티브 마이크로서비스 개발에 필요한 특징을 제공한다.
+
+
+
+
