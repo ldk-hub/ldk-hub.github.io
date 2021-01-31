@@ -383,7 +383,9 @@ minishift console
 
 
 
+다른 서비스와 포트 번호가 겹치는 일이 없도록 CategoryResource의 포트를 지정할 수 있다. 메이븐에서 swarm.port.offset 프로퍼티를  | 로 설정하라.
 ```
+//Category 모델 클래스
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") //카테고리 ID를 키로 정의, JSON으로 받은 자식 컬렉션을 역직렬화할 때 사용함
 public class Category{
  protected Integer id;
