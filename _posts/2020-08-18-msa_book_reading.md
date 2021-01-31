@@ -380,7 +380,19 @@ minishift console
  - CDI를 사용한 @Inject
  - static 메서드나 변수를 통해서비스 인스턴스 가져오기
  - XML이나 애노테이션을 기반으로 하는 스프링 의존관계 주입(DI)
- 
- 
- 
+
+
+
+```
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id") //카테고리 ID를 키로 정의, JSON으로 받은 자식 컬렉션을 역직렬화할 때 사용함
+public class Category{
+ protected Integer id;
+ protected String name;
+ protected String header;
+ protected LocalDateTime created = LocalDateTime.new(); //자식 컬렉션을 빈 객체로 초기화해서 자식이 없는 경우에도 올바른 컬렉션을 반환하도록 함
+ protected LocalDateTime updated;
+ protected Integer version;
+ ...
+}
+```
 
