@@ -398,3 +398,20 @@ public class Category{
 }
 ```
 
+추가로 각 서비스에게는 새로운 스레드에서 수행할 작업을 제출하기 위한 Executor Service가 필요하다. 모든 서비스들이 같은 방식으로 작업을 수행하도록 Java EE가 제공하는 ExecutorService를 사용한다.
+
+```
+private ManagedExecutorService executorService() throws Exception{
+  InitalContext ctx = new InitialContext();
+  return(ManagedExecutorService)
+      ctx.lookup("java:jboss/ee/concurrency/executor/default");
+}
+
+```
+이 코드는 서비스이름을 가지고 간단한 JNDI 검색을 수행해서 여러분이 작업을 제출할 수 없는 실행기 서비스의 인스턴스를 찾아 반환한다.
+
+Tip. 여기서 사용하는 ExecutorService는 와일드 플라이에 정의된 것이다. 따라서 이를 JNDI에서 가져오기 위해 무언가를 별도로 설정할 필요가 없다.
+
+여러분의 서비스가 필요한 작업을 수행하기 위해 새 Thread를 직접 만들 수도 있지만, 그렇게 만든 스레드는 JAVA EE가 관리하는 스레드풀 밖에 있게된다. 그게 문제가 될 수 있을까? 항상 그렇지는 않다. 
+
+결과를 동기식, 비동기식으로 처리하느냐에 따라 마이크로 서비스를 소비하는 클라이언트 두가지 종단점을 제공한ㄷ.
