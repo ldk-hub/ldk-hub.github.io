@@ -426,12 +426,12 @@ Tip. 여기서 사용하는 ExecutorService는 와일드 플라이에 정의된 
 
 왜 마이크로서비스를 발견할 수 있어야 하는가?
 
-직접 마이크로 서비스 찾기
+직접 마이크로 서비스 찾기  
 ![1](https://user-images.githubusercontent.com/12209348/107191362-64146f00-6a2f-11eb-8be7-a160a8af5146.PNG)
 
 
 
-여러 인스턴스가 있는 마이크로서비스 직접 검색
+여러 인스턴스가 있는 마이크로서비스 직접 검색  
 ![2](https://user-images.githubusercontent.com/12209348/107191365-65459c00-6a2f-11eb-9598-262db8c643aa.PNG)
 
 
