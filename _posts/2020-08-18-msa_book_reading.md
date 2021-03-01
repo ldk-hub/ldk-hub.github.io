@@ -447,3 +447,37 @@ Tip. 여기서 사용하는 ExecutorService는 와일드 플라이에 정의된 
  4. 지불 MSA는 스트라이프MSA가 돌려주는 응답을 받는다.
  
  
+ 자바 클라이언트 라이브리를 통해 마이크로서비스 소비하기
+  ```
+//java.net을 활용한 DisplayResource
+
+@GET
+@Path("/sync")
+@Produces(MediaType.APPLICATION_JSON)
+public Category getCategoryTreeSync() throws Exception{
+ HttpURLConnection connection = null;
+ 
+ try{
+   URL url = new URL(this.categoryUrl); //categoryResource를 가리키는 URL 생성
+   connectrion = (HttpURLConnection) url.openConnection();
+   
+   connection.setRequestMethod("GET"); //연결에 사용할 요청 방식으로 HTTP GET설정
+   connection.setRequestProperty("Accept", MediaType.APPLICATION_JSON);
+   
+   
+   if(connection.getResponseCode() != HttpURLConnection.HTTP_OK){   //OK가 아닌 응답 코드 검사
+         throw new RuntimeException("Request Failed: HTTP Error code: " + connection.getResponseCode());
+   }
+   
+   return new ObjectMapper()   //JSON역직렬화를 수행하기 위한 ObjectMapper 생성
+        .registerModule(new JavaTimeModule())   //JSON에서 LocalDateTime 인스턴스로 변환을 처리하기 위해 JAvaTimeModule을 등록
+        .readValue(connection.getgetInputStream(), Category.class);  //응답으로 받은 InputStream을 ObjectMapper에 넘겨 역직렬화해서 Category 인스턴스를 얻음
+        
+   } finally {
+      assert connection != null;
+      connection.disconnect();//CategoryResource 서비스에 대한 연결을 닫음
+      
+}
+
+ ```
+ 
