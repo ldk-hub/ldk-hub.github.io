@@ -51,3 +51,70 @@
  - MSA 리본,유레카 관련 개념정리
  - 스팟버그 사용법
  
+프엔
+1.npm
+2.npm script
+3.리액트
+4. 자바스크립트 심화과정
+
+백엔드
+개념숙지
+1.dns작동원리
+2. 호스팅개념
+3. 브라우저동작원리
+4. 스레드와동시성
+5. IPC 프로세스간 통신
+6. 정규화 기초
+
+- 몽고디비
+-젠킨스
+-레빗엠큐
+
+
+데브옵스
+1. 젠킨스
+2. AWS
+3.도커
+4.쿠버네티스
+5.엔진엑스
+
+
+터미널 용어
+-uniq
+-cut
+-echo
+-fmt
+-tr
+-nl
+-egrep
+-fgrep
+-wc
+
+-ps
+-top
+-htop
+-atop
+-lsof
+
+-nmap
+-tcpdump
+-ping
+-mtr
+-airman
+-airedump
+-dig
+-iptables
+netstat
+
+-nmon
+-sar
+-vmstat
+-strace
+-dtrace
+-systemtop
+-df
+-history
+
+ssl/tls
+ssh
+포트포워딩
