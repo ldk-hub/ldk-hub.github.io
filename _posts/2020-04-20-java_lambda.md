@@ -57,4 +57,25 @@ InterfaceA1 a2 = () -> {System.out.println("인자가 없는 함수 구현");};
 
 ```
 
+### 기존 자바 문법 vs 람다식 문법 비교
+```
+//기존 자바문법
+Runnable runable = new Runnable(){
+	@Override
+	public void run(){
+		System.out.println("run 호출");
+		
+	}
+
+}
+runable.run();
+```
+
+```
+//람다식 자바 문법
+Runnalble runnable =() -> System.out.println("run 호출");
+runnable.run();
+```
+6줄의 기존 자바 코드에서 람다식으로는 1줄로 바뀌게 되면서 동일한 기능을 구현할 수 있는 것이다.
+
 
