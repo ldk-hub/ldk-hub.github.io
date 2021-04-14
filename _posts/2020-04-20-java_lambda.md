@@ -16,6 +16,7 @@ categories: 열공해야한다.
 draft: "no"
 toc: true
 ---
+## 람다 표현식
 
 함수형 프로그래밍 문법적 표현방식 기법 JDK 1.8 Ver 이상부터 사용할 수 있움 
 
@@ -57,6 +58,7 @@ InterfaceA1 a2 = () -> {System.out.println("인자가 없는 함수 구현");};
 
 ```
 
+
 ### 기존 자바 문법 vs 람다식 문법 비교
 ```
 //기존 자바문법
@@ -84,7 +86,6 @@ runnable.run();
  - Consumer<T>  어떤 타입의 파라미터로 받는다. 리턴은 없음.
  - Predicate<T>  어떤 타입의 파라미터로 받는 다. 리턴은 Boolean타입.
  - Supplier<T>    어떤 타입으로 리턴함. 파라미터는 없음.
-
 
 
 
@@ -186,6 +187,18 @@ public class FunctionLambda2 {
 	}
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
