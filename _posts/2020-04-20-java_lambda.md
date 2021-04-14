@@ -88,6 +88,105 @@ runnable.run();
 
 
 
+람다식은 Object 타입으로 형변환 불가함. 굳이 하려면 먼저 함수형 인터페이스로 변환해야함.
+Object obj = (Object) (() -> {});//에러발생
+Object obj = (Object) (MyFunction) (() -> {}) //사용가능;
+Object obj = ( (Object)  (MyFunction) (() -> {}).toString(); //사용가능
+
+
+
+//2개의 값을 비교해서  어떤 값이 더큰 값인지 구하는 compareTo라는 메소드를 가지고 
+public interface Compare{
+	public int compareTo(int value1, int value2);
+}
+
+
+public class CompareExam{
+	//클래스 내부 선언 값
+	public static void exec(Compara compara){
+		int k=10; 
+		int m=20;
+		int value = compara.compareTo(k,m); //두 값을 비교하기위해  compareTo 함수에 돌려
+		System.out.println(value);
+		
+	}
+		
+	public static void main(String[] args){
+		exec ((i,j) -> { return i - j;});
+	}
+	
+}
+
+
+
+
+
+```
+//람다의 장단점
+
+/* 장점
+ * 1. 코드를 간결하게 만들 수 있음.
+ * 2. 코드가 간결하고 식에 개발자의 의도가 명확히 들어나게됨 가독성 향상
+ * 3. 함수를 별도로 만들지 않고 한번에 처리
+ * 4. 병렬프로그래밍 용이
+ * 
+ * 
+ * 단점
+ * 1. 람다를 사용하면서 만드는 무명함수 재사용 불가
+ * 2. 디버깅이 어려움
+ * 3. 남발시 코드가 지저분
+ * 4. 재귀로 만들경우 부적합
+ * */
+
+
+//람다는 메소드를 하나의 식으로 표현한 것 
+//익명메소드(함수) 생성 문법이라 보면된다. 메소드 자체로 혼자선언해서 쓸수 없으며, 무조건 Class 구성멤버로 선언해야됨.
+```
+
+### 예제 케이스
+
+```
+//인터페이스 내 1개의 메서드 정의했다는 어노테이션 선언 람다식 쓸수있는시작
+@FunctionalInterface
+public interface MyFunction2 {
+
+	void myMethod();
+}
+
+
+public class FunctionLambda2 {
+
+	public static void main(String[] args) {
+		
+		//기존 자바문법 -> 람다식문법 비교
+		//MyFunction f = (MyFunction2) (() -> {});와 동일. 
+		MyFunction2 f = ()->{};
+		
+		//Object obj = (Object) (MyFunction2) (() ->{});와 동일 (Object) 생략
+		Object obj = (MyFunction2) (() -> {});
+		
+		//String str = ((Object) (MyFunction2) (() -> {})).toString();
+		String str = ((MyFunction2) (()->{})).toString();
+		
+		System.out.println(f);
+		System.out.println(obj);
+		System.out.println(str);
+		
+		//에러케이스. 람다식은 Object 타입으로 형변환 안됨
+		//System.out.println(() -> {});
+		
+		//OK케이스
+		System.out.println((MyFunction2) (()->{}));
+		
+		//에러케이스
+		//System.out.println((MyFunction2) (()->{}).toString());
+		
+		//OK케이스
+		System.out.println(((MyFunction2) (()->{})).toString());
+	}
+}
+```
+
 
 
 ## 스트림 api
