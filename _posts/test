@@ -1,0 +1,657 @@
+CHAPTER 6 6.
+마이크로서비스 소비하기
+이 장의 주요 내용
+• 마이크로서비스를 소비하는 방법
+• 여러분이 선택해야 하는 마이크로서비스 소비 방법
+사람에 따라 마이크로서비스를 소비한다는 말을 다르게 생각한다. 스크립트, 웹 페이지, 다른
+마이크로서비스, 또는 HTTP 요청을 보낼 수 있는 어떤 것이든 마이크로서비스의 클라이언트
+가 될 수 있다. 이런 모든 유형의 클라이언트를 다루면 클라이언트 하나하나가 책 한 권이 될
+것이다.
+마이크로서비스 개발은 재미있는 일이다. 하지만 서로 상호작용하는 많은 마이크로서비스들이
+있어야 비로소 마이크로서비스가 더 재미있어진다. 두 서비스가 서로 상호작용하기 위해서는
+한 서비스가 다른 서비스를 호출할 수 있는 수단이 있어야 한다.
+이번 장은 한 마이크로서비스가 자바 기반 라이브러리를 사용해 다른 마이크로서비스를 소비
+하는 방법을 설명한다. 하지만 마이크로서비스를 소비하는 다른 일반적인 자바 클라이언트들
+도 여기서 보여준 방법을 사용할 수 있다.
+[그림 6-1]처럼 엔터프라이즈 자바에서는 두 서비스가 직접 서비스 호출을 통해 상호작용할
+수 있다.
+
+
+
+6장 마이크로서비스 소비하기 145 
+
+서비스 호출 방법은 다음과 같다.
+• EJB를 사용하는 QEJB 주입
+• CDI를 사용한 Inject
+• Static 메서드나 변수를 통해 서비스 인스턴스 가져오기
+• XML이나 애노테이션을 기반으로 하는 스프링 의존관계 주입(DI, dependency injection) 
+
+런타임에 있을 때만 적용할 수 있다.
+
+
+
+
+
+추상화된 계층을 제공하기 때문에 클라이언트 코드가 엄청나게 단순해진다. 예제를 통해 각각
+의 경우 코드가 얼마나 달라지는지 살펴볼 것이다. 이번 장에서 다룬 예제는 이 책 예제 코드
+/chapter6 디렉터리에서 볼 수 있다.
+각 클랑이언트 라이브러리를 사용해서 2장에서 만든 CategoryResource라는 RESTful 종단점
+을 호출하는 서비스를 구현할 것이다. 각 서비스는 CategoryResource에게 받은 데이터를 호
+출한 쪽에 응답한다.
+TIP 다른 서비스와 포트 번호가 겹치는 일이 없도록 CategoryResource의 포트를 지정할 수 있다. 메이
+븐에서 swarm. port.offset 프로퍼티를 로 설정하라.
+이번 장에서 우리가 구현할 모든 서비스에게는 관리자 서비스에서 전달받을 카테고리를 JSON
+으로 표현할 객체가 필요하다. 이를 편리하게 하기 위해 각 클라이언트 라이브러리 메이븐 모
+듈은 자신만의 Category 객체를 포함할 것이다. 관리자 서비스로부터 응답을 받으면 이 객체
+로 역직렬화한다.
+
+
+예제 6-1 Category 모델 클래스
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+property = "id")
+//카테고리 ID를 키로 정의, JSON으로 받은
+public class Category {
+자식 컬렉션을 역직렬화할 때 사용함
+protected Integer id;
+protected String name;
+protected String header;
+protected Boolean visible;
+//자식 컬렉션을 빈 객체로 초기화해서
+protected String imagePath;
+//자식이 없는 경우에도 올바른
+protected Category parent;
+//컬렉션을 반환하도록 함
+private Collection<Category) children = new HashSet<>();
+protected LocalDateTime created = LocalDateTime.now();
+protected LocalDateTime updated;
+protected Integer version;
+}
+//단순화를 위해 게터와 세터는 생략했지만 예제 코드 안에서 Category의 전체 소스 코드를 볼
+수 있다.
+
+
+148 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+추가로 각 서비스에게는 새로운 스레드 hread 에서 수행할 작업을 제출하기 위한 Executor
+| Service가 필요하다. 모든 서비스들이 같은 방식으로 작업을 수행하도록 Java EE가 제공하는
+ExecutorService를 사용한다.
+private ManagedExecutor Service executorService() throws Exception {
+InitialContext ctx = new InitialContext();
+return (ManagedExecutor Service)
+ctx.lookup("java:jboss/ee/concurrency/executor/default");
+}
+이 코드는 서비스 이름을 가지고 간단한 JNDI 검색을 수행해서 여러분이 작업을 제출할 수 있
+는 실행기 서비스의 인스턴스를 찾아 반환한다.
+NOTE 여기서 사용하는 ExecutorService는 와일드플라이에 정의된 것이다. 따라서 이를 JNDI에서 가
+져오기 위해 무언가를 별도로 설정할 필요가 없다.
+여러분의 서비스가 필요한 작업을 수행하기 위해 새 Thread를 직접 만들 수도 있지만, 그렇
+게 만든 스레드는 Java EE가 관리하는 스레드 풀 밖에 있게 된다. 그게 문제가 될 수 있을
+까? 항상 그렇지는 않다. 하지만 실행 시점의 스레드 풀 크기가 JVM에서 사용 가능한 스레드
+개수와 비슷한 경우에는 문제가 될 수 있다. 스레드를 직접 생성하는 것은 바람직하지 않으며
+ExecutorService를 사용하는 편이 낫다는 것이 일반적인 규칙이다.
+결과를 동기적으로 처리하느냐 비동기적으로 처리하느냐에 따라 마이크로서비스를 소비하는
+클라이언트 코드가 어떻게 달라지는지 보고 싶기 때문에, 클라이언트 라이브러리를 사용하는
+자원은 두 가지 종단점을 제공한다.
+/sync - 요청을 받아서 동기적으로 처리한다.
+• /async - 요청을 받아서 비동기적으로 처리한다.
+전통적으로 서비스는 다른 자원이 응답을 마칠 때까지 동기적으로 통신하도록 개발되어 왔다.
+더 나은 성능과 규모 확장성으로 서비스를 제공하기 원하는 기업이 늘어남에 따라 점차 서비스
+가 비동기적으로 동작하는 쪽으로 바뀌었다. 이번 장과 이 책의 나머지 부분에서는 동기적 사
+용 패턴과 비동기적 사용 패턴을 함께 배울 것이다. 마이크로서비스가 주는 이점을 더 늘리려
+6장 마이크로서비스 소비하기 149
+
+
+
+면 일정 수준 이상 비동기적인 동작이 필요하다. 비동기를 사용하지 않으면 분산이 주는 이점
+을 적게 누리게 된다. 비동기를 거의 사용하지 않는 경로를 택한다면 그냥 모노리식한 구조에
+계속 머무르는 편이 나을지도 모른다.
+NOTE 여러분의 마이크로서비스에는 categoryUrl이라는 필드 정의가 들어 있다. 이 필드는 http://
+localhost:8081/admin/categorytree로 하드 코딩되어 있다. 물론 이런 식으로 URL을 프로덕션에서
+처리하는 경우는 없겠지만 예제를 단순화하기 위해서 경로를 하드 코딩했다. 나중에는 서비스 발견을 사용해
+다른 서비스에 접속하는 방법을 살펴볼 것이다.
+6.1 자바 클라이언트 라이브러리를 통해 마이크로서비스 소비하기
+이번 절에서는 HTTP 요청을 직접 처리하는 저수준 라이브러리를 사용해 마이크로서비스를
+소비하는 예제를 살펴본다. 저수준 라이브러리를 사용하면 코드가 좀 더 길어지고 데이터를 추
+가로 처리해야 하지만 서비스를 호출하는 방법을 원하는 대로 더 유연하게 바꿀 수 있다. 예를
+들어 RESTful 종단점이 아닌 다른 방식의 HTTP 자원과 통신하려 하는 경우, RESTful 기능
+만을 제공하는 라이브러리가 아니라 이런 라이브러리를 사용하는 것이 더 낫다.
+6.1.1 java.net
+java.net 패키지에 있는 클래스는 처음부터 JDK의 일부분이었다. 여러 해에 걸쳐 java.net
+은 개선됐지만 그 패키지는 주로 저수준 HTTP 상호작용에 초점을 맞추고 있다. 전혀 RESTful
+종단점을 소비하는 것에 대한 고려가 이루어져 있지 않기 때문에 java.net을 사용하면 약간은
+당황스러울 정도로 복잡한 코드를 작성해야 한다.
+우선 DisplayResource의 첫 번째 메서드를 살펴보자.
+
+
+150 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+예제 6-2 java.net을 활용한 DisplayResource
+@GET
+@Path("/sync")
+@Produces (MediaType. APPLICATION_JSON)
+public Category getCategoryTreeSync() throws Exception {
+HttpURLConnection connection = null;
+try {
+CategoryResource
+가리키는 URL 생성
+연결에 사용할
+요청 방식으로
+HTTP GET
+URL url = new URL(this.categoryUrl);
+connection = (HttpURLConnection) url.openConnection();
+설정
+connection.setRequestMethod("GET");
+connection.setRequestProperty("Accept",
+응답으로 받을 수 있는
+미디어 타입으로
+application/json 설정
+MediaType, APPLICATION_JSON);
+OK가 아닌
+응답 코드
+검사
+if (connection.getResponseCode() != HttpURLConnection. HTTP_OK) {
+throw new RuntimeException("Request Failed: HTTP Error code: " +
+| connection.getResponseCode());
+}
+JSON 역직렬화를 수행하기
+JSONOH|A4 LocalDate
+Time
+위한 ObjectMapper 생성 인스턴스로 변환을 처리하기 위해
+return new ObjectMapper()
+Java TimeModule을 등록
+registerModule(new JavaTimeModule())
+.readValue(connection.getInputStream(), Category.class);
+} finally {
+assert connection != null;
+connection.disconnect()
+}
+Category Resource
+서비스에 대한 연결을 닫음
+응답으로 받은 InputStream을
+ObjectMapper에 넘겨
+역직렬화해서 Category
+| 인스턴스를 얻음
+}
+간단한 RESTful 종단점을 처리하지만 이 코드는 분명 간단하지 않다. 게다가 오직 동기적인
+처리만 가능하다.
+다음 예제는 앞의 코드를 어떻게 바꿔야 비동기적으로 마이크로서비스를 처리할 수 있는지 보
+여준다.
+예제 6-3 java.net 비동기 기능을 활용한 DisplayResource
+@GET
+@Path("/async")
+@Produces (MediaType . APPLICATION_JSON)
+public void getCategoryTreeAsync( 
+
+6장 마이크로서비스 소비하기 151 
+
+@Suspended final AsyncResponse asyncResponse)
+throws Exception {
+executorService().execute(() -> {
+HttpURLConnection connection = null;
+try {
+|| 연결을 열고, 상태 코드를 검사하고, 응답을 처리하는 코드는
+|| 동기적인 예제 코드와 같기 때문에 여기서는 생략했다.
+asyncResponse. resume(category);
+Category 인스턴스로
+} catch (IOException e) {
+AsyncResponse를 재개
+asyncResponse. resume(e);
+} finally {
+예외를 가지고
+assert connection != null;
+AsyncResponse 재개
+connectiondisconnect();
+}
+});
+}
+이 목록에는 처음 보는 개념이 들어 있다. 바로 Suspended와 AsyncResponse가 그것이
+다. 이 두 조각은 JAX-RS가 클라이언트 요청을 비동기적으로 처리하는 방식의 핵심이다.
+@Suspended는 클라이언트로부터 들어오는 HTTP 요청을 응답이 준비될 때까지 JAX-RS 런
+타임이 일시 중단시켜야 한다는 뜻이다. 개발자는 AsyncResponse를 통해 런타임에게 응답이
+준비되었거나 응답을 준비하는 데 실패했음을 알릴 수 있다.
+
+
+
+
+[그림 6-4]의 각 단계에서 벌어지는 일은 다음과 같다.
+1 브라우저나 다른 클리이언트로부터 HTTP 요청이 도착한다.
+2 getCategoryTreeAsync()는 별도의 스레드에서 코드가 실행되도록 만든다. getCategoryTree
+Async()가 완료될 때까지 클라이언트 요청이 일시 중단되며, 요청을 처리하던 HTTP 요청 스레드는 다른
+요청을 처리한다.
+3 외부 마이크로서비스에게 HTTP 요청을 보낸다.
+4. 외부 마이크로서비스로부터 HTTP 요청을 받는다.
+5 응답 데이터를 asyncResponse.resume()에 전달한다.
+6 HTTP 요청 스레드에서 클라이언트 요청을 다시 활성화하고 응답을 구성한다.
+7 응답을 요청을 보낸 브라우저나 클라이언트에게 보낸다.
+WARNING_ @Suspended를 RESTful 종단점에서 사용해도 그 종단점을 호출하는 클라이언트가 블록되
+는 것을 막지는 못한다. Suspended는 요청을 처리하는 서버 쪽의 스루풋(throughput)만을 높일 수 있다.
+@Suspended가 없으면 요청이 들어오면서 그 요정을 처리하는 메서드가 완료될 때까지 처리 스레드를 블록
+시키기 때문에 JAX-RS 자원이 단지 사용 가능한 스레드 개수만큼만 요청을 처리할 수 있다.
+이제 서비스를 만들었으므로 시작해보자. 이 책 예제 코드의 /chapter6/admin 디렉터리로 가
+서 다음을 실행하라.
+mvn thorntail:run
+CategoryResource가 시작되면 브라우저 http://localhost:8081/admin/categorytree를
+통해 사용 가능해진다.
+이제 DisplayResource를 시작하자. /chapter6/java-net 디렉터리로 들어가서 다음을 실행
+하라.
+mvn thorntail:run
+이제 브라우저에서 http://localhost:8080/sync와 http://localhost:8080/async를 통해
+방금 시작한 마이크로서비스에 접속할 수 있다. 이 두 URL 모두 현재 관리 마이크로서비스에
+들어 있는 카테고리로 이뤄진 트리를 브라우저에서 보여준다.
+
+
+
+
+6.1.2 아파치 HttpClient
+아파치 > adhes의 HttpClient를 사용하면 java.net에서 사용했던 클래스 위에 추상 계층을 얻을
+수 있어서 아랫단의 HTTP 연결과 상호작용할 때 필요한 코드를 최소화할 수 있다. Display
+Resource에 있는 코드는 6.1.1절에서 본 코드와 그리 다르지 않지만 코드의 가독성이 높아
+졌다.
+예를 들어 DisplayResource에 있는 첫 번째 메서드를 살펴보자.
+예제 6-4 HttpClient를 사용해 만든 DisplayResource
+try-with-resource 문장 안에서
+HTTP 클라이언트 생성
+Category Resource
+@GET
+URL 종단점을 가지고
+@Path("/sync")
+HttpGet 인스턴스 생성
+)
+@Produces (MediaType.APPLICATION_JSON)
+public Category getCategoryTreeSync() throws Exception {
+try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+HttpGet get = new HttpGet(this.categoryUrl);
+응답을 처리할
+get addHeader("Accept", MediaType. APPLICATION_JSON);
+핸들러를
+JSON 응답을
+전달하면서
+받는다고 지정
+HttpGet을
+return httpclient.execute(get, response -> {
+실행
+int status = response.getStatusLine().getStatusCode();
+응답 코드가
+if (status >= 200 && status <300) {
+OK 인지 확인
+return new ObjectMapper()
+.registerModule(new JavaTimeModule())
+.readValue(response.getEntity().getContent(),
+Category.class);
+} else {
+throw new ClientProtocolException("Unexpected response
+status: " + status);
+}
+응답에서 HttpEntity를
+});
+가져와서 ObjectMapper로
+Category 인스턴스로 변환
+}
+이렇게 짧은 예제에서도 HTTP 요청을 보내는 클라이언트 코드가 얼마다 간단해졌는지 볼 수
+있다. 이제 Suspended를 사용하는 코드가 얼마나 간단해지는지 살펴보자.
+
+
+
+
+
+예제 6-5 HttpClient와 OSuspended를 사용해 만든 DisplayResource |
+@GET
+@Path("/async")
+외부 서비스를 호출하는 코드를
+@Produces (MediaType. APPLICATION_JSON)
+별도의 스레드에서 실행
+public void getCategory TreeAsync(@Suspended final AsyncResponse
+asyncResponse) throws Exception {
+executor Service().execute() -> {
+try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+HttpGet get = new HttpGet(this.categoryUrl); ;
+1 | 연결을 열고, 살태 코드를 검사하고, 응답을 처리하는 코드는 ALS
+|| 동기적인 예제 코드와 같기 때문에 여기서는 생략했다.
+CasyncResponse. resume(category);
+응답받은 카테고리로
+} catch (IOException e) {
+AsyncResponse를 재개
+asyncResponse. resume(e);
+}
+});
+여기서도 비동기적 접근 예제는 동기적인 예제와 비슷하다. 다만 JAX-RS에게 외부 마이크
+로서비스를 호출하는 동안 HTTP 요청 처리를 일시 중단 시키라고 지시하는 @Suspended와
+AsyncResponse를 볼 수 있다.
+http://localhost:8081/에 이미 CategoryResource 마이크로서비스가 실행 중이라면 아파
+치 HttpClient를 사용하는 새로운 마이크로서비스를 시작할 수 있다.
+WARNING_ 6.12절의 마이크로서비스를 실행하기 전에 이전에 실행 중이던 마이크로서비스를 종료해야
+한다. 그렇지 않으면 포트 번호가 중복되어 실행이 되지 않을 수 있다.
+/chapter6/apache-httpclient 디렉터리로 가서 다음을 실행하자.
+mvn thorntail:run
+이제 브라우저에서 http://localhost:8080/sync와 http://localhost:8080/async를 통해
+방금 시작한 마이크로서비스에 접속할 수 있다. 6. 1.1절에서 jave.net으로 구현했던 경우와
+마찬가지로 이 두 URL은 모두 현재 관리 마이크로서비스에 있는 카테고리로 이뤄진 트리를 브
+라우저에서 보여준다.
+
+
+
+이번 절에서는 URL과 HTTP 요청에 초점을 맞춘 클라이언트 라이브러리를 살펴봤다. 이들은
+HTTP 자원과 상호작용할 때 사용하기 좋지만 RESTful 종단점을 처리하고 싶을 때는 코드가
+너무 장황해진다. 이런 경우 클라이언트 코드를 간단하게 해줄 수 있는 라이브러리를 찾을 수
+있을까?
+6.2 JAX-RS 클라이언트 라이브러리로 마이크로서비스 소비하기
+이번 절에서는 HTTP보다 더 높은 수준의 추상화를 제공하는 클라이언트 라이브러리를 소개
+한다. 두 라이브러리 모두 JAX-RS 종단점과 통신할 때 사용할 수 있는 특별한 API를 제공
+한다.
+6.2.1 JAX-RS 클라이언트
+JAX-RS는 Java EE의 JSR 311과 JSR 339 명세로 정의되어 있었다. 이런 명세의 일부분으로
+JAX-RS에는 JAX-RS 자원이 제공하는 RESTful 종단점을 호출하는 더 깔끔한 수단을 개발
+자들에게 제공하기 위한 클라이언트 API가 포함되어 있다.
+그렇다면 JAX-RS 클라이언트 라이브러리를 쓰는 이점은 무엇일까? JAX-RS 클라이언트 라
+이브러리를 사용하면 RESTful 마이크로서비스에 연결할 때 필요한 저수준 HTTP 연결에 대
+해 신경 쓰지 않고 다음과 같은 꼭 필요한 메타 데이터 inceta data에 집중할 수 있다.
+• HTTP 메서드
+전달할 파라미터
+파라미터의 MediaType과 반환 타입
+• 필요한 쿠키(cookie)
+• RESTful 마이크로서비스를 소비하기 위해 필요한 다른 메타 데이터
+JAX-RS 클라이언트 라이브러리를 사용할 때는 응답을 처리할 때 JSON을 LocalDateTime 인
+스턴스로 역직렬화하기 위해 적절한 프로바이더를 등록해야 한다. 이를 위해 다음과 같은 코드
+가 필요하다. 앞으로 다루는 예제에서는 이 프로바이더를 계속 사용할 것이다.
+156 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+
+0|||| 6-6 ClientJackson Provider
+ObjectMapper 인스턴스를 사용하는
+ContextResolver를 제공
+public class clientJacksonProvider implements ContextResolver<objectMapper) {
+private final ObjectMapper mapper = new ObjectMapper()
+register Module(new JavaTimeModule();
+- - 새 ObjectMapper를 생성
+LocalDateTime 변환을 위해
+JavaTimeModule을 등록
+public ObjectMapper getContext(Class<?> type) {
+return mapper;
+요청을 받으면 ObjectMapper
+}
+인스턴스를 생성해 반환
+}
+@Override
+여기서도 동기적 종단점 예제부터 살펴본다.
+예제 6-7 JAX-RS 클라이언트를 사용하는 DisplayResource
+@GET
+@Path("/sync")
+@Produces (MediaType. APPLICATION_JSON)
+public Category getCategory TreeSync() {
+Client client = ClientBuilder.newClient();
+JAX-RS 클라이언트 생성
+[예제 6-6)에 정의한 프로바이더 등록
+응답이 JSON을
+반환한다고 지정
+return client
+.register (ClientJacksonProvider.class)
+.target(this.categoryUrl)
+request(MediaType . APPLICATION_JSON)
+.get(Category.class);
+클라이언트의 target을
+Category/Resource URIL로 설정
+HTTP GET 요청을 보내고
+응답 본문을 Category로 변환
+앞에서 본 두 가지 순수 자바 클라이언트 라이브러리를 사용한 경우와 비교하면 외부 마이크로
+서비스를 호출하는 부분의 코드가 훨씬 간결하고 응집도가 높아졌음을 알 수 있다.
+더 간결하고 응집도가 높아졌다는 것이 중요할까? 요청을 보내고 응답을 추리하는 것이 동작
+한다는 측면에서만 본다면 전혀 그렇지 않다. 하지만 잘 동작한다는 것은 개발자가 기존 코드
+를 이해하거나 새로운 코드를 쉽게 작성할 수 있다는 부분에 비해 덜 중요하다. 이에 대한 판단
+은 여러분의 몫이지만 나라면 지금까지 살펴본 어떤 것보다 방금 본 예제를 더 선호할 것이다.
+
+
+
+JAX-RS 클라이언트 라이브러리가 비동기를 활용하는 경우에도 가독성이 더 좋아질까? 다음
+코드를 살펴보자.
+예제 6-8 JAX-RS 클라이언트와 Suspended를 사용하는 DisplayResource
+@GET
+@Path("/async")
+@Produces (MediaType. APPLICATION_JSON) )
+public void getCategory TreeAsync(@Suspended final AsyncResponse
+- asyncResponse) throws Exception {
+executorservice().execute(() -> {
+Client client = ClientBuilder.newClient();
+try {
+Category category = client, target(this.categoryUrl)
+.register(ClientJacksonProvider.class)
+.request(MediaType.APPLICATION_JSON)
+.get(Category.class);
+예외만 돌려보내는 대신 오류 메시지를
+포함하는 응답을 만들어서 반환
+asyncResponse resume (category);
+} catch (Exception e) {
+asyncResponse resume (Response
+.serverError()
+.entity(e.getMessage())
+.build());
+}
+});
+}
+다른 비동기 예제와 마찬가지로 @Suspended와 AsyncResponse를 지정한다. 또 Managed
+ExecutorService를 사용해 호출을 처리할 스레드를 새로 만들고 결과를 asyncResponse.
+resume()를 통해 설정한다.
+다른 구현으로는 JAX-RS 클라이언트 라이브러리가 제공하는 비동기 기능을 활용하는 방법이
+있다.
+158 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+
+
+예제 6-9 JAX-RS 클라이언트와 InvocationCallback를 활용하는 DisplayResource
+@GET
+@Path("/asyncAlt")
+@Produces (MediaType.APPLICATION_JSON)
+▶ asyncResponse) {
+비동기적 호출을
+사용한다는 표시
+public void getCategoryTreeAsyncalt(@Suspended final AsyncResponse
+Client client = ClientBuilder.newClient();
+WebTarget target = client. target(this.categoryUrl) )
+register(ClientJacksonProvider.class);
+target.request(MediaType . APPLICATION_JSON)
+.async()
+.get(new InvocationCallback<Category>() {
+@Override
+public void completed(Category result) {
+asyncResponse.resume(result);
+}
+@Override
+public void failed (Throwable throwable) {
+throwable.printStackTrace();
+asyncResponse. resume(Response
+..serverError()
+.entity(throwable.getMessage())
+.build());
+완료외 오류를 처리하는
+메서드 구현을 포함하는
+Invocation Callback
+인스턴스를 넘김
+});
+}
+이 두 번째 비동기 버전은 첫 번째 버전과 새로운 스레드에서 실행되는 코드는 다르지만 결과
+는 같다. getCategoryTreeAsync()에서 RESTful 종단점 코드를 새로운 스레드에 전달해서,
+HTTP 요청 스레드가 블록되지 않고 마치 요청이 즉시 처리될 때처럼 빠르게 실행되도록 만든
+다. getCategoryTreeAsyncAlt()는 외부 마이크로서비스에 대한 HTTP 요청을 새로운 스레
+드에서 실행한다는 점만 다르다. HTTP 요청을 설정하기 위해 사용한 모든 코드는 클라이언트
+요청과 같은 스레드에서 처리된다.
+getCategoryTreeAsyncAlt()는 클라이언트가 만든 HTTP 요청 스레드를 최대한 오래 사용
+한다. 따라서 각 클라이언트가 필요보다 더 길게 스레드상에서 블록되기 때문에 RESTful 종단
+점의 스루풋이 감소한다. 스루풋에 미치는 이런 영향이 아주 적기는 하지만 요청 수가 많아지
+면 그 영향이 눈에 띄게 된다.
+6장 마이크로서비스 소비하기
+
+
+
+
+그렇다면 스루풋에 악영향을 끼치는 열등한 방식을 여기서 설명하는 이유는 무엇일까? 첫째,
+같은 목표를 달성하는 방법이 다양하다는 사실을 보여주기 위한 것이다. 둘째, 대부분의 마이
+크로서비스는 동시에 들어오는 요청이 많지 않기 때문에 이런 성능상 영향이 눈에 띄는 경우가
+흔치 않다. 그런 경우라면 개발자가 콜백을 더 선호할 수도 있다. 선택이 성능에 큰 영향을 끼
+치지 못한다면 콜백을 선택하는 것도 충분히 타당한 선택이라 할 수 있다.
+JAX-RS 클라이언트 라이브러리를 사용하기로 하면 외부 마이크로서비스 호출 코드가 단순해
+지고 이해하기 쉬워진다. 이로 인해 저수준 라이브러리에 비해 JAX-RS 클라이언트 라이브러
+리가 더 개발에 사용하기 쾌적하다. 하지만 라이브러리를 사용하는 방법에 있어 유연성이 줄어
+든다는 대가를 치뤄야 한다.
+어떤 부분에서 유연성이 줄어들까? 대부분의 경우 JAX-RS 클라이언트 라이브러리가 유연성
+에 끼치는 영향이 없겠지만, 바이너리를 프로토콜을 사용하는 마이크로서비스를 호출하기가
+더 어려워진다. 프로토콜에 따라서는 적절한 바이너리 변환을 원하기 위한 커스텀 핸들러와 프
+로바이더를 정의해야 하며, 그런 기능을 제공하는 서드파티'hird pulity 라이브러리를 추가로 사용
+해야 한다.
+/chapter6/jaxrs-client 디렉터리로 가서 다음을 실행하라.
+Imvn thorntail:run
+이제 브라우저에서 http://localhost:8080/sync와 http://localhost:8080/async 로 이
+마이크로서비스를 사용할 수 있다. 앞에서 본 예제와 마찬가지로, 관리 마이크로서비스에 들어
+있는 현재 카테고리 목록을 트리로 불 수 있다.
+6.2.2 레스트이지 클라이언트
+레스트이지 RESTEasy'는 와일드플라이 내부나 외부에서 사용할 수 있는 JAX-RS 명세 구현이다.
+레스트이지의 클라이언트 라이브러리는 JAX-RS 클라이언트 API가 제공하는 기능과 거의 비
+슷하지만 일부 언급할 만한 가치가 있는 특징이 있다.
+이 JAX-RS 클라이언트 라이브러리를 사용하면 URL 경로, 파라미터, 반환 타입, 미디어 타입
+등 종단점에 대한 그림을 그려가는 메서드들을 연쇄 호출(haining해서 호출할 RESTful 종단점을
+160 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+
+
+지정할 수 있다. 이런 방식이 잘못된 것은 아니지만, 기존의 JAX-RS를 사용하는 RESTful 종
+단점 생성 방식에 익숙한 개발자들에게는 자연스러워 보이지 않는다.'
+레스트이지를 사용하면 여러분이 통신하고 싶은 RESTful 종단점을 인터페이스로 재생성하고,
+그 인터페이스에 대한 프락시Pros를 자동으로 생성할 수 있다. 이 과정을 통해 외부 마이크로
+서비스의 인터페이스가 마치 여러분 자신의 코드베이스 내부에 있는 것처럼 사용할 수 있다.
+외부 CategoryResource 마이크로서비스에 대해 다음과 같은 인터페이스를 만들 수 있다.
+예제 6-10 CategoryService
+@Path("/admin/categorytree")
+public interface CategoryService {
+@GET
+@Produces (MediaType . APPLICATION_JSON)
+Category getCategoryTree();
+이 코드는 전혀 특별하지 않고 일반적인 다른 JAX-RS 종단점 클래스와 같아 보인다. 다만 클
+래스가 아니라 인터페이스이며 메서드 구현이 없다는 점이 다르다. 이 방식의 다른 장점으로는
+인터페이스 안에 마이크로서비스에 필요한 메서드의 시그니처만을 정의하면 된다는 점을 들
+수 있다. 예를 들어 외부 마이크로서비스에 다섯 가지 종단점이 있고 여러분은 그중 하나만 사
+용하고 싶다면, 여러분이 정의할 인터페이스에는 메서드가 하나만 있으면 된다. 외부 마이크로
+서비스를 모두 다 정의할 필요가 없다.
+이런 방식이 더 나은 것은 당연하다. 이렇게 하면 여러분이 소비하고 싶은 외부 마이크로서비
+스의 정의에만 초점을 맞출 수 있다. 외부 마이크로서비스에서 사용하지 않는 부분이 변경된다
+고 해도 그 종단점을 사용하지 않는 여러분의 코드는 변경할 필요가 없다.
+NOTE 이런 접근 방법을 택하면 같은 인터페이스를 서비스와 클라이언트가 공유할 수 있다. 그런 경우 서
+비스가 인터페이스에 대한 구현을 실제 종단점 코드에 제공할 것이다.
+1 옮긴이 이 패턴은 빌더 패턴이라 할 수 있다. 한편 함수형 프로그래밍이 대부분의 프로그래밍 언어에 깊게 침투하기 시작하면서 메서드
+체이닝을 활용하는 경우도 많이 들었기 때문에 이런 식의 사용이 대부분의 자바 개발자에게 그리 낯설지 않을 것이다.
+| 6장 마이크로서비스 소비하기 161
+
+
+WARNING. 이런 접근 방법은 정상적으로 작동하기는 하지만 마이크로서비스 실무에서 권장하지는 않는
+다. 왜냐하면 이렇게 분리한 인터페이스가 생산자와 소비자 양쪽의 마이크로서비스가 의존하는 별도의 라이
+브러리여야 하는데, 그런 경우 릴리스 타이밍이나 순서가 문제될 수 있기 때문이다. 이런 경로를 택하면 위험
+하며 엔터프라이즈 마이크로서비스 시스템에서 지속적으로 고통을 유발하게 될 것이다. 따라서 호출해야 하
+는 메서드를 중복해 정의하는 편이 더 낫다.
+외부 마이크로서비스로 매핑하는 인터페이스를 정의했다. 이제 그 인터페이스를 어떻게 사용
+할 수 있을까?
+예제 6-11 레스트이지를 사용하는 DisplayResource
+요청에 대한
+대상 URL
+기반 경로 설정
+@GET
+@Path("/sync")
+@Produces (MediaType. APPLICATION_JSON)
+레스트이지로 클라이언트를 생성
+public Category getCategory TreeSync() {
+ResteasyClient client = new ResteasyClientBuilder().build();
+ResteasyWebTarget target = client.target(this.categoryUrl)
+..register(ClientJacksonProvider.class);
+CategoryService categoryService = target.proxy(CategoryService.class);
+return categoryService.getCategory Tree();
+}
+Category Service
+프락시를 통해 CategoryService 호출
+프락시 구현 생성
+이 방식을 사용하면 URL 경로, 미디어 타입, 반환 타입을 설정하는 부분이 모두 Category
+Service 인터페이스로 넘어간다. 이제 여러분의 클라이언트 코드는 마치 로컬 메서드 호출체
+럼 프락시와 상호작용한다. 공통 요청 파라미터 값을 한곳에 모아둠으로써 코드를 더 단순화할
+수 있었다. 하나의 마이크로서비스 안에 있는 여러 다른 RESTful 종단점들이 동일한 외부 마
+이크로서비스를 호출해야 하는 경우 이런 방식이 특히 중요하다. 그런 경우, 똑같은 외부 마이
+크로서비스 호출 정보를 여러 번 반복하고 싶지는 않을 것이다.
+이제 이 프락시 인터페이스를 사용하는 비동기 예제를 살펴보자.
+예제 6-12 @Suspended와 레스트이지를 사용하는 DisplayResource
+@GET
+@Path("/async")
+@Produces (MediaType.APPLICATION_JSON)
+162 2부 엔터프라이즈 자바 마이크로서비스 구현
+
+
+
+public void getCategory TreeAsync(@Suspended final AsyncResponse
+asyncResponse) throws Exception {
+executor Service().execute(() -> {
+ResteasyClient client = new ResteasyClientBuilder().build();;
+try { 
+
+ResteasyWebTarget target = client, target(this.categoryUrl)
+.register(ClientJacksonProvider.class);
+);
+Category Service categoryService =
+target.proxy (CategoryService.class);
+Category category = categoryService.getCategoryTree();
+asyncResponse.resume(category);
+} catch (Exception e) {
+asyncResponse resume (Response
+.serverError()
+.entity(e.getMessage())
+.build());
+}
+});
+동기적인 RESTful 호출 코드를 비동기 코드로 바꾸기 위해서는 단지 JAX-RS Suspended와
+AsyncResponse의 요구 사항에 맞춰서 별도 스레드에서 실행할 클라이언트 코드를 실행기 서
+비스에 제출하고 성공이나 실패를 asyncResponse.resume()에 설정하면 된다.
+레스트이지 클라이언트 라이브러리를 통해 프락시를 사용하는 방식의 한 가지 단점은 외부 마
+이크로서비스 호출이 끝났을 때 레스트이지가 콜백을 호출하지 않는다는 점이다. 따라서 레스
+트이지를 사용해 getCategoryTreeAsyncAlt()를 작성한다고 해도 JAX-RS 클라이언트 라이
+브러리를 사용했을 때와 같은 코드를 쓸 수밖에 없다.
+/chapter6/resteasy-client 디렉터리로 들어가 다음을 실행하자.
+mvn thorntail:run
+이제 브라우저에서 http://localhost:8080/sync와 http://localhost:8080/async로 이
+마이크로서비스를 사용할 수 있다. 각 URL은 관리 마이크로서비스에 들어있는 현재 카테고리
+목록을 트리로 보여줄 것이다.
+6장 마이크로서비스 소비하기 163
+
+
+
+
+지금까지 RESTful 종단점과 상호작용할 때 더 높은 수준의 추상화를 제공하는 클라이언트 라
+이브러리를 몇 가지 살펴봤다. 각 예제들은 그런 라이브러리를 활용하면 클라이언트 코드의 복
+잡도가 줄어들고 더 읽기 쉬워진다는 사실을 보여준다.
+6.3 요약
+• java.net이나 아파치 HttpClient와 같은 자바 기반 클라이언트 라이브러리들은 자바에서 저수준의 네트워
+킹 기능을 제공하지만, 코드가 불필요하게 번잡스러워진다.
+JAX-RS 기반 클라이언트 라이브러리를 사용하면 라이브러리들이 제공하는 추상화를 통해 마이크로서비스
+를 더 쉽게 사용할 수 있다.
+
+
+
+챕터7
+소비할 마이크로서비스 발견하기
+이 장의 주요 내용
+• 서비스 발견이 중요한 이유
+• 클라이언트가 찾을 수 있게 마이크로서비스를 등록하는 방법
+· 손테일이 지원하는 서비스 레지스트리 종류
+• 클라이언트가 마이크로서비스를 찾아내는 방법
+카얌베 모노리스를 여러 마이크로서비스로 분해하는 과정에서 주문 지불을 처리하기 위한 서
+비스가 필요하다는 결정을 내렸다. 10장에 있는 카얌베 모노리스에는 이 새로운 마이크로서비
+스를 사용하게 될 것이다.
+수십 가지 지불 서비스 업체가 지불 처리 서비스를 제공한다. 처음에는 스트라이프Strip (https:
+//stripe.com/docs/quickstart)와 기본적인 통합을 개발할 것이다. 향후 지불 공급자를 확
+장하기 쉽게 만들기 위해 별도의 마이크로서비스로 스트라이프와 통합한다. 새로운 지불 마이
+크로서비스는 스트라이프 마이크로서비스를 사용해 스트라이프 온라인 서비스와 지불을 처리
+하고 지불 기록을 남길 것이다.
+지금까지는 마이크로서비스가 실행중인 URL을 통해 직접 다른 마이크로서비스에 연결해왔다.
+이번 장에서는 클라이언트와 그 클라이언트가 소비하는 마이크로서비스 사이의 연결을 끊음으
+로써 마이크로서비스 호출을 한 단계 더 확장하기 쉽게 만들 것이다.
+자신만 사용할 마이크로서비스를 만드는 것이 아니라면 프로덕션 환경에서 마이크로서비스 인
+스턴스의 개수를 늘리거나 줄여야 하는 경우가 생긴다는 점을 확실히 말할 수 있다. 규모 변화
+에 대응할 수 있는 능력이 없으면 애플리케이션이 사용자에 의해 늘어나는 부하를 다룰 때 항
+상 문제가 생기기 마련이다.
+7장 소비할 마이크로서비스 발견하기 165
