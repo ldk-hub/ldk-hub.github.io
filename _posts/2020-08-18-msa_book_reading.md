@@ -553,3 +553,136 @@ public Category getCategoryTreeSync() throws Exception{
   - 콘솔아님 콘술이다. 해시코프가 개발한 서비스발견 프레임워크다.
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ CHAPTER 6 6. 마이크로서비스 소비하기
+주요 내용
+• 마이크로서비스를 소비하는 방법
+• 여러분이 선택해야 하는 마이크로서비스 소비 방법
+사람에 따라 마이크로서비스를 소비한다는 말을 다르게 생각한다. 스크립트, 웹 페이지, 다른
+마이크로서비스, 또는 HTTP 요청을 보낼 수 있는 어떤 것이든 마이크로서비스의 클라이언트
+가 될 수 있다. 이런 모든 유형의 클라이언트를 다루면 클라이언트 하나하나가 책 한 권이 될
+것이다. 마이크로서비스 개발은 재미있는 일이다. 하지만 서로 상호작용하는 많은 마이크로서비스들이 있어야 비로소 마이크로서비스가 더 재미있어진다. 두 서비스가 서로 상호작용하기 위해서는 한 서비스가 다른 서비스를 호출할 수 있는 수단이 있어야 한다.
+이번 장은 한 마이크로서비스가 자바 기반 라이브러리를 사용해 다른 마이크로서비스를 소비
+하는 방법을 설명한다. 하지만 마이크로서비스를 소비하는 다른 일반적인 자바 클라이언트들
+도 여기서 보여준 방법을 사용할 수 있다.
+
+[그림 6-1]처럼 엔터프라이즈 자바에서는 두 서비스가 직접 서비스 호출을 통해 상호작용할
+수 있다.
+
+
+
+서비스 호출 방법은 다음과 같다.
+• EJB를 사용하는 QEJB 주입
+• CDI를 사용한 Inject
+• Static 메서드나 변수를 통해 서비스 인스턴스 가져오기
+• XML이나 애노테이션을 기반으로 하는 스프링 의존관계 주입(DI, dependency injection) 
+
+런타임에 있을 때만 적용할 수 있다.
+
+
+
+
+
+추상화된 계층을 제공하기 때문에 클라이언트 코드가 엄청나게 단순해진다. 예제를 통해 각각
+의 경우 코드가 얼마나 달라지는지 살펴볼 것이다. 이번 장에서 다룬 예제는 이 책 예제 코드
+/chapter6 디렉터리에서 볼 수 있다. 각 클라이언트 라이브러리를 사용해서 2장에서 만든 CategoryResource라는 RESTful 종단점을 호출하는 서비스를 구현할 것이다. 각 서비스는 CategoryResource에게 받은 데이터를 호출한 쪽에 응답한다.
+TIP 다른 서비스와 포트 번호가 겹치는 일이 없도록 CategoryResource의 포트를 지정할 수 있다. 메이븐에서 swarm. port.offset 프로퍼티를 로 설정하라. 이번 장에서 우리가 구현할 모든 서비스에게는 관리자 서비스에서 전달받을 카테고리를 JSON으로 표현할 객체가 필요하다. 이를 편리하게 하기 위해 각 클라이언트 라이브러리 메이븐 모듈은 자신만의 Category 객체를 포함할 것이다. 관리자 서비스로부터 응답을 받으면 이 객체로 역직렬화한다.
+
+
+예제 6-1 Category 모델 클래스
+//카테고리 ID를 키로 정의, JSON으로 받은 자식 컬렉션을 역직렬화할 때 사용함
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//자식 컬렉션을 빈 객체로 초기화해서 자식이 없는 경우에도 올바른 컬렉션을 반환하도록 함
+public class Category {
+protected Integer id;
+protected String name;
+protected String header;
+protected Boolean visible;
+protected String imagePath;
+protected Category parent;
+private Collection<Category) children = new HashSet<>();
+protected LocalDateTime created = LocalDateTime.now();
+protected LocalDateTime updated;
+protected Integer version;
+}
+단순화를 위해 게터와 세터는 생략했지만 예제 코드 안에서 Category의 전체 소스 코드를 볼
+수 있다. 추가로 각 서비스에게는 새로운 스레드 hread 에서 수행할 작업을 제출하기 위한 Executor Service가 필요하다. 모든 서비스들이 같은 방식으로 작업을 수행하도록 Java EE가 제공하는 ExecutorService를 사용한다.
+```
+private ManagedExecutor Service executorService() throws Exception {
+InitialContext ctx = new InitialContext();
+return (ManagedExecutor Service)
+ctx.lookup("java:jboss/ee/concurrency/executor/default");
+}
+```
+이 코드는 서비스 이름을 가지고 간단한 JNDI 검색을 수행해서 여러분이 작업을 제출할 수 있
+는 실행기 서비스의 인스턴스를 찾아 반환한다.
+	NOTE 여기서 사용하는 ExecutorService는 와일드플라이에 정의된 것이다. 따라서 이를 JNDI에서 가져오기 위해 무언가를 별도로 설정할 필요가 없다.
+여러분의 서비스가 필요한 작업을 수행하기 위해 새 Thread를 직접 만들 수도 있지만, 그렇
+게 만든 스레드는 Java EE가 관리하는 스레드 풀 밖에 있게 된다. 그게 문제가 될 수 있을까? 항상 그렇지는 않다. 하지만 실행 시점의 스레드 풀 크기가 JVM에서 사용 가능한 스레드 개수와 비슷한 경우에는 문제가 될 수 있다. 스레드를 직접 생성하는 것은 바람직하지 않으며ExecutorService를 사용하는 편이 낫다는 것이 일반적인 규칙이다. 결과를 동기적으로 처리하느냐 비동기적으로 처리하느냐에 따라 마이크로서비스를 소비하는 클라이언트 코드가 어떻게 달라지는지 보고 싶기 때문에, 클라이언트 라이브러리를 사용하는 자원은 두 가지 종단점을 제공한다.
+• /sync - 요청을 받아서 동기적으로 처리한다.
+• /async - 요청을 받아서 비동기적으로 처리한다.
+전통적으로 서비스는 다른 자원이 응답을 마칠 때까지 동기적으로 통신하도록 개발되어 왔다.
+더 나은 성능과 규모 확장성으로 서비스를 제공하기 원하는 기업이 늘어남에 따라 점차 서비스가 비동기적으로 동작하는 쪽으로 바뀌었다. 이번 장과 이 책의 나머지 부분에서는 동기적 사용 패턴과 비동기적 사용 패턴을 함께 배울 것이다. 마이크로서비스가 주는 이점을 더 늘리려면 일정 수준 이상 비동기적인 동작이 필요하다. 비동기를 사용하지 않으면 분산이 주는 이점을 적게 누리게 된다. 비동기를 거의 사용하지 않는 경로를 택한다면 그냥 모노리식한 구조에 계속 머무르는 편이 나을지도 모른다.
+	NOTE 여러분의 마이크로서비스에는 categoryUrl이라는 필드 정의가 들어 있다. 이 필드는 http://localhost:8081/admin/categorytree로 하드 코딩되어 있다. 물론 이런 식으로 URL을 프로덕션에서 처리하는 경우는 없겠지만 예제를 단순화하기 위해서 경로를 하드 코딩했다. 나중에는 서비스 발견을 사용해 다른 서비스에 접속하는 방법을 살펴볼 것이다.
+## 6.1 자바 클라이언트 라이브러리를 통해 마이크로서비스 소비하기
+이번 절에서는 HTTP 요청을 직접 처리하는 저수준 라이브러리를 사용해 마이크로서비스를 소비하는 예제를 살펴본다. 저수준 라이브러리를 사용하면 코드가 좀 더 길어지고 데이터를 추가로 처리해야 하지만 서비스를 호출하는 방법을 원하는 대로 더 유연하게 바꿀 수 있다. 예를 들어 RESTful 종단점이 아닌 다른 방식의 HTTP 자원과 통신하려 하는 경우, RESTful 기능만을 제공하는 라이브러리가 아니라 이런 라이브러리를 사용하는 것이 더 낫다.
+## 6.1.1 java.net
+java.net 패키지에 있는 클래스는 처음부터 JDK의 일부분이었다. 여러 해에 걸쳐 java.net은 개선됐지만 그 패키지는 주로 저수준 HTTP 상호작용에 초점을 맞추고 있다. 전혀 RESTful종단점을 소비하는 것에 대한 고려가 이루어져 있지 않기 때문에 java.net을 사용하면 약간은 당황스러울 정도로 복잡한 코드를 작성해야 한다.
+우선 DisplayResource의 첫 번째 메서드를 살펴보자.
+
+
+예제 6-2 java.net을 활용한 DisplayResource
+```
+@GET
+@Path("/sync")
+@Produces (MediaType. APPLICATION_JSON)
+public Category getCategoryTreeSync() throws Exception {
+HttpURLConnection connection = null;
+try {
+//CategoryResource 가리키는 URL 생성 
+URL url = new URL(this.categoryUrl);
+connection = (HttpURLConnection) url.openConnection();
+//연결에 사용할 요청 방식으로 HTTP GET 설정
+connection.setRequestMethod("GET");
+//응답으로 받을 수 있는 미디어 타입으로 application/json 설정
+connection.setRequestProperty("Accept", MediaType, APPLICATION_JSON);
+// OK가 아닌 응답 코드 검사
+if (connection.getResponseCode() != HttpURLConnection. HTTP_OK) {
+throw new RuntimeException("Request Failed: HTTP Error code: " + 
+connection.getResponseCode());
+}
+//JSON 역직렬화를 수행하기 ObjectMapper 생성 return new ObjectMapper()
+Return new ObjectMapper()
+//JSON에서 LocalDateTime위한 인스턴스로 변환을 처리하기 위해 JavaTimeModule을 등록
+registerModule(new JavaTimeModule())
+//응답으로 받은 InputStream을 ObjectMapper에 넘겨 역직렬화해서 Category 인스턴스를 얻음
+.readValue(connection.getInputStream(), Category.class);
+} finally {
+assert connection != null;
+// Category Resource 서비스에 대한 연결을 닫음
+connection.disconnect()
+}
+}
+```
+
