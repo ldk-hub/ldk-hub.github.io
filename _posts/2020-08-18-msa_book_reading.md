@@ -590,17 +590,17 @@ public Category getCategoryTreeSync() throws Exception{
 • CDI를 사용한 Inject  
 • Static 메서드나 변수를 통해 서비스 인스턴스 가져오기  
 • XML이나 애노테이션을 기반으로 하는 스프링 의존관계 주입(DI, dependency injection)   
-
 런타임에 있을 때만 적용할 수 있다.
 
 
 
 
 
-추상화된 계층을 제공하기 때문에 클라이언트 코드가 엄청나게 단순해진다. 예제를 통해 각각
-의 경우 코드가 얼마나 달라지는지 살펴볼 것이다. 이번 장에서 다룬 예제는 이 책 예제 코드
-/chapter6 디렉터리에서 볼 수 있다. 각 클라이언트 라이브러리를 사용해서 2장에서 만든 CategoryResource라는 RESTful 종단점을 호출하는 서비스를 구현할 것이다. 각 서비스는 CategoryResource에게 받은 데이터를 호출한 쪽에 응답한다.
+추상화된 계층을 제공하기 때문에 클라이언트 코드가 엄청나게 단순해진다. 예제를 통해 각각의 경우 코드가 얼마나 달라지는지 살펴볼 것이다. 이번 장에서 다룬 예제는 이 책 예제 코드 /chapter6 디렉터리에서 볼 수 있다. 각 클라이언트 라이브러리를 사용해서 2장에서 만든 CategoryResource라는 RESTful 종단점을 호출하는 서비스를 구현할 것이다. 각 서비스는 CategoryResource에게 받은 데이터를 호출한 쪽에 응답한다.
 TIP 다른 서비스와 포트 번호가 겹치는 일이 없도록 CategoryResource의 포트를 지정할 수 있다. 메이븐에서 swarm. port.offset 프로퍼티를 로 설정하라. 이번 장에서 우리가 구현할 모든 서비스에게는 관리자 서비스에서 전달받을 카테고리를 JSON으로 표현할 객체가 필요하다. 이를 편리하게 하기 위해 각 클라이언트 라이브러리 메이븐 모듈은 자신만의 Category 객체를 포함할 것이다. 관리자 서비스로부터 응답을 받으면 이 객체로 역직렬화한다.
+
+그림 - 카얌베 관리자 마이크로서비스 클라이언트  
+![KakaoTalk_20210418_151755921](https://user-images.githubusercontent.com/12209348/115136302-ea65b680-a059-11eb-80b8-e44b3a1e34f8.jpg)
 
 
 예제 6-1 Category 모델 클래스
@@ -715,6 +715,8 @@ try {
 
 이 목록에는 처음 보는 개념이 들어 있다. 바로 Suspended와 AsyncResponse가 그것이다. 이 두 조각은 JAX-RS가 클라이언트 요청을 비동기적으로 처리하는 방식의 핵심이다. @Suspended는 클라이언트로부터 들어오는 HTTP 요청을 응답이 준비될 때까지 JAX-RS 런타임이 일시 중단시켜야 한다는 뜻이다. 개발자는 AsyncResponse를 통해 런타임에게 응답이 준비되었거나 응답을 준비하는 데 실패했음을 알릴 수 있다.
 
+JAX-RS AsyncResponse 처리
+![KakaoTalk_20210418_151755658](https://user-images.githubusercontent.com/12209348/115136300-e89bf300-a059-11eb-9062-ad6319ca7bd5.jpg)
 
 [그림 6-4]의 각 단계에서 벌어지는 일은 다음과 같다.
 1 브라우저나 다른 클리이언트로부터 HTTP 요청이 도착한다.
