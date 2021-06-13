@@ -187,8 +187,8 @@ jdk 설치 - 환경설정해줘야함
 
 
 
-도커 설치 및
-
+### 도커 설치 및
+```
 docker ps -a #모든 컨테이너 출력(정지 컨테이너 포함)
 docker ps #실행 중인 컨테이너만 출력
 docker start hello #hello 이름의 컨테이너 시작
@@ -213,3 +213,13 @@ docker rm 컨테이너 ID
 docker stop 컨테이너 ID
 젠킨스 암호 찾는법 도커로 젠킨스띄웠을경우
 docker exec <컨테이너네임> cat /var/jenkins_home/secrets/initialAdminPassword
+```
+
+
+
+현재 
+우분투 내 도커설치 후 젠킨스 컨테이너 띄워서 플러그인설치까지 완료
+
+진행예정 
+1. 젠킨스 프로젝트 파이프라인 구성 
+2. 깃허브  자동 빌드 구성
