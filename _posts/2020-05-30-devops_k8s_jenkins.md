@@ -189,6 +189,15 @@ jdk 설치 - 환경설정해줘야함
 
 도커 설치 및
 
+docker ps -a #모든 컨테이너 출력(정지 컨테이너 포함)
+docker ps #실행 중인 컨테이너만 출력
+docker start hello #hello 이름의 컨테이너 시작
+docker restart hello #hello 이름의 컨테이너 재시작(재부팅)
+docker attach hello #컨테이너에 접속(bash 쉘 접속)
+docker stop hello #hello 이름의 컨테이너 종료
+docker rm hello #hello 이름의 컨테이너 삭제
+docker rm -f hello #hello 이름의 컨테이너 강제삭제
+
 
 젠킨스 런
 docker run -d -p 8181:8080 -v /jenkins:/var/jenkins_home --name jm_jenkins -u root jenkins/jenkins:lts
