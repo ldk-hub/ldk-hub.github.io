@@ -184,3 +184,23 @@ jdk 설치 - 환경설정해줘야함
 
 
 도커
+
+
+
+도커 설치 및
+
+
+젠킨스 런
+docker run -d -p 8181:8080 -v /jenkins:/var/jenkins_home --name jm_jenkins -u root jenkins/jenkins:lts
+
+
+도커 프로세스
+docker ps -a
+
+도커 삭제
+docker rm 컨테이너 ID
+
+도커 정지
+docker stop 컨테이너 ID
+젠킨스 암호 찾는법 도커로 젠킨스띄웠을경우
+docker exec <컨테이너네임> cat /var/jenkins_home/secrets/initialAdminPassword
