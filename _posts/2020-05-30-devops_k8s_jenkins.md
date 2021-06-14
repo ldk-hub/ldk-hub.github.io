@@ -203,8 +203,12 @@ docker rm -f hello #hello 이름의 컨테이너 강제삭제
 docker run -d -p 8181:8080 -v /jenkins:/var/jenkins_home --name jm_jenkins -u root jenkins/jenkins:lts
 
 
+
 도커 프로세스
 docker ps -a
+
+도커 시작
+docker start 컨테이너ID
 
 도커 삭제
 docker rm 컨테이너 ID
@@ -223,3 +227,4 @@ docker exec <컨테이너네임> cat /var/jenkins_home/secrets/initialAdminPassw
 진행예정 
 1. 젠킨스 프로젝트 파이프라인 구성 
 2. 깃허브  자동 빌드 구성
+3. 젠킨스 배포 
