@@ -5,7 +5,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "ldk-hub/minimal-mistakes" # 원격테마 설정
-minimal_mistakes_skin    : "dark" # "air", "aqua","default", "contrast", "neon", "dirt", , "mint", "plum", "sunrise" 테마내부 디자인변경
+minimal_mistakes_skin    : "dirt" # "air", "aqua","default", "contrast", "neon", "dirt", , "mint", "plum", "sunrise" 테마내부 디자인변경
 
 # Site Settings
 locale                   : "en-US"
