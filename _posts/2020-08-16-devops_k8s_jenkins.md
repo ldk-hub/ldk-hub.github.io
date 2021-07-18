@@ -245,3 +245,14 @@ docker stop 컨테이너 ID
 젠킨스 암호 찾는법 도커로 젠킨스띄웠을경우
 docker exec <컨테이너네임> cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+
+
+
+톰캣 이미지 구성
+![11](https://user-images.githubusercontent.com/12209348/126056428-3da393d9-ac45-48e3-9488-6a3bc5d5ce2e.PNG)
+
+톰캣 실행  및 프로세스 확인
+![22](https://user-images.githubusercontent.com/12209348/126056430-3ca2a567-9e48-4c10-b25d-e9b8a5f934bd.PNG)
+
+톰캣 도커 실행명령어
+docker run -d -i -t -p 7070:7070 tomcat:8
