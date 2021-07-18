@@ -256,3 +256,7 @@ docker exec <컨테이너네임> cat /var/jenkins_home/secrets/initialAdminPassw
 
 톰캣 도커 실행명령어
 docker run -d -i -t -p 7070:7070 tomcat:8
+
+웹페이지 연결한 것을 이미지로 떠놓기 실행시 바로 해당 웹페이지 연결되도록 구성된 이미지
+![33](https://user-images.githubusercontent.com/12209348/126056797-ecbd6ffb-a18d-4e54-9bc4-edbc68b66ca3.PNG)
+
