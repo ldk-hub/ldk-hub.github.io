@@ -4,7 +4,7 @@ title: "포트폴리오 - 시스템 구축 리뷰"
 # 포스팅 작성자
 author: ["이동옥"] 
 # 포스팅 공개일 - 정렬기준 포스팅날짜순서에 따라 기재됨.(주의 미래날짜는 기입X)
-date: 2020-08-20 08:26:28 -0400
+date: 2021-07-25 08:26:28 -0400
 # 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
 # abstract:
 # 태그를 입력
@@ -104,6 +104,10 @@ https://github.com/ldk-hub/DashBoard
    - 멀티차트 데이터 Mybatis -> jpa전환 완료  
    - 로그인 Mybatis -> jpa전환 완료  
    - 게터 세터 -> 롬복 적용완료  
+24. 스프링 부트 웹소켓 사용 실시간 채팅 기능 추가개발 70%완성( 방생성, 중요정보DB연계처리 남음)
+25. spotbugs 자바 소스 취약점 정적 분석 검증 취약점 6개 발생 개선
+26. 해외 IP 차단용 인터셉터, 필터 처리 구현
+
 
 ### 개발이슈
 1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
@@ -123,9 +127,12 @@ https://github.com/ldk-hub/DashBoard
 16. 다크테마 전환 과정 중 발생한 UI크래시  부분 개선
 17. 오라클 -> postgresql 전환중 마이바티스 전면 수정으로인한 이슈로 Mybatis -> JPA 전환 검토
 18. daum 지도에서 카카오 지도 API 제공 기한 지나서 크로스 오리진 이슈 발생 -> kakao로 소스 변경완료
+19. tui-grid ver up 마이그레이션작업(그리드 최적화 및 속도 개선) 타입스크립트 기반 최신버전
+20. 카카오맵 API 최적화 및 amcharts 
+21. 
 
 ### API리스트
- - System table : Datatables, tui grid
+ - System table : Datatables, tui-grid4.0
  - 날씨, 지도 : kakao maps, Skycons
  - 차트 : amcharts4
  - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
