@@ -8,15 +8,15 @@ toc: true
 ---
 
 
-# 개발자 이력 소개
+# 이력 소개
 
 
 ## 기술 스킬셋
 ```
-language : JAVA  
+language : JAVA, Javascript
 framework : Spring FrameWork, Spring Boot, Spring Security  
 DB : OracleDB, Postgresql-DB  
-UI : gentelella, Tiles3, Bootstrap  
+UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery  
 etc : Mybatis, jpa, lombok  
 Server : 온프레임, 클라우드(Azure)  
 OS : 리눅스, 윈도우서버 등  
@@ -47,7 +47,7 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 
 ## 보유 자격증
 1. 정보처리기사
-2. 컴활1급
+2. 컴퓨터 활용능력 1급
 3. IT PLUS LEVEL3
 4. MOS MASTER
 5. 정보기기운용기능사
@@ -72,5 +72,3 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 솔루션 : 웹스퀘어, 오즈리포트 툴, 제니퍼MR  
 환경 : JAVA, 제이쿼리, AJAX, 스프링FW, 오라클, 마이바티스, SVN, 자바스크립트  
 온프레임 서버 : 제우스, 웹투비, 리눅스, 윈도우 서버  
-
-
