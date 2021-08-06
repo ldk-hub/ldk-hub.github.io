@@ -287,3 +287,21 @@ ngrok에서 발급된 url + 80포트 + github-webhook
 예시 : http://8f7g8e7wewf.ngrok.io:80/github-webhook/
 ```
 위와 같이 선언 후 꼭 깃허브에서 딜리버 테스트통해서 200 코드 확인후 진행하면된다.
+
+젠킨스에서  깃허브 연동 에러 128번 에러코드 발생시 대응방법
+
+```
+젠킨스에서 깃 연동 시 발생하는 하단과 같은 에러코드 일 때
+stderr: fatal: unable to access Could not resolve host: github.com
+```
+
+1. sudo vim /etc/resolv.conf
+DNS 설정해줘야함. 접근이안되는 에러이며
+```
+nameserver 168.126.63.1 #kt DNS 서비스
+nameserver 8.8.8.8 #구글 퍼블릭 DNS서비스(IPv4)
+nameserver 8.8.4.4 #구글 퍼블릭 DNS 서비스(IPv4)
+options edns0
+```
+
+해주면 된다.
