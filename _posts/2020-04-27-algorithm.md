@@ -88,13 +88,12 @@ public static void main(String[] args) throws Exception {
  
 ## 용어정리  
  - 귀납적  
-
  - 재귀적  
  - 점화식  
 
 
 
-## 정렬
+## 정렬 알고리즘
 
 ### 선택정렬
 
@@ -105,3 +104,18 @@ public static void main(String[] args) throws Exception {
 ### 병합정렬
 
 ### 퀵정렬
+
+
+## 선택 알고리즘
+
+## 검색 트리
+
+## 해시테이블
+
+## 집합의 처리
+
+## 그래프
+
+## 동적 프로그래밍
+
+## 그리디 알고리즘
