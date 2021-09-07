@@ -100,3 +100,18 @@ tdd먼저 작성
 
 2. 프론트서버의 사실과 오해
 tps - 15000 -> 웹플럭스 구조 
+
+
+
+2챕터는 TDD 
+
+
+3챕터는 jpa
+
+jpa <- 하이버네이트 <- Spring data JPA(추천)
+
+
+중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X
+공부할것 - tell don`t ask (TDA) 기법
+
+
