@@ -124,3 +124,8 @@ jpa <- 하이버네이트 <- Spring data JPA(추천)
 공부할것 - tell don`t ask (TDA) 기법
 
 
+
+jpa 공부할때-> 양방향,역방향, fetch조인, lazy옵션 querydsl 도 많이 사용함
+참조영상 
+https://www.youtube.com/watch?v=zMAX7g6rO_Y
+
