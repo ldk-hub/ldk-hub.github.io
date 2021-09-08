@@ -17,14 +17,34 @@ draft: "no"
 toc: true
 ---
 
-강사명 : 조졸두
-개발바닥- 유투브
-프론트는 타임리프, 머스테치, 뷰 로개발할것
-모던 자바 인액션 이책 강력히 추천
+## 스프링부트 백엔드 개발 
 
+강사명 : 이동욱(조졸두)  
+개발바닥- 유투브(심심할때 보면 좋음)   
+
+요즘 백엔드개발자 프론트트랜드   
+프론트는 타임리프, 머스테치, 뷰 로개발할것  
+
+모던 자바 인액션 이책 강력히 추천
 http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=312915546&gclid=Cj0KCQjwm9yJBhDTARIsABKIcGYmvVACX30dn-qUTi8dZjhq5vIvEVhYKHz5hDiQrC3EdhKOFQo9fYIaAnmmEALw_wcB
 
-1.개발 환경
+동영상 추천
+1. 우아콘2020 -> 김영한 영상볼것-> https://www.youtube.com/watch?v=BnS6343GTkY
+
+2. jpa 공부할때-> 양방향,역방향, fetch조인, lazy옵션 querydsl 도 많이 사용함
+참조영상 
+https://www.youtube.com/watch?v=zMAX7g6rO_Y
+
+3. [Java] 객체지향 생활 체조 원칙 9가지 (from 소트웍스 앤솔러지)
+우아한 테크코스/테크코스 2020. 3. 5. 18:10
+
+4. jpa <- 하이버네이트 <- Spring data JPA(추천)
+중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X
+공부할것 - tell don`t ask (TDA) 기법
+
+
+
+### 실습 개발 환경
 (윈도우 10 환경 기반)
 👉 Java 8: https://url.kr/cwye6a
 👉 Git: https://url.kr/mcid4e
@@ -34,63 +54,42 @@ http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=3129155
      만약 유료 버전 설치가 잘 안된다면 무료 버전인 Community를 설치하면 됩니다.
 👉 putty: https://url.kr/azowp7
      원격 리눅스 서버로 SSH 접근이 가능한 방법은 아무것이나 가능합니다.
+
+### 러닝 중요!
+ - 주니어 1~5년이상  
+ - 자바8 & 클린코드 & 테스트코드  
+
+ - 미드레벨 5~8년이상  
+ - JPA & DB & springBoot(테스트코드 최우선)  
+
+ - 시니어 8~ 10년이상  
+ - 미드레벨 + MSA &DDD  
      
 
-*** 러닝 중요!
-
-주니어 1~5년이상  
-자바8 & 클린코드 & 테스트코드  
-
-미드레벨 5~8년이상  
-JPA & DB & springBoot(테스트코드 최우선)  
-
-시니어 8~ 10년이상  
-미드레벨 + MSA &DDD  
-
-
-
 1. 인텔리제이 사용계기
-
-msa
-멀티모듈 레포
-독립된 nosql 
-넷플릭스 api 들은 별개문제
+msa, 멀티모듈 레포, 독립된 nosql, 넷플릭스 api 들은 별개문제
 
  - 스프링부트 팁
-그레이들 추천 공부
-코틀린추천
-jar로 배포추천 -> java -jar jar명 내장톰캣사용  추천 war보다 좋음
-클라우드 네이티브 -> 도커때문에 이와같이쓴다함.
+그레이들 추천 공부, 코틀린추천  
+jar로 배포추천 -> java -jar jar명 내장톰캣사용  추천 war보다 좋음  
+클라우드 네이티브 -> 도커때문에 이와같이쓴다함.  
+마리아db 드라이버 -> 기능상같음  
 
 
-마리아db 드라이버 -> 기능상같음
+aws에서는  mysql -> azure는 postgresql  
+aws 오로라 -> 위DB만 지원  
 
-
-aws에서는  mysql -> azure는 postgresql
-
-aws 오로라 -> 위DB만 지원
 @Transctional(readOnly = )
 
+### 모니터링 오픈소스 추천 
+* 네이버 핀포인트  
+- 전체적인 형태모니터링  
+
+*그라파나   
+상세 모니터링  
 
 
-
-
-
-
-도커, 젠킨스, 
-
- - 스냅샷붙은 M2는 정식버전아님
-
-
-모니터링 
-* 네이버 핀포인트
-- 전체적인 형태모니터링
-
-*그라파나 
-상세 모니터링
-
-
-
+** 그레이들
 ```
 implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -103,13 +102,12 @@ implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 ```
 
 
-tdd먼저 작성
+### tdd먼저 작성
 
 좋은팁 
 개인과제로 api 간의 롤백처리 
 각각의 과정중 앞단 처리롤백 
 주문의 연계처리 주문 -> 결제 -> 쿠폰 ->
-
 
 1. 한서비스 죽으면 처리 -> 비즈니스 오류발생 -> 특정모듈만에러발생
 2. 오류 처리발생-> 서비스오류 우회로직 서비스 ->
@@ -117,45 +115,19 @@ tdd먼저 작성
 책 추천
 마이크로서비스 도입 이렇게 한다.
 
-동영상 추천
-1. 우아콘2020 -> 김영한 영상볼것-> https://www.youtube.com/watch?v=BnS6343GTkY
 
 2. 프론트서버의 사실과 오해
 tps - 15000 -> 웹플럭스 구조 
 
+2챕터 - TDD 
 
-
-2챕터는 TDD 
-
-
-3챕터는 jpa
-
-jpa <- 하이버네이트 <- Spring data JPA(추천)
-
-
-중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X
-공부할것 - tell don`t ask (TDA) 기법
-
-
-
-
-
-jpa 공부할때-> 양방향,역방향, fetch조인, lazy옵션 querydsl 도 많이 사용함
-참조영상 
-https://www.youtube.com/watch?v=zMAX7g6rO_Y
-
-
-
-[Java] 객체지향 생활 체조 원칙 9가지 (from 소트웍스 앤솔러지)
-우아한 테크코스/테크코스 2020. 3. 5. 18:10
-
+3챕터 - jpa
 
 1. 한 메서드에 오직 한 단계의 들여쓰기만 한다.
  한 메서드에 들여쓰기가 여러 개 존재한다면, 해당 메서드는 여러가지 일을 하고 있다고 봐도 무관하다.
-
  메서드는 맡은 일이 적을수록(잘게 쪼갤수록), 재사용성이 높고 디버깅도 용이하다.
-
  대충 아래와 같이 나눈다면, 메서드명을 통해 조금 더 직관적이면서도 나뉜 메서드를 다른데서도 재사용 가능한 코드가 된다.
+
 ```
 public class JamieObject {
 
@@ -198,6 +170,8 @@ public class JamieObject {
     }
 }
 ```
+
+
 2. else 키워드를 쓰지 않는다.
  조건문은 복제의 원인이 되기도 함 / 가독성도 좋지 않음
 
@@ -206,6 +180,7 @@ public class JamieObject {
 - 상태에 대한 분기가 몇 군데 걸쳐 중복돼 있을 때 Strategy 패턴은 특히 유용
 
  간단한 경우엔 guard clause(보호 구문) 사용 : if에 return을 쓸 것(early return) - 단, 많이 쓰면 간결함을 해칠 수 있음
+
 ```
 public class JamieObject {
 
@@ -234,10 +209,13 @@ public class JamieObject {
 }
 
 ```
+
+
 3. 모든 원시값과 문자열을 포장(wrap)한다.
  원시형 변수로는 컴파일러가 의미적으로 맞는 프ㅇ로그램 작성을 안내할 수 없다(예 - 년도에 대한 유효성 검사). 포장한 객체로라면 아주 사소하더라도 컴파일러와 개발자에게 해당 값이 어떤 값이며 왜 쓰는지에 대해 정보를 전달할 수 있다.
 
  또한 시간이나 돈처럼 작은 단위를 포장한 객체의 경우엔, 행위(메서드)를 놓을 곳을 마련해준다.
+
 ```
 public class JamieMoney {
 
@@ -262,20 +240,16 @@ public class JamieMoney {
     }
 }
 ```
+
 4. 한 줄에 점을 하나만 찍는다.
  (스트림 등 체이닝하는 일부를 제외)
-
  어느 코드 한 곳에서 점이 둘 이상 있다면, 해당 부분을 다시 리팩토링 해야 함
-
 - 어쩌면 다른 두 개의 객체를 동시 조작하고 있는 것일 수도 있음
-
  디미터(Demeter)의 법칙 : "친구하고만 대화하라"
-
  자신 소유의 객체, 자신이 생성한 객체, 그리고 누군가 준(파라미터로) 객체에만 메시지를 보낼 것
-
 - 그렇지 않을 경우, 다른 객체에 너무 깊숙이 관여하게 됨 : 캡슐화를 어기는 것
-
  메시지를 받는 객체는 자신의 속을 오픈하기보다는, 작업을 해주도록 해야 함
+
 
 ```
 public class JamieObject {
