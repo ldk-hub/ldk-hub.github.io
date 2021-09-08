@@ -18,6 +18,11 @@ toc: true
 ---
 
 강사명 : 조졸두
+개발바닥- 유투브
+프론트는 타임리프, 머스테치, 뷰 로개발할것
+모던 자바 인액션 이책 강력히 추천
+
+http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=312915546&gclid=Cj0KCQjwm9yJBhDTARIsABKIcGYmvVACX30dn-qUTi8dZjhq5vIvEVhYKHz5hDiQrC3EdhKOFQo9fYIaAnmmEALw_wcB
 
 1.개발 환경
 (윈도우 10 환경 기반)
