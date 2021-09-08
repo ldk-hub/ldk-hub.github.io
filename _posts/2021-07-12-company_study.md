@@ -44,18 +44,17 @@ https://www.youtube.com/watch?v=zMAX7g6rO_Y
 
 
 
-### 실습 개발 환경
-(윈도우 10 환경 기반)
-👉 Java 8: https://url.kr/cwye6a
-👉 Git: https://url.kr/mcid4e
-👉 SourceTree: https://url.kr/x86k4e
-👉 IntelliJ Ultimate: https://url.kr/kboymj
-     Ultimate 은 유료버전이지만, 처음 사용할 경우 한달간 무료가 지원되니 유료 버전을 설치하면 됩니다.
-     만약 유료 버전 설치가 잘 안된다면 무료 버전인 Community를 설치하면 됩니다.
-👉 putty: https://url.kr/azowp7
-     원격 리눅스 서버로 SSH 접근이 가능한 방법은 아무것이나 가능합니다.
+### 실습 개발 환경(윈도우 10 환경 기반)  
+👉 Java 8: https://url.kr/cwye6a  
+👉 Git: https://url.kr/mcid4e  
+👉 SourceTree: https://url.kr/x86k4e  
+👉 IntelliJ Ultimate: https://url.kr/kboymj  
+     Ultimate 은 유료버전이지만, 처음 사용할 경우 한달간 무료가 지원되니 유료 버전을 설치하면 됩니다.  
+     만약 유료 버전 설치가 잘 안된다면 무료 버전인 Community를 설치하면 됩니다.  
+👉 putty: https://url.kr/azowp7  
+     원격 리눅스 서버로 SSH 접근이 가능한 방법은 아무것이나 가능합니다.  
 
-### 러닝 중요!
+### 러닝 중요!  
  - 주니어 1~5년이상  
  - 자바8 & 클린코드 & 테스트코드  
 
