@@ -64,6 +64,27 @@ https://www.youtube.com/watch?v=zMAX7g6rO_Y
  - 시니어 8~ 10년이상  
  - 미드레벨 + MSA &DDD  
      
+     
+     
+네이버 로그인 기능이 추가되면
+
+네이버에서는 로긍니 요청이 온 서비스가 미리 쓰겠다고 등록한 사이트인지검증
+
+
+내사이트
+=>(내사이트가 리다이렉트) 네이버사이트로 이동
+=>네이버 로그인이 성공하면
+=>(네이버가 리다이렉트시켜줌) 내사이트의 어느 주소???
+
+OAuth Token / 
+
+인증쪽할때 enum 활용기 참조할것
+https://techblog.woowahan.com/2527/
+
+핀포인트 예시 
+http://125.209.240.10:10123/main/ApiGateway@SPRING_BOOT/5m/2021-09-09-15-50-13?inbound=1&outbound=4&wasOnly=false&bidirectional=false
+
+
 
 1. 인텔리제이 사용계기
 msa, 멀티모듈 레포, 독립된 nosql, 넷플릭스 api 들은 별개문제
