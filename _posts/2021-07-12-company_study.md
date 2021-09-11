@@ -19,32 +19,51 @@ toc: true
 
 ## 스프링부트 백엔드 개발 
 
-강사명 : 이동욱(조졸두)  
-개발바닥- 유투브(심심할때 보면 좋음)   
+ - 강사명 : 이동욱(조졸두)  
+ - 교육기간 : 2021.09.07 ~ 2021.09.09
+ - 유투브개발바닥- (심심할때 보면 좋음)   
+ - 요즘 백엔드개발자 프론트트랜드 - 프론트는 타임리프, 머스테치, 뷰 로개발할것  
 
-요즘 백엔드개발자 프론트트랜드   
-프론트는 타임리프, 머스테치, 뷰 로개발할것  
+### 커리어 러닝 중요!  
+ - 주니어 1~5년이상  
+ - 자바8 & 클린코드 & 테스트코드  
 
-모던 자바 인액션 이책 강력히 추천
-http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=312915546&gclid=Cj0KCQjwm9yJBhDTARIsABKIcGYmvVACX30dn-qUTi8dZjhq5vIvEVhYKHz5hDiQrC3EdhKOFQo9fYIaAnmmEALw_wcB
+ - 미드레벨 5~8년이상  
+ - JPA & DB & springBoot(테스트코드 최우선)  
 
-동영상 추천
-1. 우아콘2020 -> 김영한 영상볼것-> https://www.youtube.com/watch?v=BnS6343GTkY
+ - 시니어 8~ 10년이상  
+ - 미드레벨 + MSA &DDD  
 
-2. jpa 공부할때-> 양방향,역방향, fetch조인, lazy옵션 querydsl 도 많이 사용함
-참조영상 
-https://www.youtube.com/watch?v=zMAX7g6rO_Y
+### 강사님 개발관련 추천    
+  - 도서  
+ 1. 모던 자바 인액션 이책 강력히 추천  
+http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=312915546&gclid=Cj0KCQjwm9yJBhDTARIsABKIcGYmvVACX30dn-qUTi8dZjhq5vIvEVhYKHz5hDiQrC3EdhKOFQo9fYIaAnmmEALw_wcB  
 
-3. [Java] 객체지향 생활 체조 원칙 9가지 (from 소트웍스 앤솔러지)
-우아한 테크코스/테크코스 2020. 3. 5. 18:10
+ - 동영상 추천  
+1. 우아콘2020 -> 김영한 영상볼것-> https://www.youtube.com/watch?v=BnS6343GTkY  
 
-4. jpa <- 하이버네이트 <- Spring data JPA(추천)
-중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X
-공부할것 - tell don`t ask (TDA) 기법
+2. 참조영상   
+https://www.youtube.com/watch?v=zMAX7g6rO_Y  
 
+ - 블로그
+1. [Java] 객체지향 생활 체조 원칙 9가지 (from 소트웍스 앤솔러지)  
+우아한 테크코스/테크코스 2020. 3. 5. 18:10  
 
+2. 인증쪽할때 enum 활용기 참조할것  
+https://techblog.woowahan.com/2527/  
 
-### 실습 개발 환경(윈도우 10 환경 기반)  
+3. 핀포인트 예시 
+http://125.209.240.10:10123/main/ApiGateway@SPRING_BOOT/5m/2021-09-09-15-50-13?inbound=1&outbound=4&wasOnly=false&bidirectional=false  
+
+4. jpa <- 하이버네이트 <- Spring data JPA(추천)  
+중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X  
+공부할것 - tell don`t ask (TDA) 기법  
+
+5. 모니터링 오픈소스 추천 
+ - 네이버 핀포인트  - 전체적인 형태모니터링  
+ - 그라파나  - 상세 모니터링  
+
+### 실습 개발 환경(윈도우 10 환경 기반)   
 👉 Java 8: https://url.kr/cwye6a  
 👉 Git: https://url.kr/mcid4e  
 👉 SourceTree: https://url.kr/x86k4e  
@@ -54,37 +73,8 @@ https://www.youtube.com/watch?v=zMAX7g6rO_Y
 👉 putty: https://url.kr/azowp7  
      원격 리눅스 서버로 SSH 접근이 가능한 방법은 아무것이나 가능합니다.  
 
-### 러닝 중요!  
- - 주니어 1~5년이상  
- - 자바8 & 클린코드 & 테스트코드  
 
- - 미드레벨 5~8년이상  
- - JPA & DB & springBoot(테스트코드 최우선)  
-
- - 시니어 8~ 10년이상  
- - 미드레벨 + MSA &DDD  
      
-     
-     
-네이버 로그인 기능이 추가되면
-
-네이버에서는 로긍니 요청이 온 서비스가 미리 쓰겠다고 등록한 사이트인지검증
-
-
-내사이트
-=>(내사이트가 리다이렉트) 네이버사이트로 이동
-=>네이버 로그인이 성공하면
-=>(네이버가 리다이렉트시켜줌) 내사이트의 어느 주소???
-
-OAuth Token / 
-
-인증쪽할때 enum 활용기 참조할것
-https://techblog.woowahan.com/2527/
-
-핀포인트 예시 
-http://125.209.240.10:10123/main/ApiGateway@SPRING_BOOT/5m/2021-09-09-15-50-13?inbound=1&outbound=4&wasOnly=false&bidirectional=false
-
-
 
 1. 인텔리제이 사용계기
 msa, 멀티모듈 레포, 독립된 nosql, 넷플릭스 api 들은 별개문제
@@ -95,18 +85,40 @@ jar로 배포추천 -> java -jar jar명 내장톰캣사용  추천 war보다 좋
 클라우드 네이티브 -> 도커때문에 이와같이쓴다함.  
 마리아db 드라이버 -> 기능상같음  
 
-
 aws에서는  mysql -> azure는 postgresql  
 aws 오로라 -> 위DB만 지원  
 
 @Transctional(readOnly = )
 
-### 모니터링 오픈소스 추천 
-* 네이버 핀포인트  
-- 전체적인 형태모니터링  
 
-*그라파나   
-상세 모니터링  
+
+
+
+
+
+
+
+
+
+
+네이버 로그인 기능이 추가되면
+네이버에서는 로긍니 요청이 온 서비스가 미리 쓰겠다고 등록한 사이트인지검증
+
+
+내사이트
+=>(내사이트가 리다이렉트) 네이버사이트로 이동
+=>네이버 로그인이 성공하면
+=>(네이버가 리다이렉트시켜줌) 내사이트의 어느 주소???
+
+OAuth Token / 
+
+
+
+
+
+
+
+
 
 
 ** 그레이들
