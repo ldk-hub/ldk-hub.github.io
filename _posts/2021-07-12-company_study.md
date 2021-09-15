@@ -39,6 +39,8 @@ toc: true
  1. 모던 자바 인액션 이책 강력히 추천  
 http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=312915546&gclid=Cj0KCQjwm9yJBhDTARIsABKIcGYmvVACX30dn-qUTi8dZjhq5vIvEVhYKHz5hDiQrC3EdhKOFQo9fYIaAnmmEALw_wcB  
 
+ 2. 마이크로서비스 도입 이렇게 한다.
+ 
  - 동영상 추천  
 1. 우아콘2020 -> 김영한 영상볼것-> https://www.youtube.com/watch?v=BnS6343GTkY  
 2. 참조영상 ->  https://www.youtube.com/watch?v=zMAX7g6rO_Y  
@@ -53,10 +55,13 @@ https://techblog.woowahan.com/2527/
 중요!!!!! 이유: 중요 @Setter는 oop에서는 사용X  
 공부할것 - tell don`t ask (TDA) 기법  
 
-2. 핀포인트 모니터링 예시 
+TDD 무료 배포
+3. https://repo.yona.io/doortts/blog/issue/2
+
+4. 핀포인트 모니터링 예시 
 http://125.209.240.10:10123/main/ApiGateway@SPRING_BOOT/5m/2021-09-09-15-50-13?inbound=1&outbound=4&wasOnly=false&bidirectional=false  
 
-4. 모니터링 오픈소스 추천 
+4-1. 모니터링 오픈소스 추천 
  - 네이버 핀포인트  - 전체적인 형태모니터링  
  - 그라파나  - 상세 모니터링  
 
