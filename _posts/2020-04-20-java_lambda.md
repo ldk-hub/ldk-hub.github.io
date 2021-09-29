@@ -189,67 +189,7 @@ public class FunctionLambda2 {
 ```
 
 
-## 자바 8버전 날짜 및 시간 정보  
-```
-@RestController
-public class TestController {
-	
-	private static final String TIME_SERVER = "pool.ntp.org";
-	
-	
-	@GetMapping("/t") //자바 8버전 날짜 데이터 가공처리 테스트 코드 
-	public String testTime() {
-		
-		NTPUDPClient timeClient = new NTPUDPClient();
-		timeClient.setDefaultTimeout(1000);
-		
-		try {
-			timeClient.open();
-			InetAddress address = InetAddress.getByName(TIME_SERVER);
-			TimeInfo timeInfo = timeClient.getTime(address);
-			long returnTime = timeInfo.getMessage().getTransmitTimeStamp().getTime(); //서버의 시간을 가져옴
-			Date date = new Date(returnTime);
-			LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-			System.out.println("TimeServer:"+localDateTime); //Naver 시계와 동일
-			System.out.println("Local PC : "+ LocalDateTime.now());
-			
-			LocalTime startTime = LocalTime.now();
-			LocalTime entTime = LocalTime.of(20, 16, 59);
-			Duration duration = Duration.between(startTime, entTime);
-			System.out.println(duration.getSeconds());
-			System.out.println(duration.getNano());
-			LocalDateTime now = LocalDateTime.now();//로컬데이트타임의 양식 정보
-			System.out.println(now);
-			
-			DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분");
-			System.out.println(dateTimeFormatter);
-			
-			
-		} catch(SocketException e) {
-			e.printStackTrace();
-		}catch(UnknownHostException e) {
-			e.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		return "test end";
-		
-	}
-	
-	
-	@GetMapping("/lambda")
-	public String testLambda() {
-		
-		
-		return "Lambda Test End";
-	}
-	
-	
-	
-	
 
-}
-```
 
 
 
@@ -327,5 +267,67 @@ System.out.println("올해는" + today.getYear() + "년입니다.");
 LocalDate otherDay = today.withYear(1982);
 System.out.println("올해는" + otherDay.getYear() + "년입니다.");
 	
+```
+	
+## 자바 8버전 날짜 및 시간 정보  
+```
+@RestController
+public class TestController {
+	
+	private static final String TIME_SERVER = "pool.ntp.org";
+	
+	
+	@GetMapping("/t") //자바 8버전 날짜 데이터 가공처리 테스트 코드 
+	public String testTime() {
+		
+		NTPUDPClient timeClient = new NTPUDPClient();
+		timeClient.setDefaultTimeout(1000);
+		
+		try {
+			timeClient.open();
+			InetAddress address = InetAddress.getByName(TIME_SERVER);
+			TimeInfo timeInfo = timeClient.getTime(address);
+			long returnTime = timeInfo.getMessage().getTransmitTimeStamp().getTime(); //서버의 시간을 가져옴
+			Date date = new Date(returnTime);
+			LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+			System.out.println("TimeServer:"+localDateTime); //Naver 시계와 동일
+			System.out.println("Local PC : "+ LocalDateTime.now());
+			
+			LocalTime startTime = LocalTime.now();
+			LocalTime entTime = LocalTime.of(20, 16, 59);
+			Duration duration = Duration.between(startTime, entTime);
+			System.out.println(duration.getSeconds());
+			System.out.println(duration.getNano());
+			LocalDateTime now = LocalDateTime.now();//로컬데이트타임의 양식 정보
+			System.out.println(now);
+			
+			DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분");
+			System.out.println(dateTimeFormatter);
+			
+			
+		} catch(SocketException e) {
+			e.printStackTrace();
+		}catch(UnknownHostException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		return "test end";
+		
+	}
+	
+	
+	@GetMapping("/lambda")
+	public String testLambda() {
+		
+		
+		return "Lambda Test End";
+	}
+	
+	
+	
+	
+
+}
 ```
 	
