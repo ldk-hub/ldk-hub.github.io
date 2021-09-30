@@ -191,7 +191,9 @@ public class FunctionLambda2 {
 
 
 
-
+## Optional 개념
+ - OrElse orElse는 null이던말던 항상 불립니다.
+ - OrElseGet orElseGet은 null일 때만 불립니다.
 
 
 
