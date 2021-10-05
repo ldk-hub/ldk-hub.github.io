@@ -19,6 +19,25 @@ toc: true
 
 ### 알고리즘 스터디
 
+
+
+### Tip
+```
+	버퍼드리더 정보 출력
+	//입력받은 값을 한번에 던져서 훨씬빠른 대신 리턴값이 스트링고정임
+	BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
+	
+	//입력받은 값 가져오기
+	br.readLine();
+	
+	//int 형변환해줘야됨.
+	Integer.parseInt(br.readLine());
+	
+	br.close();// 입출력 끝난시점에서 종료해줘야함.
+```
+
+
+
 ## 현재 스터디 중인 사이트
  - 프로그래머스 자바 알고리즘 1레벨 진행 중 (오라클 sql문제 4레벨까지 완료)
  
