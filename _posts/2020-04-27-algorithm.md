@@ -23,7 +23,10 @@ toc: true
 
 ### Tip
 ```
-	버퍼드리더 정보 출력
+	// 버퍼드리더 정보 출력	
+	// *TMI - 중간자역할 굳이 중계기를 끼우는 이유는 한번에 문자열을 받아 한번만빠르게 쏘기때문
+	//Scanner 방식은 입력할 때마다 이벤트가 발생하기 때문에 효율성으로는 버퍼드리더가 더좋다.
+	
 	//입력받은 값을 한번에 던져서 훨씬빠른 대신 리턴값이 스트링고정임
 	BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
 	
@@ -32,10 +35,16 @@ toc: true
 	
 	//int 형변환해줘야됨.
 	Integer.parseInt(br.readLine());
+		br.close();// 입출력 끝난시점에서 종료해줘야함.
 	
-	br.close();// 입출력 끝난시점에서 종료해줘야함.
+	//코드의 가독성측면에서는 Scanner가 좋지만 속도측면에서는 StringBuffered가 더좋음.	
+	//다중값을 받아 처리할땐 StringTokenizer를 사용해야한다.
+	//지정한 구분자로 문자열을 나누어주는 클래스임.
+	StringTokenizer token = new StringTokenizer(str);	
+	
+	
+	
 ```
-
 
 
 ## 현재 스터디 중인 사이트
