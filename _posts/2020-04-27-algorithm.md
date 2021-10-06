@@ -42,7 +42,10 @@ toc: true
 	//지정한 구분자로 문자열을 나누어주는 클래스임.
 	StringTokenizer token = new StringTokenizer(str);	
 	
-	
+	// 예시
+	String s = "2020-02-15";
+	StringTokenizer tokenizer = new StringTokenizer(s, "-");
+	특정 문자열을 기준으로 나누고 싶다면 문자열과 구분자를 생성자의 인자로 넣어주면 된다.
 	
 ```
 
