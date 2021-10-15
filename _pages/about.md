@@ -72,3 +72,7 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 솔루션 : 웹스퀘어, 오즈리포트 툴, 제니퍼MR  
 환경 : JAVA, 제이쿼리, AJAX, 스프링FW, 오라클, 마이바티스, SVN, 자바스크립트  
 온프레임 서버 : 제우스, 웹투비, 리눅스, 윈도우 서버  
+
+업무 : 가상자산거래소 POC개발
+환경 : JAVA, Javascript, Jquery, AJAX, SpringBoot, PostgreSql, Mybatis, GIT
+오픈라이브러리 : amcharts4, tui-grid, sweetalert2, kakaoOauth
