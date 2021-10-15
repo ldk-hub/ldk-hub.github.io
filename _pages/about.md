@@ -76,3 +76,9 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 업무 : 가상자산거래소 POC개발
 환경 : JAVA, Javascript, Jquery, AJAX, SpringBoot, PostgreSql, Mybatis, GIT
 오픈라이브러리 : amcharts4, tui-grid, sweetalert2, kakaoOauth
+
+
+- POC 프로젝트 - 가상자산 매매시스템 개발
+- 통합 개발도구 시스템 운영
+- 주식시장 시스템 관제업무, 관제실 로그분석
+
