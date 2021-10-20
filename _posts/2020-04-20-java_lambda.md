@@ -188,22 +188,6 @@ public class FunctionLambda2 {
 }
 ```
 
-
-
-
-## Optional 개념
- - OrElse orElse는 null이던말던 항상 불립니다.
- - OrElseGet orElseGet은 null일 때만 불립니다.
-
-
-
-
-
-
-
-
-
-
 ## 스트림 api
 스트림이란? - 데이터 처리 연산을 지원하도록 소스에서 추출된 연속된 요소
 데이터 컬렉션 반복을 멋지게 처리하는 기능, 스트림 사용 시 멀티스레드 코드를 구현하지 않아도 데이터를 투명하게 병렬처리할 수 있음.
@@ -333,3 +317,22 @@ public class TestController {
 }
 ```
 	
+	
+## Optional 개념
+Java8에서는 Optional<T> 클래스를 사용해 NPE를 방지할 수 있도록 도와준다. Optional<T>는 null이 올 수 있는 값을 감싸는 Wrapper 클래스로, 참조하더라도 NPE가 발생하지 않도록 도와준다. Optional 클래스는 아래와 같은 value에 값을 저장하기 때문에 null이더라도 바로 NPE가 발생하지 않으며, 클래스이기 때문에 각종 메소드를 제공해준다.
+```
+public final class Optional<T> {
+ 
+  // If non-null, the value; if null, indicates no value is present
+  private final T value;
+   
+  ...
+}
+
+```
+Optional
+Optional은 null 또는 실제 값을 value로 갖는 wrapper로 감싸서 NPE(NullPointerException)로부터 자유로워지기 위해 나온 Wrapper 클래스이다. 따라서 Optional을 반환하는 메소드는 절대 null을 갖는 value를 반환해서는 안된다. 또한 Optional은 값을 Wrapping하고 다시 풀고, null일 경우에는 대체하는 함수를 호출하는 등의 오버헤드가 있으므로 성능이 저하될 수 있다. 그렇기 때문에 메소드의 반환 값이 절대 null이 아니라면 Optional을 사용하지 않는 것이 성능저하가 적다. 즉, Optional은 메소드의 결과가 null이 될 수 있으며, 클라이언트가 이 상황을 처리해야 할 때 사용하는 것이 좋다.
+	
+ - OrElse orElse는 null이던말던 항상 불립니다.
+ - OrElseGet orElseGet은 null일 때만 불립니다.
+
