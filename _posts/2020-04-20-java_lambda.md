@@ -16,6 +16,16 @@ categories: 열공해야한다.
 draft: "no"
 toc: true
 ---
+
+1. 람다
+2. 스트림
+3. LocalDateTime
+4. Optional (orElse, orElseGet)
+
+
+
+
+
 ## 람다 표현식
 
 함수형 프로그래밍 문법적 표현방식 기법 JDK 1.8 Ver 이상부터 사용할 수 있움 
