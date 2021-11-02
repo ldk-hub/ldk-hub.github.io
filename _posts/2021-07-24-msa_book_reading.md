@@ -1226,3 +1226,19 @@ mvn thorntail:run
 9.AsyncResponse
 10.InvocationCallback
 11.레스트이지, 와일드플라이,콜백
+
+
+
+
+
+
+
+
+
+추가로 알게된 스터디 
+1. DDD Domain Driven Design
+2. Strategic Design - 전략적 설계
+3. Tactical Design 구체적 설계도 서브도메인 별 도메인 모델 중심설계
+4. Service Mesh(MSA 단점보완을 위해 생겨난 개념) - 사이드카 패턴의 장점을 사용했다고함 이것도파악해야됨.
+5. 두가지 패턴 숙지 - > SAGA 패턴, 2페이즈커밋(2 phase commit)
+6. 오케스트레이션 숙지
