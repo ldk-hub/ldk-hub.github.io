@@ -79,6 +79,28 @@ boj.kr/8393
 	
 ```
 
+```
+//
+import java.io.*;
+import java.util.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //입력  빠른버전 Scanner 보다 빠름
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); //출력 빠른버전 Scanner 보다 빠름
+		StringTokenizer st; //순차적으로 쌓아서 토큰으로 관리해줌
+		
+		int a = Integer.parseInt(br.readLine()); //버퍼드리더로 받은 데이터 Int 파싱
+		 
+		for(int i=0; i<a;i++){
+			st = new StringTokenizer(br.readLine());
+			
+			bw.write((Integer.parseInt(st.nextToken())+Integer.parseInt(st.nextToken()) )+"\n");
+		}
+		bw.close();
+	}
+}
+```
 
 ## 현재 스터디 중인 사이트
  - 프로그래머스 자바 알고리즘 1레벨 진행 중 (오라클 sql문제 4레벨까지 완료)
