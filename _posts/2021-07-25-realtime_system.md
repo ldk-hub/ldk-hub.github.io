@@ -17,21 +17,20 @@ draft: "no"
 toc: true
 ---
 
-##  개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
- 종합 관리 프로그램으로 실시간 모니터링, 지도 및 교통현황, 데이터 차트, 통계 및 집계정보, 스케줄관리 등 다양한 정보를 관리 및 응용할 수 있는 시스템 으로 초기 기반만 구성하여 여러 다양한 비즈니스 모델을 응용하여 가변적으로 사용할 수 있도록 모델링을 구축함.
-
-## 소스 관련 리뷰
+## :raising_hand: 개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+하나의 화면에서 필요한 정보를 쉽고 빠르게 모듈화하여 사용자의 편의성을 제공하기 위한 통합정보시스템을 목적으로 개발하였으며 다양한 산업군에서 오픈소스를 활용한 플랫폼으로 여러 가지의 샘플 기능을 활용한 다양한 확장성을 가진 웹시스템 개발을 목적으로 개발 중에 있습니다.  
+##  소스 관련 리뷰
 자세한 개발 프로젝트 내역은 
 https://github.com/ldk-hub/DashBoard
 에서 확인하실 수 있습니다.  
 
-## Main Page
+## :sparkles: Main Page
 ![녹화_2019_12_28_13_50_01_980](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif)
 
-## Hybrid Web 반응형웹  
+## :milky_way: Hybrid Web 반응형웹  
 ![녹화_2020_07_06_20_37_57_94](https://user-images.githubusercontent.com/12209348/86919343-0bac8480-c163-11ea-964d-27a09acf5618.gif)  
 
-### Social Login REST API (kakao)  
+### :lock: Social Login REST API (kakao)  
 ![kakaologin1](https://user-images.githubusercontent.com/12209348/93009605-071aa700-f5be-11ea-919d-d857eb2b3f91.gif)  
 
 ## kakao access infomation
@@ -40,7 +39,7 @@ https://github.com/ldk-hub/DashBoard
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2020_09_17_19_58_26_640](https://user-images.githubusercontent.com/12209348/93462004-93133280-f920-11ea-9e8b-f371971def37.gif)  
 
-## local PC(server) infomation(CPU, Memory etc.)
+## :traffic_light: local PC(server) infomation(CPU, Memory etc.)
 
 ![CPU측정](https://user-images.githubusercontent.com/12209348/71538778-79862100-2974-11ea-891f-e0706ec22af9.gif)
 
@@ -50,51 +49,54 @@ https://github.com/ldk-hub/DashBoard
 
 ![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
 
-## Data Edit Page
+## :chart_with_upwards_trend: Data Edit Page
 ![screencapture-localhost-9090-hyopage-2019-08-10-11_53_15](https://user-images.githubusercontent.com/12209348/62841157-bca26900-bcdf-11e9-894a-2d77cfc81e2f.png)
 
-## Schedule Page
+## :calendar: Schedule Page
 ![screencapture-localhost-9110-calendar-2019-08-13-11_04_55](https://user-images.githubusercontent.com/12209348/62910147-6524fb80-bdba-11e9-96c3-aeff500369ea.png)
 
-## user custom page
+## :clipboard: user custom page
 ![screencapture-localhost-9110-mypage-2019-08-14-13_08_24](https://user-images.githubusercontent.com/12209348/62994061-f668a080-be94-11e9-9d0d-b53208b15b30.png)
 
 
-### RealTime Monitoring Page
+### :alarm_clock: RealTime Monitoring Page
 ![screencapture-localhost-9110-secondery-2019-08-14-13_06_51](https://user-images.githubusercontent.com/12209348/62994062-f7013700-be94-11e9-9c0b-ac9eab6c3510.png)
 
 
-### 개발예정
-1. jpa 구현  
-  - 양방향조회이용해서 역방향 조회해보기
-  - jpql 구현해보기 fetch로 조인해서 한방에가져오기 lazy옵션준상태에서<<페치조인
-         단순쿼리, 조인, 페치조인,페이징 api
-  - spring jpa, querydsl 활용 구현예정
-  
-2. 각 로직 별 TDD 구성  
+### :octocat: 개발예정
+1. jpa   
+   - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
+2. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
+3. 주요로직 테스트코드 
+4. open api 추가
+  - api 전용 인증키 관리 영역분리 구조만들기(보안강화)
+  - 네이버 뉴스 api 정보
+  - 공공데이터 api 날씨, 미세먼지 측정정보 농수산물 시세정보(개인사용목적)
+5. 다크,라이트 모드 토글 기능 구현(UI 개선)
 
-### 완료내역
+
+### :thumbsup: 완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa사용)
 2. 샘플데이터 게시판목록 호출 완료(mybatis사용)
 3. 일정계획표 페이지 - 풀캘린더, 구글 공휴일 정보 api 연동 완료
 4. 일정관리테이블, 회원정보 상세 테이블, 회원 권한 조인용 테이블 생성 완료
 5. 테이블명 수정 기존 테이블, 관리자페이지 테이블 명 구분 완료
-6. 스프링 시큐리티 회원가입 로직 구현완료(principal 사용)
+6. 스프링 시큐리티 회원가입 로직 구현완료(스프링 시큐리티 - principal)
 7. 패스워드 분실 SMTP 메일발송 비밀번호 찾기 로직 구현완료
-8. 대시보드페이지 서비스 종료 다음지도api -> 카카오맵 API로 변경 완료
+8. 대시보드페이지 서비스 종료 다음지도 API -> 카카오맵 API로 변경 완료
 9. 대시보드페이지 지도API 실시간도로교통정보, 자전거 도로 정보 기능 추가 완료
-10. TUI GRID, datatables API 연동 완료 
+10. TUI GRID, datatables API 구현 및 연동 완료 
 11. 대시보드페이지 회원 사용자 통계수치 로직 구현완료
 12. 사이드바 시계 기능 추가 완료
-13. 시스템 테이블 및 데이터 로그 설정 사용(log4jdbc)
-14. 실시간 모니터링용 페이지 개발완료
-15. 시스템 UI 다크테마 변경완료
-16. 실시간모니터링 페이지 이미지 업로드 호출로직 구현완료 
-17. TUI-GRID API 내 저장된 이미지 호출로직 구현완료
-18. sigar API(로컬 시스템 정보 수집 API) 연동작업 완료
-19. amcharts4 API -> Sigar API의 수집정보 연동 로직 구현완료(실시간 PC정보 모니터링 기능)
-20. echart -> amchart4 반영완료(변경이유 : 차트의 웹 유연성 및 최적화 이슈로 변경함)
-21. amchart 게이지 차트 ->시스템 정보 표출 , 멀티라인차트 DB 연동(데이터 누적방식 차트)
+13. 시스템 테이블 및 데이터 로그 설정 구현 완료(log4jdbc)
+14. 모니터링용 대시보드 페이지 개발완료
+15. 프로젝트 UI 다크테마  개발완료
+16. 모니터링 페이지 이미지 업로드 로직(로컬/서버) 구현완료 
+17. TUI-GRID API 내 저장된 이미지 팝업 호출 로직 구현완료
+18. sigar API(컴퓨터 장비 실시간 정보 수집 오픈소스) 연동작업 완료
+19. amcharts4 API -> Sigar API의 수집정보 차트 실시간 계측 구현완료(PC 및 서버 사용율 모니터링 기능)
+20. echart API -> amchart4 API  변경 작업완료(변경이유 : 웹, 모바일에 최적화된 차트 API, 그리고 echart는 중국어 한계발생)
+21. amchart 게이지 차트 ->시스템 정보 표출 , 멀티라인차트 데이터 연계 개발 완료(데이터 누적방식 차트)
 22. oAuth2 소셜 로그인 연계 구현(카카오)  
    - Oauth2 인증코드 발급완료  
    - 카카오톡 로그인 인증코드, 엑세스 토큰, 유저 로그인 응답정보 처리 완료  
@@ -103,16 +105,33 @@ https://github.com/ldk-hub/DashBoard
   적용 영역
    - 멀티차트 데이터 Mybatis -> jpa전환 완료  
    - 로그인 Mybatis -> jpa전환 완료  
-   - 게터 세터 -> 롬복 적용완료  
-24. 스프링 부트 웹소켓 사용 실시간 채팅 기능 추가개발 70%완성( 방생성, 중요정보DB연계처리 남음)
-25. spotbugs 자바 소스 취약점 정적 분석 검증 취약점 6개 발생 개선
-26. 해외 IP 차단용 인터셉터, 필터 처리 구현
+24. spring getter setter -> @lombok 적용완료  
+25. springboot websocket 사용 실시간 채팅 기능 개발완료(진행단계 70% - 룸 형식 채팅방 구현)
+26. spotbugs 자바 소스 취약점 정적 분석 검증 취약점 6개 발생 개선 완료
+26. 해외 IP 차단용 인터셉터, 필터 처리 구현 완료
+27. 스프링시큐리티 로그인 유저정보 호출로직 변경(ver. up)
+28. postgresql jdbc 최신버전 변경 완료(버전별 호환성버그발생)
+29. tui-grid4 ver 소스 맵핑 최신화 완료
 
 
-### 개발이슈
+### :point_right: 적용 API리스트  
+ - System table : Datatables, tui-grid4.0  
+ - 날씨, 지도 : kakao maps, Skycons  
+ - 차트 : amcharts4  
+ - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS  
+ - 기타 : Dropzone, NProgress, iCheck, Flot  
+  
+### :point_down: 개발환경  
+  - language : JAVA1.8  
+  - framework : Spring Boot, Spring Security  
+  - DB : OracleDB, Postgresql-DB  
+  - UI : gentelella, Tiles3, Bootstrap  
+  - etc : Mybatis, jpa, lombok  
+
+### :pray: 개발이슈
 1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
-2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 
-3. 풀캘린더 일정 등록 및 삭제 로직 개발 중
+2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 -> 공공데이터 전환예정
+3. 풀캘린더 일정 등록 및 삭제 로직 개발 중 
 4. local 장비 서버 및 pc 정보 차트연동
 5. 세계 인구수 정보 보다 다음(카카오) 지도 api를 통한 지역정보를 가져오는게 효율적일것으로 판단하여 변경 
 6. 시각적효과를 위한 백그라운드 컬러 검정(Dark)계열로 변경
@@ -128,19 +147,4 @@ https://github.com/ldk-hub/DashBoard
 17. 오라클 -> postgresql 전환중 마이바티스 전면 수정으로인한 이슈로 Mybatis -> JPA 전환 검토
 18. daum 지도에서 카카오 지도 API 제공 기한 지나서 크로스 오리진 이슈 발생 -> kakao로 소스 변경완료
 19. tui-grid ver up 마이그레이션작업(그리드 최적화 및 속도 개선) 타입스크립트 기반 최신버전
-20. 카카오맵 API 최적화 및 amcharts 
-21. 
-
-### API리스트
- - System table : Datatables, tui-grid4.0
- - 날씨, 지도 : kakao maps, Skycons
- - 차트 : amcharts4
- - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS
- - 기타 : Dropzone, NProgress, iCheck, Flot
-  
-### 개발환경
-  - language : JAVA1.8
-  - framework : Spring Boot, Spring Security
-  - DB : OracleDB, Postgresql-DB
-  - UI : gentelella, Tiles3, Bootstrap
-  - etc : Mybatis, jpa, lombok
+20. 카카오맵 API 최적화 및 amcharts  
