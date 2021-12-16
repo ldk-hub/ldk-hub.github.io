@@ -37,7 +37,13 @@ System table : Datatables, toast-grid
 JAVA기반 웹 시스템 개발, MVC패턴, 포트폴리오(분석, 설계, 구현, 운영 테스트)  
 
 2019.01.15 ~ 2019.01.18	 microsoft  
-MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워크 구성, 스토리지 관리, Paas 등 클라우드 관리의 기초에 대한 전반적인 교육을 수료  
+MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워크 구성, 스토리지 관리, Paas 등 클라우드 관리의 기초에 대한 전반적인 교육을 수료 
+
+2021.09.07 ~ 2021.09.09 이동욱(배달의민족 기술 팀장 - 현 인프런 CTO)  
+SPRING BOOT를 사용한 웹서비스 백엔드 개발 교육  
+
+2021.12.08 ~ 2021.12.10 최원영(카카오 데이터팀 엔지니어)  
+APACHE KAFKA 애플리케이션 프로그래밍  
 
 
 ## 개인프로젝트 
@@ -75,10 +81,11 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 
 업무 : 가상자산거래소 POC개발
 환경 : JAVA, Javascript, Jquery, AJAX, SpringBoot, PostgreSql, Mybatis, GIT
-오픈라이브러리 : amcharts4, tui-grid, sweetalert2, kakaoOauth
+오픈api : amcharts4, tui-grid, sweetalert2, kakaoOauth
+내부 api : 매칭엔진 라이브러리, 
 
+업무 : 주식시장 시스템 관제업무
+주요업무 : 로그분석, 시스템 점검, 시스템 이슈발생 상황전파 등
 
-- POC 프로젝트 - 가상자산 매매시스템 개발
-- 통합 개발도구 시스템 운영
-- 주식시장 시스템 관제업무, 관제실 로그분석
-
+업무 : 통합개발도구 시스템 운영
+주요업무 : RCP 기반 자체개발 주식시스템 로직 개발툴 운영 및 
