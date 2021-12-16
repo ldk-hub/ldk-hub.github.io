@@ -38,24 +38,12 @@
  - 엔터프라이즈 자바 마이크로서비스(켄 피니건) 독후감  
  - 기존 모놀로틱 시스템 MSA 적용 프로젝트 시작  
    (설계, 시스템구성, 개발, MSA스터디 등)  
-  
-
  - 엔터프라이즈 자바 마이크로서비스  
  - MSA 리본,유레카 관련 개념정리  
  - 스팟버그 사용법  
- 
-데브옵스  
-1. 젠킨스  
-2. AWS  
-3.도커  
-4.쿠버네티스 
+ - 데브옵스 구성 완료 -> Spring Boot 기반 (Docker Container 내 GIT, Jenkins 자동배포 구성 원사이클 구성 및 구동 스터디 완료)
 
-
-JDK 1.8 추가기능
-람다, 스트림, LocalDateTime, Optional
-
-TDD 방법
-포트폴리오 전부 TDD추가
-
-jpa 
-jpa로 모든로직처리해보기
+## 해야할 부분
+자바 병렬처리 구성 - 람다, 스트림, LocalDateTime, Optional
+TDD - 포트폴리오 전부 TDD추가
+ORM 기반 - jpa (querydsl 등)
