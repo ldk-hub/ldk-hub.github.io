@@ -44,7 +44,7 @@
  - 데브옵스 구성 완료 -> Spring Boot 기반 (Docker Container 내 GIT, Jenkins 자동배포 구성 원사이클 구성 및 구동 스터디 완료)
 
 ## 해야할 부분
-자바 병렬처리 구성 - 람다, 스트림, LocalDateTime, Optional
-TDD - 포트폴리오 전부 TDD추가
-ORM 기반 - jpa (querydsl 등)
-이펙티브 자바 시작 전 - 자바의정석 정독중... 1/3 달성
+자바 병렬처리 구성 - 람다, 스트림, LocalDateTime, Optional  
+TDD - 포트폴리오 전부 TDD추가  
+ORM 기반 - jpa (querydsl 등)  
+이펙티브 자바 시작 전 - 자바의정석 정독중... 1/3 달성  
