@@ -17,20 +17,20 @@ draft: "no"
 toc: true
 ---
 
-## :raising_hand: 개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+##  개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 하나의 화면에서 필요한 정보를 쉽고 빠르게 모듈화하여 사용자의 편의성을 제공하기 위한 통합정보시스템을 목적으로 개발하였으며 다양한 산업군에서 오픈소스를 활용한 플랫폼으로 여러 가지의 샘플 기능을 활용한 다양한 확장성을 가진 웹시스템 개발을 목적으로 개발 중에 있습니다.  
 ##  소스 관련 리뷰
 자세한 개발 프로젝트 내역은 
 https://github.com/ldk-hub/DashBoard
 에서 확인하실 수 있습니다.  
 
-## :sparkles: Main Page
+##  Main Page
 ![녹화_2019_12_28_13_50_01_980](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif)
 
-## :milky_way: Hybrid Web 반응형웹  
+##  Hybrid Web 반응형웹  
 ![녹화_2020_07_06_20_37_57_94](https://user-images.githubusercontent.com/12209348/86919343-0bac8480-c163-11ea-964d-27a09acf5618.gif)  
 
-### :lock: Social Login REST API (kakao)  
+###  Social Login REST API (kakao)  
 ![kakaologin1](https://user-images.githubusercontent.com/12209348/93009605-071aa700-f5be-11ea-919d-d857eb2b3f91.gif)  
 
 ## kakao access infomation
@@ -39,7 +39,7 @@ https://github.com/ldk-hub/DashBoard
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2020_09_17_19_58_26_640](https://user-images.githubusercontent.com/12209348/93462004-93133280-f920-11ea-9e8b-f371971def37.gif)  
 
-## :traffic_light: local PC(server) infomation(CPU, Memory etc.)
+## local PC(server) infomation(CPU, Memory etc.)
 
 ![CPU측정](https://user-images.githubusercontent.com/12209348/71538778-79862100-2974-11ea-891f-e0706ec22af9.gif)
 
@@ -49,21 +49,21 @@ https://github.com/ldk-hub/DashBoard
 
 ![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
 
-## :chart_with_upwards_trend: Data Edit Page
+## Data Edit Page
 ![screencapture-localhost-9090-hyopage-2019-08-10-11_53_15](https://user-images.githubusercontent.com/12209348/62841157-bca26900-bcdf-11e9-894a-2d77cfc81e2f.png)
 
-## :calendar: Schedule Page
+##  Schedule Page
 ![screencapture-localhost-9110-calendar-2019-08-13-11_04_55](https://user-images.githubusercontent.com/12209348/62910147-6524fb80-bdba-11e9-96c3-aeff500369ea.png)
 
-## :clipboard: user custom page
+##  user custom page
 ![screencapture-localhost-9110-mypage-2019-08-14-13_08_24](https://user-images.githubusercontent.com/12209348/62994061-f668a080-be94-11e9-9d0d-b53208b15b30.png)
 
 
-### :alarm_clock: RealTime Monitoring Page
+###  RealTime Monitoring Page
 ![screencapture-localhost-9110-secondery-2019-08-14-13_06_51](https://user-images.githubusercontent.com/12209348/62994062-f7013700-be94-11e9-9c0b-ac9eab6c3510.png)
 
 
-### :octocat: 개발예정
+### 개발예정
 1. jpa   
    - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
 2. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
@@ -75,7 +75,7 @@ https://github.com/ldk-hub/DashBoard
 5. 다크,라이트 모드 토글 기능 구현(UI 개선)
 
 
-### :thumbsup: 완료내역
+###  완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa사용)
 2. 샘플데이터 게시판목록 호출 완료(mybatis사용)
 3. 일정계획표 페이지 - 풀캘린더, 구글 공휴일 정보 api 연동 완료
@@ -114,21 +114,21 @@ https://github.com/ldk-hub/DashBoard
 29. tui-grid4 ver 소스 맵핑 최신화 완료
 
 
-### :point_right: 적용 API리스트  
+### 적용 API리스트  
  - System table : Datatables, tui-grid4.0  
  - 날씨, 지도 : kakao maps, Skycons  
  - 차트 : amcharts4  
  - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS  
  - 기타 : Dropzone, NProgress, iCheck, Flot  
   
-### :point_down: 개발환경  
+###  개발환경  
   - language : JAVA1.8  
   - framework : Spring Boot, Spring Security  
   - DB : OracleDB, Postgresql-DB  
   - UI : gentelella, Tiles3, Bootstrap  
   - etc : Mybatis, jpa, lombok  
 
-### :pray: 개발이슈
+###  개발이슈
 1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
 2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 -> 공공데이터 전환예정
 3. 풀캘린더 일정 등록 및 삭제 로직 개발 중 
