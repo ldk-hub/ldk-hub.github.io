@@ -17,8 +17,8 @@ draft: "no"
 toc: true
 ---
 
-1. 람다
-2. 스트림
+1. lambda
+2. stream
 3. LocalDateTime
 4. Optional (orElse, orElseGet)
 
@@ -29,6 +29,28 @@ toc: true
 ## 람다 표현식
 
 함수형 프로그래밍 문법적 표현방식 기법 JDK 1.8 Ver 이상부터 사용할 수 있움 
+
+### 기존 자바 문법 vs 람다식 문법 비교
+```
+//기존 자바문법
+Runnable runable = new Runnable(){
+	@Override
+	public void run(){
+		System.out.println("run 호출");
+		
+	}
+
+}
+runable.run();
+```
+
+```
+//람다식 자바 문법
+Runnalble runnable =() -> System.out.println("run 호출");
+runnable.run();
+```
+6줄의 기존 자바 코드에서 람다식으로는 1줄로 바뀌게 되면서 동일한 기능을 구현할 수 있는 것이다.
+
 
 ```
 //함수형 인터페이스라하며,1개의 추상 메소드를 갖고 있는 인터페이스를 뜻함. 1개이상 선언하면 안됨 오류남.
@@ -68,29 +90,6 @@ InterfaceA1 a2 = () -> {System.out.println("인자가 없는 함수 구현");};
 
 ```
 
-
-### 기존 자바 문법 vs 람다식 문법 비교
-```
-//기존 자바문법
-Runnable runable = new Runnable(){
-	@Override
-	public void run(){
-		System.out.println("run 호출");
-		
-	}
-
-}
-runable.run();
-```
-
-```
-//람다식 자바 문법
-Runnalble runnable =() -> System.out.println("run 호출");
-runnable.run();
-```
-6줄의 기존 자바 코드에서 람다식으로는 1줄로 바뀌게 되면서 동일한 기능을 구현할 수 있는 것이다.
-
-
 자주 쓰이는 인터페이스 종류
  - function<T>
  - Consumer<T>  어떤 타입의 파라미터로 받는다. 리턴은 없음.
@@ -99,7 +98,8 @@ runnable.run();
 
 
 
-람다식은 Object 타입으로 형변환 불가함. 굳이 하려면 먼저 함수형 인터페이스로 변환해야함.
+```
+//람다식은 Object 타입으로 형변환 불가함. 굳이 하려면 먼저 함수형 인터페이스로 변환해야함.
 Object obj = (Object) (() -> {});//에러발생
 Object obj = (Object) (MyFunction) (() -> {}) //사용가능;
 Object obj = ( (Object)  (MyFunction) (() -> {}).toString(); //사용가능
@@ -127,10 +127,11 @@ public class CompareExam{
 	}
 	
 }
-
-
-
-
+```
+	
+	
+	
+	
 
 ```
 //람다의 장단점
