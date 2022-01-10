@@ -21,7 +21,13 @@ toc: true
 2. stream
 3. LocalDateTime
 4. Optional (orElse, orElseGet)
+```
+1
+2
+3
+4
 
+```
 
 
 
