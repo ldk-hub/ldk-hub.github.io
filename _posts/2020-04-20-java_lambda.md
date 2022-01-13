@@ -363,3 +363,46 @@ Optional은 null 또는 실제 값을 value로 갖는 wrapper로 감싸서 NPE(N
 오브젝트 -> 주소 <<관계를 사용이끝나면 관계를 끊음
 끊어진 오브젝트를 GC가 제거함
 ```
+	
+	
+	
+	
+
+스트링버퍼, 스트링빌더
+
+동일함 다만 성능차이인데 스트링빌더가 가장빠름 (요즘에많이사용하는추세)
+스트링버퍼는 싱크로나이즈드 방식으로 순차처리하다보니 데이터가 더안전함.
+
+
+
+
+
+## 컬렉션즈
+list 특징-인덱스를 이용, 데이터 중복 가능
+ -vector
+ -arrayList(가장많이사용)
+ ArrayList<String> ar = new ArrayList<String>();
+ 
+ -LinkedList
+
+map 특징 - key를 이용, key중복불가, 데이터 중복가능
+-hashMap
+HashMap<Integer, String> map = new HashMap<Integer,String>();
+.put() //데이터 추가
+.get() //값 추출
+.remove() //데이터 삭제
+.containsKey() //해당키값의 값이있는지 체크
+.clear() //데이터 전체제거
+.isEmpty() //데이터 유무 체크 true,false
+	
+	
+	
+입출력 
+인풋아웃풋
+파일인풋스트림(이미지 등 선호)바이트 방식 저장
+파일아웃풋스트림
+데이터인풋스트림
+데이터아웃풋스트림
+
+버퍼드리더 스트림 문자열단위저장
+ -.readLine() 한문장씩 처리
