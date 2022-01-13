@@ -354,7 +354,7 @@ Optional은 null 또는 실제 값을 value로 갖는 wrapper로 감싸서 NPE(N
  - OrElseGet orElseGet은 null일 때만 불립니다.
 
 
-## GC 개념
+### GC 개념
  - 객체는 메모리에서 동적으로 생성되며, 객체가 더 이상 필요없게 되면 GC에 의해서 제거됨.  
  - 자료형이 같아도 다른 공간에 존재하는 객체는 다른 객체이다.
  - 생성한 객체의 주소를 변수에 저장하는 것을 레퍼런스라고한다.
@@ -363,29 +363,21 @@ Optional은 null 또는 실제 값을 value로 갖는 wrapper로 감싸서 NPE(N
 오브젝트 -> 주소 <<관계를 사용이끝나면 관계를 끊음
 끊어진 오브젝트를 GC가 제거함
 ```
-	
-	
-	
-	
+### 문자열 처리방식
+동일함 다만 성능차이 
+StringBuilder - 스트링빌더가 가장빠름 (요즘에많이사용하는추세)
+StringBuffere - 스트링버퍼는 싱크로나이즈드 방식으로 순차처리하다보니 데이터가 더안전함.
 
-스트링버퍼, 스트링빌더
-
-동일함 다만 성능차이인데 스트링빌더가 가장빠름 (요즘에많이사용하는추세)
-스트링버퍼는 싱크로나이즈드 방식으로 순차처리하다보니 데이터가 더안전함.
-
-
-
-
-
-## 컬렉션즈
-list 특징-인덱스를 이용, 데이터 중복 가능
- -vector
- -arrayList(가장많이사용)
+## 컬렉션즈 Collections
+### list 특징-인덱스를 이용, 데이터 중복 가능
+ - vector
+ - LinkedList
+ - arrayList(가장많이사용)
  ArrayList<String> ar = new ArrayList<String>();
- 
- -LinkedList
 
-map 특징 - key를 이용, key중복불가, 데이터 중복가능
+### map 특징 - key를 이용, key중복불가, 데이터 중복가능
+
+```
 -hashMap
 HashMap<Integer, String> map = new HashMap<Integer,String>();
 .put() //데이터 추가
@@ -394,11 +386,13 @@ HashMap<Integer, String> map = new HashMap<Integer,String>();
 .containsKey() //해당키값의 값이있는지 체크
 .clear() //데이터 전체제거
 .isEmpty() //데이터 유무 체크 true,false
-	
-	
-	
-입출력 
-인풋아웃풋
+```	
+
+### 자바 입출력 
+프로그램이 출발지냐 또는 도착지냐에 따라서 스트림의 종류가 결정
+  - 프로그램이 데이터를 입력받을 때는 입력 스트림(InputStream)
+  - 프로그램이 데이터를 보낼 때는 출력 스트림(OutputStream)
+
 파일인풋스트림(이미지 등 선호)바이트 방식 저장
 파일아웃풋스트림
 데이터인풋스트림
