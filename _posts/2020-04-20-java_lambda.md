@@ -21,15 +21,6 @@ toc: true
 2. stream
 3. LocalDateTime
 4. Optional (orElse, orElseGet)
-```
-1
-2
-3
-4
-
-```
-
-
 
 
 ## 람다 표현식
@@ -400,3 +391,9 @@ HashMap<Integer, String> map = new HashMap<Integer,String>();
 
 버퍼드리더 스트림 문자열단위저장
  -.readLine() 한문장씩 처리
+	
+	
+	
+	
+	
+
