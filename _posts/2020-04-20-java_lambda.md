@@ -394,6 +394,40 @@ HashMap<Integer, String> map = new HashMap<Integer,String>();
 	
 	
 	
+### 향상된 for문
+ java버전이 향상되면서 반복문의 사용방법도 다양해졌다. 개인적으로 활동중인 커뮤니티방에서 투표결과
+-  index 값이 필요할 경우 기존의 for문을 사용하였고
+```
+for(int i=0; i<=a; i++){
+  
+	}
+```
+- 향상된 for 문 jdk 1.5ver 부터 사용할 수 있으며 코드가 매우 간결해진다. 
+```
+//앞은 추출할 데이터의 타입을 정의해주고 뒤의 해당 반복문을 사용할 배열을 선언해준다.		  
+  for(String i : arr){
+	}
+```
+
+- lambda, stream 활용한 반복문
+```
+ // 1. 실행할 문장이한개일 때
+ Iterator.forEach(변수명 -> 실행할문장(변수사용가능));
+ // 2. 실행할 문장이여러개 일때
+ Iterator.forEach(변수명 ->{
+	실행할문장(변수사용가능);
+	실행할문장(변수사용가능);
+	실행할문장(변수사용가능);
+	});
+```
+
+```
+// 실제 예시코드
+ArrayList<Integer> datalist = new ArrayList<>(1,2,3);
+
+datalist.forEach(value ->System.out.println(value));
+//datalist의 값이 value에 담김  //변수명 -> 
+```
 	
 	
 
