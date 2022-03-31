@@ -394,7 +394,7 @@ HashMap<Integer, String> map = new HashMap<Integer,String>();
 	
 	
 	
-### 향상된 for문
+## 다양한 for문 사용방법 -> (향상된 for문,람다식 for문)
  java버전이 향상되면서 반복문의 사용방법도 다양해졌다. 개인적으로 활동중인 커뮤니티방에서 투표결과
 -  index 값이 필요할 경우 기존의 for문을 사용하였고
 ```
@@ -429,5 +429,5 @@ datalist.forEach(value ->System.out.println(value));
 //datalist의 값이 value에 담김  //변수명 -> 
 ```
 	
-	
+
 
