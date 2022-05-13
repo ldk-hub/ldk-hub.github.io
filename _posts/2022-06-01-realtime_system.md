@@ -4,7 +4,7 @@ title: "포트폴리오 - 시스템 구축 리뷰"
 # 포스팅 작성자
 author: ["이동옥"] 
 # 포스팅 공개일 - 정렬기준 포스팅날짜순서에 따라 기재됨.(주의 미래날짜는 기입X)
-date: 2022-01-01 08:26:28 -0400
+date: 2022-06-01 08:26:28 -0400
 # 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
 # abstract:
 # 태그를 입력
@@ -65,19 +65,30 @@ https://github.com/ldk-hub/DashBoard
 ### Trade Page
 ![5page](https://user-images.githubusercontent.com/12209348/162602694-10ef290d-82fa-4b89-8cea-536b934f73ac.png)
 
+### Trade Page
+![5page](https://user-images.githubusercontent.com/12209348/162602694-10ef290d-82fa-4b89-8cea-536b934f73ac.png)
+
+
 ### 개발예정
 1. jpa   
    - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
 2. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
-3. 주요로직 테스트코드 
-4. open api 추가
-  - api 전용 인증키 관리 영역분리 구조만들기(보안강화)
-  - 네이버 뉴스 api 정보
-  - 공공데이터 api 날씨, 미세먼지 측정정보 농수산물 시세정보(개인사용목적)
-5. 다크,라이트 모드 토글 기능 구현(UI 개선)
+3. 주요로직 테스트 코드 작성
+4. 네이버 뉴스 api 정보
+5. 깃허브 커밋 컨벤션 적용
+   ```
+   적용샘플예시
+   Feat: "회원 가입 기능 구현"
+
+   SMS, 이메일 중복확인 API 개발
+
+   Resolves: #123
+   Ref: #456
+   Related to: #48, #45
+   ```
 
 
-###  완료내역
+### 완료내역
 1. 시큐리티 로그인, 로그아웃 세션처리 완료(jpa사용)
 2. 샘플데이터 게시판목록 호출 완료(mybatis사용)
 3. 일정계획표 페이지 - 풀캘린더, 구글 공휴일 정보 api 연동 완료
@@ -116,7 +127,7 @@ https://github.com/ldk-hub/DashBoard
 29. tui-grid4 ver 소스 맵핑 최신화 완료
 
 
-### 적용 API리스트  
+###  적용 API리스트  
  - System table : Datatables, tui-grid4.0  
  - 날씨, 지도 : kakao maps, Skycons  
  - 차트 : amcharts4  
@@ -130,7 +141,7 @@ https://github.com/ldk-hub/DashBoard
   - UI : gentelella, Tiles3, Bootstrap  
   - etc : Mybatis, jpa, lombok  
 
-###  개발이슈
+### 개발이슈
 1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
 2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 -> 공공데이터 전환예정
 3. 풀캘린더 일정 등록 및 삭제 로직 개발 중 
@@ -150,3 +161,11 @@ https://github.com/ldk-hub/DashBoard
 18. daum 지도에서 카카오 지도 API 제공 기한 지나서 크로스 오리진 이슈 발생 -> kakao로 소스 변경완료
 19. tui-grid ver up 마이그레이션작업(그리드 최적화 및 속도 개선) 타입스크립트 기반 최신버전
 20. 카카오맵 API 최적화 및 amcharts  
+
+##  개선해야하는부분
+1. 라이브러리 통합 저장소 추가 /dist 디렉토리 사라지는 버그발생
+2. 일부 라이브러리 CORS 이슈 발생
+3. dashboard 속도저하 이슈 발생
+
+## 개발참조
+ - 네이버 검색API 뉴스 크롤링 기능 도큐먼트 https://developers.naver.com/docs/search/news/
