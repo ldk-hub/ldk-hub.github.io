@@ -39,13 +39,17 @@ https://github.com/ldk-hub/DashBoard
 ### -- login, security, SMTP E-mail Find Password, Membership page (Add regular expression) --
 ![녹화_2020_09_17_19_58_26_640](https://user-images.githubusercontent.com/12209348/93462004-93133280-f920-11ea-9e8b-f371971def37.gif)  
 
+## Chatting 
+![녹화_2022_05_29_13_07_39_191](https://user-images.githubusercontent.com/12209348/170851816-fd207a88-1003-4120-bb40-73d88d1864f4.gif)
+
+## Trade Page
+![녹화_2022_05_29_13_18_18_950](https://user-images.githubusercontent.com/12209348/170852063-99c0104d-7fdc-4853-bc5f-96c162f6ca4b.gif)
+
 ## local PC(server) infomation(CPU, Memory etc.)
 
 ![CPU측정](https://user-images.githubusercontent.com/12209348/71538778-79862100-2974-11ea-891f-e0706ec22af9.gif)
 
 ![default](https://user-images.githubusercontent.com/12209348/43362948-91c6f26e-9332-11e8-9ef2-5738fb58c32e.PNG)
-
-
 
 ![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)
 
@@ -70,22 +74,9 @@ https://github.com/ldk-hub/DashBoard
 
 
 ### 개발예정
-1. jpa   
-   - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
-2. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
-3. 주요로직 테스트 코드 작성
-4. 네이버 뉴스 api 정보
-5. 깃허브 커밋 컨벤션 적용
-   ```
-   적용샘플예시
-   Feat: "회원 가입 기능 구현"
-
-   SMS, 이메일 중복확인 API 개발
-
-   Resolves: #123
-   Ref: #456
-   Related to: #48, #45
-   ```
+1. jpa - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
+2. 주요 기능 테스트 코드 작성
+3. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
 
 
 ### 완료내역
@@ -125,7 +116,17 @@ https://github.com/ldk-hub/DashBoard
 27. 스프링시큐리티 로그인 유저정보 호출로직 변경(ver. up)
 28. postgresql jdbc 최신버전 변경 완료(버전별 호환성버그발생)
 29. tui-grid4 ver 소스 맵핑 최신화 완료
+30. 깃허브 커밋 컨벤션 적용
+```
+   적용샘플예시
+   Feat: "회원 가입 기능 구현"
 
+   SMS, 이메일 중복확인 API 개발
+
+   Resolves: #123
+   Ref: #456
+   Related to: #48, #45
+```
 
 ###  적용 API리스트  
  - System table : Datatables, tui-grid4.0  
