@@ -102,16 +102,6 @@ class Main {
 }
 ```
 
-## 현재 스터디 중인 사이트
- - 프로그래머스 자바 알고리즘 1레벨 진행 중 (오라클 sql문제 4레벨까지 완료)
- 
- - 백준  기초 40문제(입출력과사칙연산, if문, for문, while문, 1차원 배열, 문자열 완료)
- - 구름   2레벨 시작
- 
-목표 알고리즘 문제
-bfs, 그리디
-
-
 
 ## remind   
 알고리즘 구현 과정 퍼포먼스 관련  
@@ -127,6 +117,8 @@ bfs, 그리디
 ## 팁
 정수, 나머지값 등 판별
 a % b == 0 
+
+
 
 
 
@@ -168,13 +160,26 @@ public static void main(String[] args) throws Exception {
 
 
 # 알고리즘 스터디
+ ### 피보나치 수를 풀수있는 방법은 대표적으로 두가지 방안이있음.
+  - 반복식과 재귀함수를 통해 풀수있지만
+    재귀함수경우 int정수의 사용제한으로 런타임 오류가 유발될 수 있기때문에
+    두가지방안모두 알면좋다.
+    
+  
  
-## 용어정리  
- - 귀납적  
+ 
+ ## 재귀함수 개념
+ 
+ 
+ ### 점화식 개념
+
+- 귀납적  
  - 재귀적  
  - 점화식  
 
+## DP 알고리즘 (다이나믹 프로그래밍) -> 점화식
 
+## 순열(팩토리얼)
 
 ## 정렬 알고리즘
 
@@ -212,3 +217,249 @@ public static void main(String[] args) throws Exception {
 ## 동적 프로그래밍
 
 ## 그리디 알고리즘
+
+
+
+
+
+
+## 프로그래머스 문제풀이 답안
+
+
+### LEVEL2  
+ 숫자의표현
+Finn은 요즘 수학공부에 빠져 있습니다. 수학 공부를 하던 Finn은 자연수 n을 연속한 자연수들로 표현 하는 방법이 여러개라는 사실을 알게 되었습니다. 예를들어 15는 다음과 같이 4가지로 표현 할 수 있습니다.
+
+1 + 2 + 3 + 4 + 5 = 15
+4 + 5 + 6 = 15
+7 + 8 = 15
+15 = 15
+자연수 n이 매개변수로 주어질 때, 연속된 자연수들로 n을 표현하는 방법의 수를 return하는 solution를 완성해주세요.
+
+제한사항
+n은 10,000 이하의 자연수 입니다.
+
+```
+class Solution {
+    public int solution(int n) {
+        
+        int sum=0;
+        int left= 1; 
+        int right =1;
+        int cnt=0;
+        
+        while(left <= n){
+           sum += right;
+            if(sum == n){
+                left++;
+                sum =0;
+                 cnt++;
+                right =left;
+                
+            }else if(sum > n){
+                left++;
+                sum=0;
+                right = left;
+            }else{
+                right++;
+            }
+              //
+        }
+        return cnt;
+        
+    }
+}
+```
+
+최댓값과 최솟값
+
+문자열 s에는 공백으로 구분된 숫자들이 저장되어 있습니다. str에 나타나는 숫자 중 최소값과 최대값을 찾아 이를 "(최소값) (최대값)"형태의 문자열을 반환하는 함수, solution을 완성하세요.
+예를들어 s가 "1 2 3 4"라면 "1 4"를 리턴하고, "-1 -2 -3 -4"라면 "-4 -1"을 리턴하면 됩니다.
+
+제한 조건
+s에는 둘 이상의 정수가 공백으로 구분되어 있습니다.
+
+
+입출력 예
+s	return
+"1 2 3 4"	"1 4"
+"-1 -2 -3 -4"	"-4 -1"
+"-1 -1"	"-1 -1"
+
+```
+import java.util.*;
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+        String[] arr = s.split(" ");
+        int[] intArr = new int[arr.length];
+	
+        for(int i=0; i<arr.length; i++){
+            intArr[i] = Integer.parseInt(arr[i]); 
+        }
+         
+	 Arrays.sort(intArr);
+        answer = intArr[0] + " " + intArr[arr.length-1];
+        return answer;
+    }
+}
+```
+
+
+
+최솟값 만들기
+
+문제 설명
+길이가 같은 배열 A, B 두개가 있습니다. 각 배열은 자연수로 이루어져 있습니다.
+배열 A, B에서 각각 한 개의 숫자를 뽑아 두 수를 곱합니다. 이러한 과정을 배열의 길이만큼 반복하며, 두 수를 곱한 값을 누적하여 더합니다. 이때 최종적으로 누적된 값이 최소가 되도록 만드는 것이 목표입니다. (단, 각 배열에서 k번째 숫자를 뽑았다면 다음에 k번째 숫자는 다시 뽑을 수 없습니다.)
+
+예를 들어 A = [1, 4, 2] , B = [5, 4, 4] 라면
+
+A에서 첫번째 숫자인 1, B에서 첫번째 숫자인 5를 뽑아 곱하여 더합니다. (누적된 값 : 0 + 5(1x5) = 5)
+A에서 두번째 숫자인 4, B에서 세번째 숫자인 4를 뽑아 곱하여 더합니다. (누적된 값 : 5 + 16(4x4) = 21)
+A에서 세번째 숫자인 2, B에서 두번째 숫자인 4를 뽑아 곱하여 더합니다. (누적된 값 : 21 + 8(2x4) = 29)
+즉, 이 경우가 최소가 되므로 29를 return 합니다.
+
+배열 A, B가 주어질 때 최종적으로 누적된 최솟값을 return 하는 solution 함수를 완성해 주세요.
+
+제한사항
+배열 A, B의 크기 : 1,000 이하의 자연수
+배열 A, B의 원소의 크기 : 1,000 이하의 자연수
+입출력 예
+A	B	answer
+[1, 4, 2]	[5, 4, 4]	29
+[1,2]	[3,4]	10
+입출력 예 설명
+입출력 예 #1
+문제의 예시와 같습니다.
+
+입출력 예 #2
+A에서 첫번째 숫자인 1, B에서 두번째 숫자인 4를 뽑아 곱하여 더합니다. (누적된 값 : 4) 다음, A에서 두번째 숫자인 2, B에서 첫번째 숫자인 3을 뽑아 곱하여 더합니다. (누적된 값 : 4 + 6 = 10)
+이 경우가 최소이므로 10을 return 합니다.
+
+```
+import java.util.*;
+
+class Solution{
+    public int solution(int[] A, int[] B){
+        int answer = 0;
+       Integer[] b =new Integer[B.length];
+        
+        for(int k=0; k<B.length; k++){
+            b[k]=  B[k];
+        }
+        
+        
+      Arrays.sort(A);
+       Arrays.sort(b,Collections.reverseOrder());
+      for(int i=0; i<A.length; i++){
+          answer +=A[i] * b[i];
+        }
+        
+        return answer;
+    }
+}
+```
+
+피보나치 수
+문제 설명
+피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.
+
+예를들어
+
+F(2) = F(0) + F(1) = 0 + 1 = 1
+F(3) = F(1) + F(2) = 1 + 1 = 2
+F(4) = F(2) + F(3) = 1 + 2 = 3
+F(5) = F(3) + F(4) = 2 + 3 = 5
+와 같이 이어집니다.
+
+2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.
+
+제한 사항
+n은 2 이상 100,000 이하인 자연수입니다.
+입출력 예
+n	return
+3	2
+5	5
+입출력 예 설명
+피보나치수는 0번째부터 0, 1, 1, 2, 3, 5, ... 와 같이 이어집니다.
+
+
+
+```
+
+
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        int a =1; 
+        int b =1; 
+            //1234567 을 나누는건 실질적인 결과값에 차이가나지 않지만
+            // 컴퓨터 자료구조 상의 문제로 int 정수에서 표현할 수 있는 수치가 한계가 금방드러나기때문에
+            //1234567이란숫자는 int 표현에서의 결과값도출에 있어 제약을 개선해주는 요건임(모듈러의연산 참조)
+            for(int i=0; i<n; i++){
+                a= b;
+                b= answer %1234567;
+                answer = a+b ;
+            }
+        return answer %1234567;
+    }
+     //재귀함수로 돌리면 특정 반복 횟수이상부터 
+        //런타임에러 유발하기 때문에 장기적관점에서는 테스트탈락 
+  /*  public int TestCase(int n){
+            return TestCase(n-1)+TestCase(n-1);
+    } */
+    
+}
+```
+
+
+
+JadenCase 문자열 만들기
+
+
+문제 설명
+JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 단, 첫 문자가 알파벳이 아닐 때에는 이어지는 알파벳은 소문자로 쓰면 됩니다. (첫 번째 입출력 예 참고)
+문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
+
+제한 조건
+s는 길이 1 이상 200 이하인 문자열입니다.
+s는 알파벳과 숫자, 공백문자(" ")로 이루어져 있습니다.
+숫자는 단어의 첫 문자로만 나옵니다.
+숫자로만 이루어진 단어는 없습니다.
+공백문자가 연속해서 나올 수 있습니다.
+입출력 예
+s	return
+"3people unFollowed me"	"3people Unfollowed Me"
+"for the last week"	"For The Last Week"
+
+
+
+```
+
+class Solution {
+    public String solution(String s) {
+        
+         StringBuffer sb = new StringBuffer();
+        String  firstkey = s.charAt(0)+"";
+        sb.append(firstkey.toUpperCase());
+       
+        for(int i=1; i<s.length(); i++){
+            String nextKey = s.charAt(i)+"";
+            if(nextKey.equals(' ')){
+                sb.append(" ");
+            }else if(s.charAt(i-1)==(' ')){
+                sb.append(nextKey.toUpperCase());
+            }else{
+                sb.append(nextKey.toLowerCase());
+            }   
+        }
+        
+        
+        System.out.println(sb.toString());
+        
+        return sb.toString();
+    }
+}
+
+```
