@@ -28,6 +28,9 @@ toc: true
 ## 알고리즘 코딩 시 고려해야할 부분
 ### 시간복잡도
 
+![1](https://user-images.githubusercontent.com/12209348/181663844-397d47e0-1657-4033-81a2-00799a683a9c.PNG)
+![3](https://user-images.githubusercontent.com/12209348/181663854-62e016da-a99f-48af-b1fc-af8a7d7c6bae.PNG)
+![2](https://user-images.githubusercontent.com/12209348/181663856-e283ca85-0534-4268-b45c-cae154c0c9bf.PNG)
 
 
 
