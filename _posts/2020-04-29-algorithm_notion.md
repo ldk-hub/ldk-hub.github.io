@@ -29,10 +29,36 @@ toc: true
 ### 시간복잡도
 
 ![1](https://user-images.githubusercontent.com/12209348/181663844-397d47e0-1657-4033-81a2-00799a683a9c.PNG)
+ - 차트에서 빨간색에 가까울수록 소요되는 처리시간이 증가한다.
+ - 초록색에 가까울 수록 수행시간이 짧다.
 ![3](https://user-images.githubusercontent.com/12209348/181663854-62e016da-a99f-48af-b1fc-af8a7d7c6bae.PNG)
+ - 자바에서 사용되는 기능들의 시간복잡도 성능표이다.
 ![2](https://user-images.githubusercontent.com/12209348/181663856-e283ca85-0534-4268-b45c-cae154c0c9bf.PNG)
+ 
+ O(n) - 심플하게 반복문을 사용할경우
+ O(n^2) - 이중반복문 사용시
+ O(nm) - 이중반복문과 비슷해보이지면 n 반복,m반복문 중첩문이다
+ ```
+//예시 만약 n이 10이고 m이 9999999일경우  시간복잡도는 기하급수적으로늘어난다.
+ for(int i=0; i<n; i++) {
+    for(int j=0; j<m; j++) {
+        System.out.println(n * m);
+    }
+}
 
-
+ ```
+O(2n) - 피보나치수열(재귀함수)
+O(logn) - 이진탐색 기법 코드화
+```
+//시간복잡도가 좋은이유는 데이터가 절반으로 떨어지기 
+public static int binarySeacrh(int[] num, int target, int low, int high) {
+    int mid = (low + high) / 2;
+		
+    if(target == num[mid]) return mid;
+    else if(target < num[mid]) return binarySeacrh(num, target, low, mid-1);
+    else return binarySeacrh(num, target, mid+1, high);
+}
+```
 
 ## 모듈러 산술
  나머지 연산을 하는 것
