@@ -21,6 +21,15 @@ toc: true
 [자바 필수개념](#백준 난이도별 풀기 step by step)
 
 # 알고리즘 필수 개념 
+## Tips
+ - 자바 컴파일돌려보기 : https://replit.com/languages/java
+ - 자바 개념 총정리 : https://dinfree.com/lecture/language/112_java_1.html#m1
+
+## 알고리즘 코딩 시 고려해야할 부분
+### 시간복잡도
+
+
+
 
 ## 모듈러 산술
  나머지 연산을 하는 것
