@@ -372,3 +372,41 @@ public class Jamie {
 ```
 결론
  9가지 규칙 중 축약 관련을 제외한 규칙은 데이터의 캡슐화를 가시화하고 실현하기 위한 방안이다. 또한 else를 쓰지 않는 규칙은 다형성의 적절한 사용을 유도한다. 축약 관련은 간결하고 직관적인 명명 전략이다. 즉, 코드나 아이디어의 중복이 없도록 코드를 만들기 위한 것이다.
+
+
+
+오라클 
+
+###EXISTS
+```
+SELECT T1.STK_CD ,T1.STK_NM ,T2.DT ,T2.C_PRC ,T2.CHG_RT
+FROM MYSTKDB.STOCK T1
+INNER JOIN MYSTKDB.HISTORY_DT T2
+ON (T2.STK_CD = T1.STK_CD)
+WHERE T2.DT = TO_DATE('20190904','YYYYMMDD')
+AND EXISTS(
+SELECT AVG(A.C_PRC * A.VOL) / 1e8 AVG_VOL_AMT
+FROM MYSTKDB.HISTORY_DT A
+WHERE A.STK_CD = T1.STK_CD
+AND A.DT >= TO_DATE('20190801','YYYYMMDD')
+AND A.DT < TO_DATE('20190901','YYYYMMDD')
+HAVING AVG(A.C_PRC * A.VOL) / 1e8 >= 1000
+)
+ORDER BY T2.CHG_RT DESC
+```
+
+in(--내부에 서브쿼리 있을경우 EXISTS 로 풀수있음.)
+
+
+2. order by 내 CASE 문 기능 사용가능 순서지정 가능
+
+OVER
+분석 대상을 정하는 역할을 한다.
+• OVER()와 같이 괄호 안에 아무것도 적지 않으면 조회된 결과 전체가 분석 대상이다.
+
+
+분석함수 추천
+ - LEAD
+ - LAG
+ - KEEP
+오라클 누계 함수 WINDOWING
