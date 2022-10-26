@@ -18,8 +18,10 @@ toc: true
 ---
 
 ##  개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
-하나의 화면에서 필요한 정보를 쉽고 빠르게 모듈화하여 사용자의 편의성을 제공하기 위한 통합정보시스템을 목적으로 개발하였으며 다양한 산업군에서 오픈소스를 활용한 플랫폼으로 여러 가지의 샘플 기능을 활용한 다양한 확장성을 가진 웹시스템 개발을 목적으로 개발 중에 있습니다.  
-
+ - 데이터 도식화를 통해 보기 쉽게 모듈화
+ - 한 화면에서 다양한 데이터를 볼 수 있도록 통합정보시스템 구축
+ - 다양한 데이터 표현방식을 위한 오픈소스 및 오픈 API를 활용한 플랫폼 구성
+ - 실험적 샘플 기능을 활용한 다양한 확장성 실무에 접목 
 
 ##  소스 관련 리뷰
 자세한 개발 프로젝트 내역은 
