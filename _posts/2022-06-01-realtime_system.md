@@ -167,6 +167,3 @@ https://github.com/ldk-hub/DashBoard
 1. 라이브러리 통합 저장소 추가 /dist 디렉토리 사라지는 버그발생
 2. 일부 라이브러리 CORS 이슈 발생
 3. dashboard 속도저하 이슈 발생
-
-## 개발참조
- - 네이버 검색API 뉴스 크롤링 기능 도큐먼트 https://developers.naver.com/docs/search/news/
