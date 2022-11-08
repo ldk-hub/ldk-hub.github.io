@@ -359,7 +359,7 @@ public class buildAlgo {
 		for (int i = 1; i < a.length; ++i) {
 			if (a[i] > a[i - 1]) {
 				// backtrack
-				for (int j = 1; j >= 0; --j) {
+				for (int j =i-1; j >= 0; --j) {
 					if (a[i] > a[j])
 						continue;
 					
