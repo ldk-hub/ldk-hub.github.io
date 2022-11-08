@@ -317,3 +317,110 @@ a - 그리디,기본 동적, 완전탐색, bfs, dfs 까지
 2랩 - 1463, 11726, 11727, 9095, 10844, 11057, 2193, 9465, 2156, 11053, 11055, 11722, 11054, 1912, 2579, 1699, 2133, 9461, 2225, 2011, 11052
 3랩 - 2751, 11650, 11651, 10814, 10825, 10989, 11652, 11004, 10828, 9012, 10799, 10845, 10866, 10808, 10809, 10820, 2743, 11655, 10824, 11656, 1406, 1158, 1168, 10430, 2609, 1934, 1850, 9613, 11005, 2745, 1373, 1212, 2089, 11576, 1978, 1929, 6588, 11653, 10872, 1676, 2004
 
+```
+package com.com.codingTest;
+ //알고리즘 앞뒤 스캔 크기시야각 알고리즘 판별 로직 구현
+ 
+ 
+class Value {
+	public int sum;
+	public int same;
+
+	public Value(int i, int j) {
+		sum = i;
+		same = j;
+	}
+
+}
+
+public class buildAlgo {
+
+	public static void main(String[] args) {
+		// 6. 백트래킹 알고리즘
+		int[] buildScanData = { 3, 5, 4, 2, 4, 4, 6, 5 };
+		int buildResult = 0;
+		
+		
+		buildResult += backword(buildScanData);
+		buildResult += forward(buildScanData);
+		
+		//System.out.println("수행시간 : " + (end-start)+"ms");
+		//System.out.println(buildResult);
+	}
+
+	public static int forward(int[] a) {
+		long start = System.nanoTime();
+		int result = 0;
+		Value[] arr = new Value[a.length];
+		for (int t = 0; t < arr.length; ++t) {
+			arr[t] = new Value(0, 0);
+
+		}
+		for (int i = 1; i < a.length; ++i) {
+			if (a[i] > a[i - 1]) {
+				// backtrack
+				for (int j = 1; j >= 0; --j) {
+					if (a[i] > a[j])
+						continue;
+					
+					if (a[i] == a[j]) {
+						arr[i].sum = arr[j].sum;
+						arr[i].same = 1;
+					} else {
+						arr[i].sum = arr[j].sum + 1;
+					}
+					
+					break;
+				}
+			} else if (a[i] == a[i - 1]) {
+				arr[i].sum = arr[i - 1].sum;
+				arr[i].same = 1;
+			} else {
+				arr[i].sum = arr[i - 1].sum + 1;
+			}
+			result += arr[i].sum + arr[i].same;
+		}
+		long end = System.nanoTime();
+		
+		System.out.print("수행시간" + (end - start) + "ns");
+		return result;
+	}
+
+	public static int backword(int[] a) {
+		int result = 0;// 리턴
+		Value[] arr = new Value[a.length];
+		
+		for (int t = 0; t < arr.length; ++t) {
+			arr[t] = new Value(0, 0);//배열값 0
+		}
+		
+		for (int i = a.length-2; i >= 0; --i) {
+			if (a[i] > a[i + 1]) {
+				// backtrack
+				for (int j = i+1; j <a.length; ++j) {
+					if (a[i] > a[j])
+						continue;
+					
+					if (a[i] == a[j]) {
+						arr[i].sum = arr[j].sum;
+						arr[i].same = 1;
+					} else {
+						arr[i].sum = arr[j].sum + 1;
+					}
+					
+					break;
+				}
+			} else if (a[i] == a[i + 1]) {
+				arr[i].sum = arr[i + 1].sum;
+				arr[i].same = 1;
+			} else {
+				arr[i].sum = arr[i + 1].sum +1;
+			}
+			result += arr[i].sum + arr[i].same;
+		}
+		return result;
+	}
+}
+
+
+```
