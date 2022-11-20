@@ -18,7 +18,28 @@ toc: true
 ---
 
 ## 자바 ORM 표준 JPA 프로그래밍 스터디 리뷰시작
-![KakaoTalk_20221120_131248750](https://user-images.githubusercontent.com/12209348/202885296-cf7346cd-be85-47e5-97b5-e38a3f0d6913.jpg){: width="100" height="100"}
 
+jpa예제코드 : https://github.com/holyeye/jpabook
 
+ - 진정한의미의 계층 분할이 어려움.
+ - 엔티티를 신뢰할 수 없다.
+ - SQL에 의존적인 개발을 피하기 어렵다.
 
+### JPA 기능
+
+저장기능
+jpa.persist(member); //저장
+ - 객체를 데이터베이스에 저장한다.
+
+조회기능
+String memberId = "helloId";
+Member member = jpa.find(Member.class, memberId); //조회
+ - 객체하나를 조회한다. 
+
+수정기능
+Member member = jpa.fing(Member.class, memberId);
+member.setName("이름변경"); //수정
+
+연관된 객체 조회
+Member member = jpa.fing(Member.class, memberId);
+Team team = member.getTeam(); //연관된 객체 조회
