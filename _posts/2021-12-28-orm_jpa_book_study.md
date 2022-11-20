@@ -18,7 +18,7 @@ toc: true
 ---
 
 ## 자바 ORM 표준 JPA 프로그래밍 스터디 리뷰시작
-![KakaoTalk_20221120_131248750](https://user-images.githubusercontent.com/12209348/202885296-cf7346cd-be85-47e5-97b5-e38a3f0d6913.jpg)
+![KakaoTalk_20221120_131248750](https://user-images.githubusercontent.com/12209348/202885296-cf7346cd-be85-47e5-97b5-e38a3f0d6913.jpg){: width="100" height="100"}
 
 
 
