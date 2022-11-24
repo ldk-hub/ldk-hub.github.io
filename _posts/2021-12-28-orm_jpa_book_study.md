@@ -131,4 +131,65 @@ EntityTransaction
  - 연관관계 매핑 @ManyToOne, @JoinColumn
 
 
+### 필드와 컬럼 매핑 분류
+ - @Column : 컬럼을 맵핑한다.
+ - @Enumerated : 자바의 enum 타입을 맵핑한다.
+ - @Temporal : 날짜 타입을 맵핑한다.
+ - @Lob : BLOB, CLOB 타입을 맵핑한다.
+ - @Transient : 특정 필드를 데이터베이스에 매핑하지 않는다.(저장도, 조회도 않는다. 주로 임시로 어떤값을 보관할때 사용)
+ - @Access : JPA가 엔티티에 접근하는 방식을 지정한다.
+
+
+
+1. @Column 속성 정리
+    - name : 필드와 매핑할 테이블의 컬럼이름 객체의 필드 이름
+    - nullable(DDL) : null값의 허용 여부를 설정한다. false로 설정하면 DDL 생성 시에 not null제약조건이 붙는다.
+    - unique(DDL) : @Table의 uniqueConstraints와 같지만 한 컬럼에 간단히 유니크 제약조건을 걸 때 사용한다. 만약 두 컬럼 이상을 사용해서 유니크 제약조건을 사용하려면 클래스 레벨에서 @Table.uniqueConstraints를 사용해야한다.
+    - columnDefinition(DDL) : 데이터베이스 컬럼 정보를 직접 줄 수 있다. 
+    - length(DDL) : 문자 길이 제약조건, String타입에만 사용 디폴트값 255
+    - precision, scale(DDL) : BigDecimal 타입에서 사용 
+
+2. @Enumerated 속성 정리
+ - EnumType.ORDINAL : enum 순서를 데이터베이스에 저장,(주의해서 사용해야하며 STRING사용을 권장한다.)
+ - EnumType.STRING : enum 이름을 데이터베이스에 저장
+
+3. @ 
+
+
+
+
+
+
+```
+    //roleType 자바의 enum을 사용해 회원의 타입을 구분했다. 일반 회원은 USER 관리자는 ADMIN이다. 이처럼 자바의 enum을 사용하려면 
+    //@Enumerated 어노테이션으로 매핑해야한다. 
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+
+    //자바의 날짜타입은 @Temporal을 사용해 매핑한다.
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+    
+    //회원을 설명하는 필드는 길이 제한이 없다. 따라서 DB의 VARCHAR타입 대신 CLOB 타입으로 저장한다. @LOB을 사용하면 CLOB, BLOB타입을 매핑할 수 있다.
+    @Lob
+    private String description;
+    
+    @Transient
+    private String temp;
+
+```
+
+### HBM2DDL 주의사항
+ - 운영서버에서 create, create-drop, update처럼 DLL을 수정하는 옵션은 절대사용하면안됨.
+ - 오직 개발단계에서만 사용
+개발환경에 따른 추천전략  
+1. 개발초기단계에서는 create 또는 update
+2. 초기화 상태로 자동화된 테스트를 진행하는 개발자 환경과 CI 서버는 create또는 create-drop
+3. 테스트 서버는 update 또는 validate
+4. 스테이징과 운영서버는 validate 또는 none
+
+
 
