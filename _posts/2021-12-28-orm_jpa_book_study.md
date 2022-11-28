@@ -22,7 +22,7 @@ toc: true
 jpa예제코드 : https://github.com/holyeye/jpabook
 
 
-## chapter 1.
+## Chapter 1. JPA 
 1. 객체모델과 관계형 데이터베이스 모델은 지향하는 패러다임이 서로 다르다. 문제는 이 패러다임의 차이를 극보복하려고 개발자가 너무 많은 시간과 코드를 소비한다는 점이다.
 2. 더 어려운 문제는 객체지향 애플리케이션 답게 정교한 객체 모델링은 힘을 잃고 점점 
 
@@ -32,25 +32,25 @@ jpa예제코드 : https://github.com/holyeye/jpabook
 
 ### JPA 기능
 
-저장기능
-jpa.persist(member); //저장
- - 객체를 데이터베이스에 저장한다.
+저장기능  
+jpa.persist(member); //저장  
+ - 객체를 데이터베이스에 저장한다.  
 
-조회기능
-String memberId = "helloId";
-Member member = jpa.find(Member.class, memberId); //조회
- - 객체하나를 조회한다. 
+조회기능  
+String memberId = "helloId";  
+Member member = jpa.find(Member.class, memberId); //조회  
+ - 객체하나를 조회한다.   
 
-수정기능
-Member member = jpa.fing(Member.class, memberId);
-member.setName("이름변경"); //수정
+수정기능  
+Member member = jpa.fing(Member.class, memberId);  
+member.setName("이름변경"); //수정  
 
-연관된 객체 조회
-Member member = jpa.fing(Member.class, memberId);
-Team team = member.getTeam(); //연관된 객체 조회
+연관된 객체 조회  
+Member member = jpa.fing(Member.class, memberId);  
+Team team = member.getTeam(); //연관된 객체 조회  
 
 
-## chapter 2.
+## Chapter 2. JPA 시작
 ### 지연로딩
 데이터 베이스의 조회를 늦추는 기능
 ```
@@ -80,8 +80,9 @@ member1 == member2;// 결과는 false임. 왜냐면
 //둘은 같은 DB로우에서 조회했지만 객체 측면에서 둘은 다른 인스턴스이기 때문에 비교시 서로다른값으로 취급된다.
 
 ```
-##chapter 3.
 
+
+## Chapter 3. 영속성 
 ### 엔티티 생명주기
  - 비영속(new/transient) : 영속성 컨텍스트와 전혀 관계가 없는 상태
  - 영속(managed) : 영속성 컨텍스트에 저장된 상태
@@ -90,16 +91,17 @@ member1 == member2;// 결과는 false임. 왜냐면
 
 ### 엔티티매니저 메서드 정리
 EntityManagerFactory 
- - 엔티티매니저 팩토리는 비용이크다.
- - 비용이 크기 때문에 DB당 1개 씩 팩토리 선언하여 사용하는것이 좋다.
- - 여러 스레드가 동시에 접근해도 문제되지 않는다. 스레드간 공유해도 된다.
-EntityManager 
- - 엔티티 매니저 생성시 영속성 컨텍스트가 하나 만들어진다.
- - 엔티티매니저 통해 영속성 컨텍스트에 접근하고 관리할 수 있다.
- - 동시성 문제 발생하기 때문에 문제된다. 동시접근 금물 스레드간 공유금지
-EntityTransaction 
- - 엔티티매니저
- - begin, commit, rollback
+ - 엔티티매니저 팩토리는 비용이크다.  
+ - 비용이 크기 때문에 DB당 1개 씩 팩토리 선언하여 사용하는것이 좋다.  
+ - 여러 스레드가 동시에 접근해도 문제되지 않는다. 스레드간 공유해도 된다.  
+EntityManager   
+ - 엔티티 매니저 생성시 영속성 컨텍스트가 하나 만들어진다.  
+ - 엔티티매니저 통해 영속성 컨텍스트에 접근하고 관리할 수 있다.  
+ - 동시성 문제 발생하기 때문에 문제된다. 동시접근 금물 스레드간 공유금지  
+EntityTransaction   
+ - 엔티티매니저  
+ - begin, commit, rollback  
+ 
  ```
  EntityTransaction tx = em.getTransaction(); // 트랜잭션API
   
@@ -123,7 +125,7 @@ EntityTransaction
 
 
 
-## chapter 4.
+## Chapter 4. 영속성 관리
 ### jpa에서 제공하는 매핑어노테이션 
  - 객체와 테이블 매핑 : @Entity, @Table
  - 기본 키 매핑 : @Id
@@ -184,8 +186,8 @@ EntityTransaction
 
 ### HBM2DDL 주의사항
  - 운영서버에서 create, create-drop, update처럼 DLL을 수정하는 옵션은 절대사용하면안됨.
- - 오직 개발단계에서만 사용
-개발환경에 따른 추천전략  
+ - 오직 개발단계에서만 사용  
+개발환경에 따른 추천전략    
 1. 개발초기단계에서는 create 또는 update
 2. 초기화 상태로 자동화된 테스트를 진행하는 개발자 환경과 CI 서버는 create또는 create-drop
 3. 테스트 서버는 update 또는 validate
@@ -193,5 +195,29 @@ EntityTransaction
 
 
 
+## Chapter 5. 연관관계 매핑 기초
 
 
+## Chapter 6. 다양한 연관관계 매핑
+
+
+## Chapter 7. 고급 매핑
+
+
+## Chapter 8. 프록시와 연관관계 관리
+
+## Chapter 9. 값 타입
+
+## Chapter 10. 객체지향 쿼리 언어
+
+## Chapter 11. 웹 애플리케이션 제작
+
+## Chapter 12. 스프링 데이터 JPA
+
+## Chapter 13. 웹 애플리케이션과 영속성 관리
+
+## Chapter 14. 컬렉션과 부가기능
+
+## Chapter 15. 고급 주제와 성능 최적화
+
+## Chapter 16. 트랜잭션과 락, 2차 
