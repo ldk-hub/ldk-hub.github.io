@@ -199,6 +199,67 @@ EntityTransaction
 ## Chapter 5. 연관관계 매핑 기초
 
 
+
+
+```
+
+@Entity
+public class Member{
+
+     @Id @GeneratedValue
+     private Long id;
+
+     @Column(name = "USERNAME")
+     private String name;
+     private int age;
+
+     @ManyToOne
+     @JoinColumn(name = "TEAM_ID")
+     private Team team;
+     
+}
+
+
+
+
+
+try{
+   //팀 저장
+   Team team = new Team();
+   team.setName("teamA");
+   em.persist(team);
+   
+   //회원 저장
+   Member member = new Member();
+   member.setName("hello");
+   member.setTeam(team); // 단방향 연관관계 설정, 참조 저장
+   em.persist(member);
+   
+   //조회
+   Member findMember = em.find(Member.class, member.getId());
+   //참조를 사용해서 연관관계 조회
+   Team findTeam = findMember.getTeam();
+   
+   
+    //검색
+    
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
+```
+
+
+
+
+
 ## Chapter 6. 다양한 연관관계 매핑
 
 
@@ -243,15 +304,99 @@ Member member = em.getReference(Member.class, "member1");
 ```
  - 이 메소드 호출시 JPA는 DB 조회 않고 실제 엔티티객체도 생성않는다. 대신 DB 접근을 위한 프록시 객체를 반환한다.
 
-프록시 특징
+프록시 특징  
  - 클래스 상속받아 만들어지므로 실제 클라스와 겉 모양이 같다. 따라서 사용하는 입장에서는 이것이 진짜 객체인지 프록시 객체인지 구분하지 않고 사용하면된다.
  - 프록시 객체는 실제 객체에 대한 참조를 보관한다. 그리고 프록시 객체의 메소드를 호출하면 프록시 객체는 실제 객체의 메소드를 호출한다.
- - 프록시 객체의 초기화
- 프록시 객체는 member.getName()처럼 실제 사요될 때 데이터 베이스를 조회해서 실제 엔티티 객체를 생성하는데 이것을 프록시 객체의 초기화라 한다.
+
+
+프록시 객체의 초기화  
+프록시 객체는 member.getName()처럼 실제 사요될 때 데이터 베이스를 조회해서 실제 엔티티 객체를 생성하는데 이것을 프록시 객체의 초기화라 한다.  
  
  ```
+ //프록시 초기화 예제
+ //MemberProxy 반환
+ Member member = em.getReference(Member.class, "id1");
+ member .getName(); // 1. getName();
  
+ 
+ //프록시 클래스 예상 코드
+ class MemberProxy extends Member{
+  Member targer = null; // 실제 엔티티 참조
+  
+   public String getName(){
+     if(target == null){
+     
+     //2.초기화요청
+     //3. DB조회
+     //4. 실제 엔티티 생성 및 참조 보관
+     this.target = ...;
+     }
+     
+     
+     //5.target.getName();
+     return target.getName();
+   }
+ }
  ```
+ 
+### 위의 코드에 대한 초기화 과정을 분석해보자
+1. 프록시 객체에 member.getName()을 호출해서 실제 데이터를 조회한다.
+2. 프록시 객체는 실제 엔티티가 생성되어 있지 않으면 영속성 컨텍스트에 실제 엔티티 생성을 요청하는데 이것을 초기화라 한다.
+3. 영속성 컨텍스트는 데이터베이스를 조회해서 실제 엔티티 객체를 생성한다.
+4. 프록시 객체는 생성된 실제 엔티티 객체의 참조를 Member target 멤버변수에 보관한다.
+5. 프록시 객체는 실제 엔티티 객체의 getName()을 호출해서 결과를 반환한다.
+
+
+### 프록시의 특징
+ - 프록시 객체는 처음 사용할 때 한번 만 초기화된다.
+ - 프록시 객체를 초기화한다고 프록시 객체가 실제 엔티티로 바뀌는 것은 아니다. 프록시 객체가 초기화되면 프록시 객체를 통해서 실제 엔티티에 접근할 수 있다.
+ - 프록시 객체는 원본 엔티티를 상속받은 객체이므로 타입체크 시에 주의해서 사용해야 한다.
+ - 영속성 컨텍스트에 찾는 엔티티가 이미 있으면 데이터베이스를 조회할 필요가 없으므로 em.getReference() 를 호출해도 프록시가 아닌 실제 엔티티를 반환한다.
+ - 초기화는 영속성 컨텍스트의 도움을 받아야 가능하다. 따라서 영속성 컨텍스트의 도움을 받을 수 없는 준영속 상태의 프록시를 초기화하면 문제가 발생한다.
+   하이버네이트는 org.hibernate.LazyInitializationException 예외를 발생시킨다.
+   
+준영속 상태와 초기화  
+준영속 상태와 초기화에 관련된 코드는 다음과 같다.  
+
+
+```
+//MemberProxy반환
+Member member = em.getReference(Member.class, "id1");
+transaction.commit();
+em.close(); //영속성 컨텍스트 종료
+
+memeber.getName(); //준영속 상태 초기화 시도
+//org.hibernate.LazyInitalizationException예외발생
+```
+
+이 코드를 보면 em.close() 메소드로 영속성 컨텍스트를 종료해서 member는 준영속 상태다. member.getName()을 호출하면 프록시를 초기화해야 하는데 영속성 컨텍스트가 없으므로 실제 엔티티를 조회할 수 없다. 따라서 예외가 발생한다.
+
+
+
+### 즉시로딩과 지연로딩
+프록시 객체는 주로 연관된 엔티티를 지연로딩 할 때 사용한다.
+
+ - 즉시로딩 : 엔티티를 조회할 때 연관된 엔티티도 함께 조회한다.
+  * 설정방법 : @ManyToOne(fetch = FetchType.EAGER)
+ 정리 : 즉시로딩(EAGER) 연관된 엔티티를 즉시 조회한다. 하이버네이트는 가능하면 SQL조인을 사용해서 한번에 조회한다.  
+
+
+ - 지연로딩 : 연관된 엔티티를 실제 사용할 때 조회한다.
+   * 예: memeber.getTeam().getName()처럼 조회한 팀 엔티티를 실제 사용하는 시점에 JPA가 SQL을 호출해서 팀 엔티티를 조회한다.
+   * 설정방법 : @ManyToOne(fetch = FetchType.LAZY)
+ 정리 : 연관된 엔티티를 프록시로 조회한다. 프록시를 실제 사용할 때 초기화하면서 데이터베이스를 조회한다.  
+
+  * 지연로딩활용 예시
+ 페치전략
+ N:1, @ManyToOne, @OneToOne -> 즉시로딩
+ 1:N, @OneToMany, @ManyYoMany -> 지연로딩
+
+ 
+ 
+ 
+ 
+ 
+ 
 
 ### 영속성 전이와 고아 객체
 
