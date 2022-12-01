@@ -11,10 +11,10 @@ minimal_mistakes_skin    : "dark" # "air", "aqua","default", "contrast", "neon",
 locale                   : "en-US"
 title                    : "Devlog"
 title_separator          : 
-subtitle                 : "LDK`s Coding Study Story"
+subtitle                 : "Kmlee's Dev & Coding Study Story"
 name                     : "개발 히스토리"
 description              : "develope Blog"
-url                      : "https://ldk-hub.github.io"        # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://lkwa201.github.io"        # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   :  "/assets/images/desk.jpg" # path of fallback teaser image, e.g. 
@@ -87,7 +87,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "이동옥 Lee Dong-ok"
+  name             : "이강민 Lee Kang-min"
   avatar           : "/assets/images/profile.PNG" # path of avatar image, e.g. 
   bio              : "JAVA Developer"
   location         : "Korea, Seoul"
