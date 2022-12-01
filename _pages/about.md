@@ -12,10 +12,8 @@ toc: true
 ## 기술 스킬셋
 ```
 language : JAVA, Javascript
-framework : Spring FrameWork, Spring Boot, Spring Security  
-DB : OracleDB, Postgresql-DB  
-UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery  
+framework : Spring FrameWork, Spring Boot
+DB : OracleDB, Postgresql-DB, Mysql  
+UI : Bootstrap, jsp, ajax, jquery  
 etc : Mybatis, jpa, lombok  
-Server : 온프레임, 클라우드(Azure)  
-OS : 리눅스, 윈도우서버 등  
 ```
