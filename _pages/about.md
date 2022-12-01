@@ -3,7 +3,7 @@ permalink: /about/
 title: "개발자 소개"
 excerpt: "About Me"
 search: true
-last_modified_at: 2021-08-02T06:22:00+09:00
+last_modified_at: 2022-12-01
 toc: true
 ---
 
