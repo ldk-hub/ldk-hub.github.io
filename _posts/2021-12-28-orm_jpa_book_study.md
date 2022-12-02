@@ -402,6 +402,51 @@ memeber.getName(); //준영속 상태 초기화 시도
 
 
 
+### QueryDSL
+ - 오픈소스임. 
+ - 필요로하는것은 querydsl-jpa와 querydsl-apt(쿼리타입 생성용)가 필수.
+
+```
+public void queryDSL(){
+
+   EntityManager em = emf.createEntityManager();
+   
+   JPAQuery query = new JPAQuery(em);
+   QMember qMember = new QMember("m"); // 생성되는 JPQL 별칭이 m 
+   List<Member> members = 
+                 query.from(qMember)
+                      .where(qMember.name.eq("회원1"))
+                      .orderBy(qMember.name.desc())
+                      .list(qMember);
+                 
+ }
+
+```
+
+
+
+
+```
+//QueryDSL 검색기능 쿼리
+
+
+JPAQuery query = new JPAQuery(em);
+QItem item = QItem.item;
+List<Item> list = 
+           query.from(item)
+                .where(item.name.eq("좋은상품").and(item.price.gt(20000)))
+                .list(item); //조회할 프로젝션 지정
+
+
+
+
+
+
+
+
+```
+
+
 ## Chapter 9. 값 타입
 
 ## Chapter 10. 객체지향 쿼리 언어
