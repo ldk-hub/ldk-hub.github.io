@@ -162,6 +162,26 @@ EntityTransaction
  - EnumType.ORDINAL : enum 순서를 데이터베이스에 저장,(주의해서 사용해야하며 STRING사용을 권장한다.)
  - EnumType.STRING : enum 이름을 데이터베이스에 저장
 
+ 2.1 @Enumerated 사용 예시
+ 
+ ```
+ enum RoleType{
+     ADMIN, USER
+ }
+ 
+ //다음은 enum 이름으로 매핑한다.
+ @Enumerated(EnumType.STRING)
+ private RoleType roleType;
+ 
+ //enum은 다음처럼 사용한다.
+ member.setRoleType(RoleType.ADMIN); //DB에 문자 ADMIN으로 저장된다.
+  //@Enumerated를 사용하면 편리하게 enum 타입을 데이터베이스에 저장할 수 있다.
+  
+  //EnumType.STRING은 enum 이름 그대로 ADMIN은 'ADMIN','USER' 문자그대로 DB에저장된다.
+  //roleType.ORDINAL 경우 값이 추가될 경우 기존의 값이 변경되지 않는문제가있어 권장하지않음
+  
+ 
+ ```
 
 
 ```
