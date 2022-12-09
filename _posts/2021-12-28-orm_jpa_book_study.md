@@ -506,6 +506,33 @@ List<Item> list =
 
 ## Chapter 11. 웹 애플리케이션 제작
 
+ - 실습 개발 환경
+ 뷰 : JSP,JSTL
+ 웹 계층 : 스프링 MVC
+ 데이터 저장 계층 : JPA, 하이버네이트
+ 기반 프레임워크 : 스프링 프레임워크
+ 빌드 : 메이븐
+
+
+```
+hibernate.id.new_generator_mappings : true
+
+
+
+@Embedded 엔티티 단위로 객체화
+
+
+@Embeddedable 클래스 단위로 객체화
+
+
+@PersistenceContext
+순수 자바 환경에서는 엔티티 매니저 펙토리에서 엔티티 메니저를 직접 생성해서 사용했지만, 스프링이나 J2EE 컨테이너를 사용할 시 컨테이너가 엔티티매니저를 관리하고 제공해준다. 
+
+컨테이너가 관리하는 엔티티매니저를 주입하는 어노테이션이다.
+```
+
+
+
 ## Chapter 12. 스프링 데이터 JPA
 
 ## Chapter 13. 웹 애플리케이션과 영속성 관리
