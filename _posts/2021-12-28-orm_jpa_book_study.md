@@ -535,6 +535,80 @@ hibernate.id.new_generator_mappings : true
 
 ## Chapter 12. 스프링 데이터 JPA
 
+### Spring Data JPA 
+1. 데이터 접근 계층을 개발할 때 구현 클래스 없이 인터페이스만 작성해도 개발을 완료할 수 있다.
+
+개발자가 직접 구현체를 개발하지 않아도 된다.
+
+```
+public interface MemberRepository extends JpaRepository<Member, Long>{
+     Member findByUsername(String username);
+}
+
+public interface ItemRepository extends JpaRepository<Item, Long>{
+
+}
+```
+일반적인 CRUD 메소드는 JpaRepository 인터페이스가 곹옹으로 제공하므로 문제가 없다. 그런데 MemberRepository.findByUsername(...)처럼 직접 작성한 공통으로 처리할 수 없는 메소드는 스프링데이터 JPA에서 메소드 이름을 분석해서 JPQL을 실행한다.
+
+ >> select m from Member m where username =:username
+
+spring data jpa 필요라이브러리
+ - spring-data-jpa, spring-data-commons에 의존하므로 두 라이브러리 필수임.
+
+
+
+스프링설정에 javaconfig 환경설정 방법이다.
+스프링 데이터 jpa 는 애플리케이션 실행 시  basepackage에 있는 리포지토리 인터페이스들을 찾아서 해당 인터페이스를 구현한 클래스를 동적으로 생성한 다음 스프링 빈으로 등록한다. 따라서 개발자가 직접 구현클래스를 만들지 않아도 된다.
+```
+@Configuration
+@EnableJpaRepositories(basePackages = "jpabook.jpashop.repository")
+public class AppConfig{
+
+}
+```
+
+
+Spring-data-jpa에서 JpaRepository 인터페이스를 상속받으면 사용할 수 있는 주요 메서드 몇가지가 있다.
+
+- save(S) : 새로운 엔티티는 저장.persist()하고 이미 있는 엔티티는 수정.merge()한다. 
+- delete(T) : 엔티티 하나를 삭제한다. 내부에서 EntityManager.remove()를 호출하는것이다.
+- getOne(Id) : 엔티티를 프록시로 조회한다. 내부에서 EntityManager.getReference()를 호출하는것이다.
+- findOne(Id) : 엔티티를 하나 조회한다. 내부에서 EntityManager.find()를 호출하는것임.
+- findAll() : 모든 엔티티를 조회한다. 정렬이나 페이징 조건을 파라미터로 제공할 수 있다.
+
+
+
+### 쿼리 메소드 기능
+메소드 이름만으로 쿼리를 생성하는 기능으로 인터페이스에 메소드만 선언하면 메소드의 이름으로 적절한 JPQL쿼리를 생성해 실행한다.
+
+스프링데이터 JPA가 제공하는 쿼리 메소드는 크게 3가지 있음.
+ - 메소드 이름으로 쿼리생성
+ - 메소드 이름으로 JPA NamedQuery 호출
+ - @Query 어노테이션을 사용해서 리포지토리 인터페이스에 쿼리 직접 정의
+
+
+1. 메소드 이름으로 쿼리생성
+```
+public interface MemberRepository extends Repository<Member, Long>{
+    List<Member> findByEmailAndName(String email, String name);
+}
+```
+
+인터페이스에 정의한 findByEmailAndName() 메소드 실행하면 스프링 데이터 JPA는 메소드 이름을 분석해서 JPQL을 생성하고 실행한다.
+자동생성된  JPQL은 다음과같다.
+
+select m from Member m where m.email = ?1 and m.name = ?2
+
+물론 정해진 규칙에 따라서 메소드 이름을 지어야한다. 스프링데이터 JPA 공식문서가 제공하는 표를 참고하라
+
+
+
+
+
+
+
+
 ## Chapter 13. 웹 애플리케이션과 영속성 관리
 
 ## Chapter 14. 컬렉션과 부가기능
