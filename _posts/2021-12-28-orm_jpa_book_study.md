@@ -62,6 +62,7 @@ order.getOrderDate();//Order사용하는 시점에 SELECT ORDER SQL
 ```
 Member 사용할 때마다 Order 함께 사용시 한 테이블 조회하는 것 보다 Member는 
 
+![3](https://user-images.githubusercontent.com/12209348/207604630-5fdc18e6-17c4-48b8-a7d2-176ecfa3ec1f.PNG)
 
 
 
@@ -101,7 +102,11 @@ EntityManager
 EntityTransaction   
  - 엔티티매니저  
  - begin, commit, rollback  
- 
+
+
+
+![1](https://user-images.githubusercontent.com/12209348/207537148-f424b374-c218-4d6e-a308-90e37e8ec718.PNG)
+
  ```
  EntityTransaction tx = em.getTransaction(); // 트랜잭션API
   
@@ -115,6 +120,9 @@ EntityTransaction
       tx.rollback(); //예외 발생시 롤백 
   }
  ```
+ 
+ 
+ ![2](https://user-images.githubusercontent.com/12209348/207537220-a232044a-6890-492a-a032-b071c756206d.PNG)
 
 ### 중요한 정리내용
 1. 엔티티 매니저는 엔티티 매니저 팩토리에서 생성한다. 자바를 직접 다루는 J2SE환경에서는 엔티티 매니저를 만들면 그 내부에 영속성 컨텍스트도 함께 만들어 진다. 이 영속성 컨텍스트는 엔티티 매니저를 통해서 접근할 수 있다.  
