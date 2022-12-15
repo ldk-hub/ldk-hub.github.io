@@ -466,6 +466,7 @@ JPA 기본 페치 전략
 ## Chapter 10. 객체지향 쿼리 언어
 
 ### JPQL
+![1](https://user-images.githubusercontent.com/12209348/207873198-9fa10fd8-6c97-483a-80d4-b26064ddf99e.png)
 
 
 ### QueryDSL
