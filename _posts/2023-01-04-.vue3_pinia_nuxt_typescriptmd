@@ -1,0 +1,165 @@
+---
+# 포스트제목
+title: "vue3 기반(피니아, 넉스트3, 퀘이사2, 타입스크립트)"
+# 포스팅 작성자
+author: ["이동옥"] 
+# 포스팅 공개일 - 정렬기준 포스팅날짜순서에 따라 기재됨.(주의 미래날짜는 기입X)
+date: 2021-12-28 08:26:28 -0400
+# 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
+# abstract:
+# 태그를 입력
+tags: ["백엔드"]
+categories: 열공해야한다.
+# 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
+# image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
+# 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
+draft: "no"
+toc: true
+---
+
+## 프론트엔드 개발 
+ - vue3
+ - pinia
+ - nuxt3
+ - quasar2
+ - typescript
+
+## vue3
+크게 3가지 영역으로 분리된다.
+1. 템플릿 영역
+2. 스크립트 영역
+3. 스타일 영역
+
+Vue를 사용하기 위해서는  vuex, vueCLI, vue Router 가 핵심
+ -  vuex는 가상돔이라 불리는 녀석을 관리하기 위한 매니저역할 웹을 이루는 개별 요소들의 정보가 변경되는지 확인하고 업데이트 시켜주는 역할 
+ - vue CLI : 프로젝트를 자동으로 생성/세팅해주는 자동화 역할                            
+ - vue라우터 : vuex가 돌아다니며 v- dom 향해 이동할 통로역할
+
+ - 특징
+싱글페이지 앱을 만들수 있는 것 (한페이지 내 모든 변화가 이뤄진다.)
+페이지 리로드 필요 없음.
+vue 실행에 필요한 건 node.js 로 구동하면 됨.
+뷰 서버 실행 방법 : Npm run serve로 해당 로컬 상에서 아웃풋 결과 보면됨.
+-> 백엔드 로직까지 태울땐 ? 인텔리제이에서 띄우고 vscode에서 소스 보고  node.js로 파악하는 구조?
+
+
+Vue 3 스터디 내역
+인스턴스 
+새 인스턴스를 만드는 것부터 시작합니다.
+
+ - 예시코드
+```
+Var vm = new Vue({
+	el : ‘#app’,
+});
+```
+
+Package.json
+디펜던시는 운영에 사용할 라이브러리선언
+
+dev디펜던시는 모듈이 별로 없음. 실제사용
+ - 상세내역은 package-lock.json에 정보가 있음.
+
+Vue  서버 기동시 제일먼저 구동되는 것이 main.js이다.
+ - main.js 소스 코드
+import { createApp } from 'vue' //뷰 사용
+import App from './App.vue' //경로지정
+
+createApp(App).mount('#app') //.mount(‘#app’) id값이 app인 곳에 마운트를 시키겠다.
+
+Babel - > 최신문법이 움직이지 않는 구 브라우저에서도 동작되게끔 컴파일역할
+Router -> 화면이동을 할 수있게 해주는 역할
+Router의 역할은 페이지 이동을 자바스크립트 형태로 이동시켜주기때문에 페이지의 변화는 없음
+
+개발 경로 맵핑 방법
+라우터에서 각 경로를 지정해주는 코드를 입력해야함 ->  index.js -> App.vue의 <router-link>의 URL 링크의  싱크가 맞아야함.
+
+팁
+ - vue에서 @의 의미는 src폴더를 찾아가라는 뜻임.
+ - Tag 기능은 {{ }} 괄호 표시
+
+라우트 설계에 따라 전체 페이지의 대한 성능이 좌우되므로 중요하다.
+SPA 실제로는 하나의페이지로만구성되어있고 필요한부분만 동적으로 변화를 주기때문에 속도기 매우빠름
+운영에올리게되면 index.html과 css 파일 과 자바스크립트 파일로 올라가게됨.
+
+"rules": {"space-before-function-paren":"off”} 기능은 펑션에서 한칸안띄면오류나는데 
+그부분을  off 한거임
+
+1번째 라우터 방법
+메인페이지 import 하는 방법
+
+2번째 라우터 방법
+레이지로딩하는 방법 
+
+3번째 라우터 방법
+WebpackPrefetch: true >> 브라우저 캐시에 저장하여 빠르게 처리하는 기능을 라우터에서 구현할 수 있음.
+ - 단점은 :만약 사용자가 프리패치영역지정한 곳에 안들어가면 미리 메모리를 확보한 캐시 영역에 리소스를 사용하게 되는 것이니 설정에 신중해야함.
+
+{{ }} <<<< 이중괄호는 머스태쉬라 말하며 데이터 바인딩 할때 사용되는 것
+
+ 이벤트 인수. : $emit -
+
+V-on ->>>>>@click   온클릭이벤트처럼, @submit, @keyup, $emit
+V-for >> 반복문
+V-modal
+V-html
+V- if, v-if-else-if
+V-else
+
+아래의 두영역이 vue.js의 본격 화면 개발 영역임.
+views는 화면 전체에 대한 구성개발을 이영역에 하고 
+ - 네이밍규칙이 존재함 전체화면구성 뷰 경우 마지막에 View키워드를 붙여야함.
+
+Components 영역이  단위별로 개발하는 구현 영역이라보면됨.
+
+V-model 은 양방향으로 데이터바인딩 값을 주고받을 수 있다. 사용자입력값을 별도로 작성않고 키값만 알면됨.
+
+타입스크립트를 사용할 경우
+1. <script setup >
+2. <scirpt lang = “ts”>
+3. <script setup lang =“ts”>
+
+
+### 컴포지션API 
+
+
+
+### 피니아-pinia
+스토어 개념 
+
+import { defineStore } from 'pinia'
+//디파인 스토어의 반환 값을 할당할 변수의 이름은 원하는 대로 지정할 수 있지만, 스토어 이름을 사용하고 'use'와 'Store'로 묶는 것이 가장 좋습니다.
+// 예시 : 'useUserStore', 'useCartStore','useProductStore'
+//첫 번째 인자는 앱 전체에서 스토어의 고유 ID입니다.
+
+export const useAlertStore = defineStore('alerts',{
+  
+})
+
+
+
+npm install @pinia/nuxt 
+//nuxt.config.js 파일의 모듈만 추가해주면된다!
+
+//nuxt.config.js
+export default defineNuxtConfig({
+  modules: [
+    '@pinia/nuxt'
+  ],
+})
+
+이게 피니아와 넉스트 사용끝
+
+setup() 외부에서 스토어 사용
+
+
+
+### quasar2 
+
+
+
+### typescript
+
+
+
+###nuxt3
