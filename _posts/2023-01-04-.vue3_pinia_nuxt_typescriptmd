@@ -117,7 +117,11 @@ V-model 은 양방향으로 데이터바인딩 값을 주고받을 수 있다. �
 
 
 
-### 피니아-pinia
+## 피니아  pinia
+
+스크립트와 상태를 체크해주는 기능
+js로 분리된 로직으로 각 페이지별로 기능을 전달 공유할 수 있다.
+
 스토어 개념 
 
 import { defineStore } from 'pinia'
@@ -146,13 +150,22 @@ export default defineNuxtConfig({
 setup() 외부에서 스토어 사용
 
 
-
-### quasar2 
-
-
-
-### typescript
+## nuxt3
 
 
 
-###nuxt3
+
+## typescript
+
+
+
+
+
+
+
+
+
+
+
+
+## quasar2 
