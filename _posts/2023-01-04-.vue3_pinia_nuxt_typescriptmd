@@ -329,8 +329,37 @@ emplotyee2.printEmployeeDetails();
 8. 타입스크립트 클래스 - 생성자, 접근제한  
 ```
 
-```
+class Employee {  //클래스 내부에서는 let 선언안해도됨.
+	fullName: string;
+	age: number;
+	jobTitle: string;
+	hourlyRate: number;
+	workingHoursPerWeek: number;
+}
 
+//constuctor - 생성자 클래스로부터 객체생성시 호출 객체의 초기화 담당
+constructor(fullName:string, age:number, jobTitle?: string, //선택적 매개변수는 정의된 매개변수 뒤에물음표를명시해주면된다.
+	    hourlyRate: number, workingHoursPerWeek: number){
+	this.fullName = fullName;
+	this.age = age;
+	this.jobTitle = jobTitle;
+	this.hourlyRate = hourlyRate;
+	this.workingHoursPerWeek = workingHoursPerWeek;
+}
+
+
+//위와같이 생성자를 정의하게되면 이렇게 정의하면된다. 코드가간결해진다.
+let employee1: Employee = new Employee('민수', 28,'주니어개발', 40, 35);
+
+employee1.printEmployeeDetails();
+
+
+
+
+```
+constructor의 매개변수에 accessModifiers 직접적용한 예
+![화면 캡처 2023-01-26 191816](https://user-images.githubusercontent.com/12209348/214811867-48839eac-b8b8-43b6-ba69-e102d81f2c6f.png)
+![2](https://user-images.githubusercontent.com/12209348/214811874-3de1e232-20cb-4ba2-a328-5ab21519244c.png)
 
 
 
