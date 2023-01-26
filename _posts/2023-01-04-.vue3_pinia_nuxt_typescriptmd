@@ -357,8 +357,9 @@ employee1.printEmployeeDetails();
 
 
 ```
-constructor의 매개변수에 accessModifiers 직접적용한 예
+constructor의 매개변수에 accessModifiers 직접적용한 예  
 ![화면 캡처 2023-01-26 191816](https://user-images.githubusercontent.com/12209348/214811867-48839eac-b8b8-43b6-ba69-e102d81f2c6f.png)
+
 ![2](https://user-images.githubusercontent.com/12209348/214811874-3de1e232-20cb-4ba2-a328-5ab21519244c.png)
 
 
