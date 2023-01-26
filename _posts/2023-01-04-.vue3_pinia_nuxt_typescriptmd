@@ -155,10 +155,154 @@ setup() 외부에서 스토어 사용
 
 
 
-## typescript
+## typescript  
+
+타입스크립트 기초편  
+타입스크립트는 자바스크립트 문법을 사용해도 인식이됨. 타입스크립트문법을 다시 자바스크립트로 해석해서 웹상에서 인식하기때문에  
+
+1.syntax - student: string = 'Jhon'; <<여기서 :를 syntax라 한다.  타입명시할때 사용된다.  
+
+2.타입추론  
+
+
+3. 인터페이스   
+
+```
+/타입스크립트에서 인터페이스를 선언한 예시
+interface Student{
+	readonly studentId: number; //타입중 리드온리 속성을제공하여 수정하지못하게 설정할수있다.
+	studentName: string;
+	age: number;
+	gender: string;
+	subject: string;
+	courseCompleted: boolean;
+}
+
+
+//위의 인터페이스에 정의된 타입에 맞춰 아래와 같은 함수의 리텅으로 정의하여 사용할 수 있다.
+function getStudentDetails(studentId: number): Student{ //  바로옆 : Student는 재사용을 염두한 리턴 값을 정의한것 
+	
+	return {
+		studentId: 123455,
+		studnetName: 'TestMan',
+		gender: 'male',
+		subject: 'Node Js',
+		coursCompleted: true
+	};
+}
 
 
 
+
+```
+
+
+4.열거형(Enum) 
+
+```
+//Enum 타입정의
+enum GenderType{
+	Male,
+	Female,
+	genderNeutral
+}
+
+
+//enum 호출시
+function test{
+   gender : GenderType.Male; //이렇게 정의해야됨.
+}
+
+
+
+//리터럴 타입
+gender: 'male' | 'femal' | 'genderNeutral'
+
+```
+
+
+5. any, union type, type aliases, type gaurds
+
+```
+//any타입
+let someValue: any; //any라고 명시할 경우 어떠한 타입이든 모두 ok 한다는 뜻임.
+
+//유니언 타입
+let someValue: number | string = 5;
+
+//타입 별칭
+type StrOnNum = number | string; // 타입별칭을 쓰게되면 유니언타입처럼쓸필요없음
+
+let someValue: StrOnNum =5; //이와같이 명시하면 가독성좋아짐 
+
+
+//타입가드
+type StrOnNum = number | string;t
+let itemPrice: number;
+
+const setItemPrice =(prices: StringOrNum): void =>{
+	if(typeof price === 'string'){
+		itemPrice = 0;
+	}else{
+		itemPrice = price;
+	}
+};
+
+//위와같이 정의해줘야 setItemPrice(50);을 선언했을때 에러가발생하지 않는다.
+setItemPrice(50);
+
+```
+
+
+6.함수의 반환타입, 선택적 매개변수, 디폴트 정의  
+
+```
+			      //: string 타입을 리턴한다는 의미
+function send(message, userName): string {
+ return 'Hello';
+}
+
+
+				//: void 아무것도 리턴하지않음
+function send(message, userName): void {
+ console.log('test');
+}
+
+			      //: 문자형의 배열을 리턴한다는 의
+function send(message, userName): string[] {
+	return['test1','test2'];
+}
+
+
+
+//Arrow function 화살함수
+
+//기존함수비교
+function add(num1, num2){
+	return num1 + num2;
+}
+//기존함수 심화(아래 화살표전환 참조용)
+function send(message = 'Hello', userName = 'there'):void{
+	console.log('${message}, ${userName}');
+}
+
+
+//화살표 함수
+const add = (num1, num2) => num1 + num2;
+//화살표 함수 심화
+const send = (message = 'Hello', userName = 'there'): void => console.log('${message}, ${userName}');
+
+```
+
+
+7. 객체지향 프로그래밍 클래스와 오브젝트 관계  
+```
+
+```
+
+
+
+8. 타입스크립트 클래스 - 생성자, 접근제한  
 
 
 
@@ -169,3 +313,6 @@ setup() 외부에서 스토어 사용
 
 
 ## quasar2 
+
+한글번역
+https://quasar.serasome.com/intro/start#quasar
