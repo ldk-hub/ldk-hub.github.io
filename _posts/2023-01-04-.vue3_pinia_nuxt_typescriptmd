@@ -296,13 +296,40 @@ const send = (message = 'Hello', userName = 'there'): void => console.log('${mes
 
 
 7. 객체지향 프로그래밍 클래스와 오브젝트 관계  
+1. 클라스 내 정의된 변수 -> 프로퍼티  
+2. 클라스 내 정의된 함수 -> 메소드
+3. 클라스의 인스턴스 -> 클래스를 통해 새로운객체를 생성했을떄를 인스턴스라함.
 ```
+class Employee {  //클래스 내부에서는 let 선언안해도됨.
+	fullName: string;
+	age: number;
+	jobTitle: string;
+	hourlyRate: number;
+	workingHoursPerWeek: number;
+	
+	 //콘솔로그 내 fullName 호출은 this.를붙여 호출이가능하다. 
+	printEmployeeDetails = ():void =>{
+		console.log('${this.fullName}의 직업은 ${this.jobTitle}이고 일주일의 수입은 ${this.hourRate*this.workingHoursPerWeek}달리어다.')
+	}
+}
+
+
+
+//클라스의 인스턴스 여러개 할당이가능하다~
+let emplotyee1 = new Employee();
+emplotyee1.printEmployeeDetails();
+
+let emplotyee2 = new Employee();
+emplotyee2.printEmployeeDetails();
 
 ```
 
 
 
 8. 타입스크립트 클래스 - 생성자, 접근제한  
+```
+
+```
 
 
 
