@@ -8,8 +8,13 @@ toc: true
 ---
 
 # 이력 소개
-## 실무 경력  
-### 회사명 : 코스콤 (한국거래소 계열사) 2020.12 ~ 재직중  
+## 실무 경력 
+### 회사명 : NHNDATA 2022.12 ~ 재직중
+프로젝트 : 인스타그램 자동화 솔루션 플랫폼 개발
+환경 : JAVA18, SpringBoot3, SpringSecurity5, Mysql, mariaDB, AWS, Lombok, JPA, querydsl, nativequery, Meta(페북, 인스타)API, ERD, vue.js, 깃허브, 소스트리
+업무 : 인스타그램 자동화 답장 마케팅 솔루션 시스템 PL담당, 모델링, 백엔드 개발
+
+### 회사명 : 코스콤 (한국거래소 계열사) 2020.12 ~ 2022.12
 프로젝트 : 메시지 통신 미들웨어 모니터링 웹 시스템 구축  
 환경 : JAVA, SpringBoot, SpringSecurity, PostgreSQL, Lombok  JPA, JNI, 메시지큐 엔진 등  
 업무 : 메세지 통신 모니터링 시스템 구축 설계 및 서비스 등  
@@ -48,6 +53,14 @@ toc: true
 온프레임 서버 : 제우스, 웹투비, 리눅스, 윈도우 서버  
 
 ## 교육이수 이력  
+호돌맨의 요절 복통 개발 인프런 NHN교육
+2023. 09 ~ 2023. 11
+Spring Boot를 활용한 백엔드부터 Vue.js 모던 프론트엔드 스택을 연동한 서비스 완성 교육 - JAVA, SpringBoot, springsecurity, Vue.js AWS 클라우드
+
+토비의 스프링부트 인프런 NHN교육
+2023. 03 ~ 2023. 05
+스프링 부트의 동작 원리, 스프링 부트가 제공하는 기술과 구성을 파악하고 활용하는 방법, 스프링 프레임워크의 핵심 기술과 활용법, 나만의 스프링 부트 모듈을 만드는 방법
+
 코스콤 역량강화 교육 코스콤  
 2022.06.14 ~ 2022.06.17 이도원
 java, spring cloud로 배우는 MSA 설계와 DEVOPS 개발 교육  
@@ -77,11 +90,11 @@ JAVA기반 웹 시스템 개발, MVC패턴, 포트폴리오(분석, 설계, 구�
 
 ## 기술 스킬셋
 ```
-language : JAVA, Javascript
-framework : Spring FrameWork, Spring Boot, Spring Security  
-DB : OracleDB, Postgresql-DB  
-UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery  
-etc : Mybatis, jpa, lombok  
+language : JAVA JDK18 , Javascript
+framework : Spring FrameWork, Spring Boot3, Spring Security5.0 
+DB : OracleDB, Postgresql-DB, Mysql, Maria DB
+UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery, vue3, quasar
+etc : Mybatis, jpa, lombok ,querydsl, nativequery
 Server : 온프레임, 클라우드(Azure)  
 OS : 리눅스, 윈도우서버 등  
 ```
