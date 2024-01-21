@@ -62,6 +62,7 @@ order.getOrderDate();//Order사용하는 시점에 SELECT ORDER SQL
 ```
 Member 사용할 때마다 Order 함께 사용시 한 테이블 조회하는 것 보다 Member는 
 
+![3](https://user-images.githubusercontent.com/12209348/207604630-5fdc18e6-17c4-48b8-a7d2-176ecfa3ec1f.PNG)
 
 
 
@@ -101,7 +102,11 @@ EntityManager
 EntityTransaction   
  - 엔티티매니저  
  - begin, commit, rollback  
- 
+
+
+
+![1](https://user-images.githubusercontent.com/12209348/207537148-f424b374-c218-4d6e-a308-90e37e8ec718.PNG)
+
  ```
  EntityTransaction tx = em.getTransaction(); // 트랜잭션API
   
@@ -115,6 +120,9 @@ EntityTransaction
       tx.rollback(); //예외 발생시 롤백 
   }
  ```
+ 
+ 
+ ![2](https://user-images.githubusercontent.com/12209348/207537220-a232044a-6890-492a-a032-b071c756206d.PNG)
 
 ### 중요한 정리내용
 1. 엔티티 매니저는 엔티티 매니저 팩토리에서 생성한다. 자바를 직접 다루는 J2SE환경에서는 엔티티 매니저를 만들면 그 내부에 영속성 컨텍스트도 함께 만들어 진다. 이 영속성 컨텍스트는 엔티티 매니저를 통해서 접근할 수 있다.  
@@ -162,6 +170,26 @@ EntityTransaction
  - EnumType.ORDINAL : enum 순서를 데이터베이스에 저장,(주의해서 사용해야하며 STRING사용을 권장한다.)
  - EnumType.STRING : enum 이름을 데이터베이스에 저장
 
+ 2.1 @Enumerated 사용 예시
+ 
+ ```
+ enum RoleType{
+     ADMIN, USER
+ }
+ 
+ //다음은 enum 이름으로 매핑한다.
+ @Enumerated(EnumType.STRING)
+ private RoleType roleType;
+ 
+ //enum은 다음처럼 사용한다.
+ member.setRoleType(RoleType.ADMIN); //DB에 문자 ADMIN으로 저장된다.
+  //@Enumerated를 사용하면 편리하게 enum 타입을 데이터베이스에 저장할 수 있다.
+  
+  //EnumType.STRING은 enum 이름 그대로 ADMIN은 'ADMIN','USER' 문자그대로 DB에저장된다.
+  //roleType.ORDINAL 경우 값이 추가될 경우 기존의 값이 변경되지 않는문제가있어 권장하지않음
+  
+ 
+ ```
 
 
 ```
@@ -198,7 +226,11 @@ EntityTransaction
 
 ## Chapter 5. 연관관계 매핑 기초
 
-
+### 연관관계 매핑 중요 사항
+  - 객체의 참조와 외래 키를 매핑하는 것이 연관관계 매핑의 목표
+  - 방향[단방향, 양방향]
+  - 다중성[1:1, 1:N, N:1, N:M]
+  - 연관관계의 주인 지정 
 
 
 ```
@@ -242,22 +274,21 @@ try{
    
    
     //검색
-    
-   
-   
-   
-   
-   
-   
-   
-
-
-
-
 ```
 
 
 
+
+
+
+
+
+### 정리
+ - 단방향 매핑만으로 테이블과 객체의 연관관계 매핑은 이미 완료되었다.
+ - 단방향을 양방향으로 만들면 반대방향으로 객체 그래프 탐색 기능이 추가된다.
+ - 양방향 연ㄴ관관계를 매핑하려면 객체에서 양쪽 방향을 모두 관리해야한다.
+
+연관관계의 주인을 정하는 기준 - 단방향은 항상 외래 키가 있는 곳을 기준으로 매핑하면된다.
 
 
 ## Chapter 6. 다양한 연관관계 매핑
@@ -285,7 +316,7 @@ try{
 
 ## Chapter 8. 프록시와 연관관계 관리
 
-  - 즉시로딩 : 
+  - 즉시로딩 : 엔티티 조회할 때 연관된 엔티티도 함께 데이터베이스에서 조회한다.
   - 지연로딩 : 엔티티의 값을 실제 사용하는 시점에 데이터베이스에서 팀 엔티티에 필요한 데이터를 조회하는것이다. 
 
 ### 프록시
@@ -392,23 +423,200 @@ memeber.getName(); //준영속 상태 초기화 시도
  1:N, @OneToMany, @ManyYoMany -> 지연로딩
 
  
- 
- 
- 
- 
- 
 
-### 영속성 전이와 고아 객체
 
+
+프록시와 컬렉션 래퍼
+
+
+
+JPA 기본 페치 전략
+
+
+### 영속성 전이와 고아 객체 
+
+영속성 전이
+- CASCADE : 특정 엔티티를 영속 상태로 만들때 연관된 엔티티도 함께 영속 상태로 만들고 싶으면 영속성 전이 기능을 사용하면 된다.
+             부모 엔티티를 저장 할때 자식 엔티티도 함께 저장할 수 있다. 
+
+
+고아 객체
+부모 엔티티와 연관관계가 끊긴 자식 엔티티를 뜻한다. 
+이러한 엔티티를 자동으로 삭제하는 기능을 제공한다.
+
+부모 엔티티의 컬렉션에서 자식 엔티티의 참조만 제거하면 자식 엔티티가 자동으로 삭제된다.
+
+```
+@OneToMany(mappedBy = "parent", orphanRemoval = true) // orphanRemoval = true <<이 옵션이  고아된 자식 엔티티 자동으로 삭제
+```
 
 
 ## Chapter 9. 값 타입
 
+### 기본 값 타입
+
+### 임베디드 타입
+
+### 값 타입과 불변 객체
+
+
+
+
+
 ## Chapter 10. 객체지향 쿼리 언어
+
+### JPQL
+![1](https://user-images.githubusercontent.com/12209348/207873198-9fa10fd8-6c97-483a-80d4-b26064ddf99e.png)
+
+
+### QueryDSL
+ - 오픈소스임. 
+ - 필요로하는것은 querydsl-jpa와 querydsl-apt(쿼리타입 생성용)가 필수.
+
+```
+public void queryDSL(){
+
+   EntityManager em = emf.createEntityManager();
+   
+   JPAQuery query = new JPAQuery(em);
+   QMember qMember = new QMember("m"); // 생성되는 JPQL 별칭이 m 
+   List<Member> members = 
+                 query.from(qMember)
+                      .where(qMember.name.eq("회원1"))
+                      .orderBy(qMember.name.desc())
+                      .list(qMember);
+                 
+ }
+
+```
+
+
+
+
+```
+//QueryDSL 검색기능 쿼리
+
+
+JPAQuery query = new JPAQuery(em);
+QItem item = QItem.item;
+List<Item> list = 
+           query.from(item)
+                .where(item.name.eq("좋은상품").and(item.price.gt(20000)))
+                .list(item); //조회할 프로젝션 지정
+
+```
+
+
+
+### 네이티브SQL
+
+### 객체지향 쿼리 심화
+
 
 ## Chapter 11. 웹 애플리케이션 제작
 
+ - 실습 개발 환경
+ 뷰 : JSP,JSTL
+ 웹 계층 : 스프링 MVC
+ 데이터 저장 계층 : JPA, 하이버네이트
+ 기반 프레임워크 : 스프링 프레임워크
+ 빌드 : 메이븐
+
+
+```
+hibernate.id.new_generator_mappings : true
+
+
+
+@Embedded 엔티티 단위로 객체화
+
+
+@Embeddedable 클래스 단위로 객체화
+
+
+@PersistenceContext
+순수 자바 환경에서는 엔티티 매니저 펙토리에서 엔티티 메니저를 직접 생성해서 사용했지만, 스프링이나 J2EE 컨테이너를 사용할 시 컨테이너가 엔티티매니저를 관리하고 제공해준다. 
+
+컨테이너가 관리하는 엔티티매니저를 주입하는 어노테이션이다.
+```
+
+
+
 ## Chapter 12. 스프링 데이터 JPA
+
+### Spring Data JPA 
+1. 데이터 접근 계층을 개발할 때 구현 클래스 없이 인터페이스만 작성해도 개발을 완료할 수 있다.
+
+개발자가 직접 구현체를 개발하지 않아도 된다.
+
+```
+public interface MemberRepository extends JpaRepository<Member, Long>{
+     Member findByUsername(String username);
+}
+
+public interface ItemRepository extends JpaRepository<Item, Long>{
+
+}
+```
+일반적인 CRUD 메소드는 JpaRepository 인터페이스가 곹옹으로 제공하므로 문제가 없다. 그런데 MemberRepository.findByUsername(...)처럼 직접 작성한 공통으로 처리할 수 없는 메소드는 스프링데이터 JPA에서 메소드 이름을 분석해서 JPQL을 실행한다.
+
+ >> select m from Member m where username =:username
+
+spring data jpa 필요라이브러리
+ - spring-data-jpa, spring-data-commons에 의존하므로 두 라이브러리 필수임.
+
+
+
+스프링설정에 javaconfig 환경설정 방법이다.
+스프링 데이터 jpa 는 애플리케이션 실행 시  basepackage에 있는 리포지토리 인터페이스들을 찾아서 해당 인터페이스를 구현한 클래스를 동적으로 생성한 다음 스프링 빈으로 등록한다. 따라서 개발자가 직접 구현클래스를 만들지 않아도 된다.
+```
+@Configuration
+@EnableJpaRepositories(basePackages = "jpabook.jpashop.repository")
+public class AppConfig{
+
+}
+```
+
+
+Spring-data-jpa에서 JpaRepository 인터페이스를 상속받으면 사용할 수 있는 주요 메서드 몇가지가 있다.
+
+- save(S) : 새로운 엔티티는 저장.persist()하고 이미 있는 엔티티는 수정.merge()한다. 
+- delete(T) : 엔티티 하나를 삭제한다. 내부에서 EntityManager.remove()를 호출하는것이다.
+- getOne(Id) : 엔티티를 프록시로 조회한다. 내부에서 EntityManager.getReference()를 호출하는것이다.
+- findOne(Id) : 엔티티를 하나 조회한다. 내부에서 EntityManager.find()를 호출하는것임.
+- findAll() : 모든 엔티티를 조회한다. 정렬이나 페이징 조건을 파라미터로 제공할 수 있다.
+
+
+
+### 쿼리 메소드 기능
+메소드 이름만으로 쿼리를 생성하는 기능으로 인터페이스에 메소드만 선언하면 메소드의 이름으로 적절한 JPQL쿼리를 생성해 실행한다.
+
+스프링데이터 JPA가 제공하는 쿼리 메소드는 크게 3가지 있음.
+ - 메소드 이름으로 쿼리생성
+ - 메소드 이름으로 JPA NamedQuery 호출
+ - @Query 어노테이션을 사용해서 리포지토리 인터페이스에 쿼리 직접 정의
+
+
+1. 메소드 이름으로 쿼리생성
+```
+public interface MemberRepository extends Repository<Member, Long>{
+    List<Member> findByEmailAndName(String email, String name);
+}
+```
+
+인터페이스에 정의한 findByEmailAndName() 메소드 실행하면 스프링 데이터 JPA는 메소드 이름을 분석해서 JPQL을 생성하고 실행한다.
+자동생성된  JPQL은 다음과같다.
+
+select m from Member m where m.email = ?1 and m.name = ?2
+
+물론 정해진 규칙에 따라서 메소드 이름을 지어야한다. 스프링데이터 JPA 공식문서가 제공하는 표를 참고하라
+
+
+
+
+
+
+
 
 ## Chapter 13. 웹 애플리케이션과 영속성 관리
 
