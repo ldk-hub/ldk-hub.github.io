@@ -17,7 +17,12 @@ draft: "no"
 toc: true
 ---
 
-##  개발 컨셉 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fldk-hub%2Fldk-hub.github.io&count_bg=%2368AF32&title_bg=%233A2F2F&icon=&icon_color=%23343030&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+## 개발자 기술스택
+![화면 캡처 2024-10-19 124502](https://github.com/user-attachments/assets/25e51d9b-f190-4e40-88a6-298fb694277a)
+
+
+
+##  개발 컨셉 
  - 데이터 도식화를 통해 보기 쉽게 모듈화
  - 한 화면에서 다양한 데이터를 볼 수 있도록 통합정보시스템 구축
  - 다양한 데이터 표현방식을 위한 오픈소스 및 오픈 API를 활용한 플랫폼 구성
