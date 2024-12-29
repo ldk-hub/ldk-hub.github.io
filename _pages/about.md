@@ -7,50 +7,70 @@ last_modified_at: 2021-08-02T06:22:00+09:00
 toc: true
 ---
 
-# 이력 소개
+## 기술 스킬셋
+```
+language : JAVA JDK18 , Javascript
+framework : Spring FrameWork, Spring Boot3, Spring Security, querydsl, 
+DB : OracleDB, Postgresql-DB, Mysql, Maria DB
+UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery, vue3
+etc : Mybatis, jpa, jenkins, docker, linux, postman, sourcetree, intelliJ 
+Server : 온프레임, 클라우드(AWS, Azure)  
+OS : 리눅스, 윈도우서버 등  
+```
+
 ## 실무 경력 
 ### 회사명 : NHNDATA 2022.12 ~ 재직중
-프로젝트 : 인스타그램 자동화 솔루션 플랫폼 개발
-환경 : JAVA18, SpringBoot3, SpringSecurity5, Mysql, mariaDB, AWS, Lombok, JPA, querydsl, nativequery, Meta(페북, 인스타)API, ERD, vue.js, 깃허브, 소스트리
-업무 : 인스타그램 자동화 답장 마케팅 솔루션 시스템 PL담당, 모델링, 백엔드 개발
+* 기술 스택: Java, Spring Boot, Spring Security, MySQL, MariaDB, JPA, Querydsl, Meta API (Facebook, Instagram), Vue.js, Jenkins, Gradle, Linux
+* 클라우드 인프라 : AWS (RDS, S3, CloudWatch, EKS)
+* 개발 도구: IntelliJ, GitHub, SourceTree, ERD 설계
+
+프로젝트 : 인스타그램 자동화 솔루션 플랫폼
+- 레퍼럴 파트너 서비스 API 및 어드민 시스템 개발
+- 회원가입 및 보안 이메일 인증 API 구현
+- 트래픽 통계 대시보드 API 설계 및 개발
+- 이벤트 별 이메일 자동 발송 시스템 개발
+- 스케줄러 기능 및 META API 연동 (인스타그램 자동화 기능)
+- DB 설계 및 아키텍처 설계
+- AWS Aurora MySQL 운영 및 AWS 서비스 관리
+
+업무 실적
+- 서비스 안정화: 2024년 1월 플랫폼 론칭 및 안정적 운영
+- 트래픽 처리 능력 향상: 일 트래픽 50만 돌파
+- 협업 강화: QA, 기획, FE, 인프라 등 부서 간 원활한 소통으로 개발 속도와 품질 향상
+- 코드 품질 개선: 코드 리뷰 문화 도입 및 정착
 
 ### 회사명 : 코스콤 (한국거래소 계열사) 2020.12 ~ 2022.12
-프로젝트 : 메시지 통신 미들웨어 모니터링 웹 시스템 구축  
-환경 : JAVA, SpringBoot, SpringSecurity, PostgreSQL, Lombok  JPA, JNI, 메시지큐 엔진 등  
-업무 : 메세지 통신 모니터링 시스템 구축 설계 및 서비스 등  
+* 기술스택 : JAVA, SpringBoot, SpringSecurity, PostgreSQL, Mybatis, Lombok JPA, JNI, Linux, jsp, jquery, ajax, Bootstrap, jsp, jquery, ajax 등
 
-프로젝트 : 매칭 엔진 검증  Saas플랫폼  POC프로젝트  
-환경 : JAVA, SpringBoot, SpringSecurity, PostgreSQL, Lombok, JNI, Mybatis, 내부 매칭엔진 라이브러리 등  
-업무 :  가상자산거래소를 통한 매칭엔진 시스템 JAVA 환경에서의 매칭 엔진 퍼포먼스 검증 사업   
+프로젝트: 메시지 통신 모니터링 시스템 구축 프로젝트
+- 웹 시스템 개발 및 미들웨어 모듈 연동
+- C++ 환경 JAVA 환경의 메세지큐 프로세스 추적 시스템 개발
 
-프로젝트 :  주식시스템 통합개발툴 시스템 CS 운영  
-환경 : 리눅스, 프로프레임, 에피소드, RTC, JEUS, WEBTOB 등  
-업무 : RCP 기반 주식시스템  도메인 기술 개발툴 운영   
+프로젝트: SaaS 플랫폼 엔진 검증 POC 프로젝트
+- 내부 매칭 엔진 JAVA 환경에서의 퍼포먼스 검증 POC 개발
+- FE/BE 웹 기반 가상 매칭 체결 풀스택 개발 담당 
+- 매칭엔진 미들웨어 JNI 연동 개발
 
-프로젝트 :  KRX 한국거래소 주식시장 시스템 관제  
-업무 : 로그 분석, 시스템 점검, 시스템 이슈발생 대응, 당번근무 등  
+프로젝트: proframe 툴 서버 운영
+- 관련기술 : 리눅스, proframe, 에피소드, RTC, JEUS, WEBTOB 등
+- 업무 : Proframe 서버 시스템 담당, 서버 운영/유지보수 업무 담당
 
-### LG 에스앤아이코퍼레이션 2018.08 ~ 2020.05  
-프로젝트 : 화재수신반 실시간 조작감시 시스템 구축, 최적기동 시스템 개발, 냉설비 관리 시스템 개발  
-업무 : 에너지 사업 및 실시간 감시 웹 기반 설계 및 시스템 개발, 운영  
-환경 : Java, 자바스크립트, 제이쿼리, AJAX, 스프링부트, 부트스트랩, JPA, 마이바티스, 포스트그레스DB, Tui-grid 등  
+### LG 서브원 2018.08 ~ 2020.05  
+* 기술스택 : Java, JS, JQUERY, AJAX, SpringBoot, Bootstrap, JPA, Mybatis, PostgreSQL, Tui-Grid 등
+* 클라우드 인프라 : MS azure, 이중화구성, DMZ구성, 멀티팩터, WAF, L7, PostgreSQL, PaaS
 
-프로젝트 : SOS 시스템 웹 파트 운영  
-환경 : JAVA, 스프링FW, 오라클, 포스트그레스DB, Java, 마이바티스 등  
+프로젝트 : 스마트 오피스 최적기동 POC 프로젝트 시스템 개발 , 화재수신반 조작감시 시스템 구축
+업무 : 웹 / 모바일 기반 설계 및 시스템 개발, 운영
 
-프로젝트 : MS Azure 클라우드 운영 담당  
-업무 : 클라우드 서버 설계 및 이관 계획 총괄, 서버 운영 업무 담당  
-키워드 : WAF, 포스트그레스 DB, 이중화, Paas, 윈도우,리눅스 서버, 로드 밸런싱  
-
-프로젝트 :  출입통제 선별 보안 시스템  
-업무: ID 카드 출입통제 확률정책 파트 개발  
-환경 : JAVA, 제이쿼리, AJAX, 마이바티스, PL/SQL, 데브온FW, 오라클, 티베로, SVN, 제우스, 웹투비  
+프로젝트 : 시설물 SOS 긴급 출동 시스템 웹 백엔드 운영
+업무 : 시스템 운영
 
 ### 한국상조공제조합 2016.01 ~ 2017.04
-업무 : 통합정보시스템 개발, 반응형 웹, 소켓 모듈 운영, 인프라 관제, 운영 등  
-솔루션 : 웹스퀘어, 오즈리포트 툴, 제니퍼MR  
-환경 : JAVA, 제이쿼리, AJAX, 스프링FW, 오라클, 마이바티스, SVN, 자바스크립트  
-온프레임 서버 : 제우스, 웹투비, 리눅스, 윈도우 서버  
+* 기술스택 : JAVA, SpringFW, Bootstrap, JS, AJAX, JQUERY, ORACLE, I-BATIS, SVN, JSTL, Mybatis
+* 온프레임인프라 : TMAX(JEUS, WEBTOB), LINUX, WINDOW SERVER, NETBACKUP
+* 솔루션 : 웹스퀘어, 오즈리포트, SMS API 등
+
+업무 : 내부 서비스 통합정보시스템 개발, 반응형 웹, 소켓 모듈 운영, 인프라 관제, 운영 등
 
 ## 교육이수 이력  
 호돌맨의 요절 복통 개발 인프런 NHN교육
@@ -77,24 +97,17 @@ MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워�
 2013.10.01 ~ 2014.01.31	웹 콘텐츠 개발 전문과정  
 JAVA기반 웹 시스템 개발, MVC패턴, 포트폴리오(분석, 설계, 구현, 운영 테스트)  
 
-## 개인프로젝트 
-![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)  
-
-바로가기 : https://github.com/ldk-hub/DashBoard  
-
 ## 보유 자격증
 1. 정보처리기사
 2. 컴퓨터 활용능력 1급
 3. MOS MASTER
 4. 정보기기운용기능사
 
-## 기술 스킬셋
-```
-language : JAVA JDK18 , Javascript
-framework : Spring FrameWork, Spring Boot3, Spring Security5.0 
-DB : OracleDB, Postgresql-DB, Mysql, Maria DB
-UI : gentelella, Tiles3, Bootstrap, jsp, ajax, jquery, vue3, quasar
-etc : Mybatis, jpa, lombok ,querydsl, nativequery
-Server : 온프레임, 클라우드(Azure)  
-OS : 리눅스, 윈도우서버 등  
-```
+
+
+
+
+## 개인프로젝트 
+![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)  
+
+바로가기 : https://github.com/ldk-hub/DashBoard  
