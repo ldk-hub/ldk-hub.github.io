@@ -17,21 +17,17 @@ draft: "no"
 toc: true
 ---
 
+##  프로젝트 
+[깃허브 프로젝트 코드 경로](https://github.com/ldk-hub/DashBoard)
+
 ## 개발자 기술스택
 ![화면 캡처 2024-10-19 124502](https://github.com/user-attachments/assets/25e51d9b-f190-4e40-88a6-298fb694277a)
-
-
 
 ##  개발 컨셉 
  - 데이터 도식화를 통해 보기 쉽게 모듈화
  - 한 화면에서 다양한 데이터를 볼 수 있도록 통합정보시스템 구축
  - 다양한 데이터 표현방식을 위한 오픈소스 및 오픈 API를 활용한 플랫폼 구성
  - 실험적 샘플 기능을 활용한 다양한 확장성 실무에 접목 
-
-##  소스 관련 리뷰
-자세한 개발 프로젝트 내역은 
-https://github.com/ldk-hub/DashBoard
-에서 확인하실 수 있습니다.  
 
 ##  Main Page
 ![녹화_2019_12_28_13_50_01_980](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif)
