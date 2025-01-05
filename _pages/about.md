@@ -7,7 +7,7 @@ last_modified_at: 2021-08-02T06:22:00+09:00
 toc: true
 ---
 
-## 기술 스킬셋
+## 기술 스택
 ```
 language : JAVA JDK18 , Javascript
 framework : Spring FrameWork, Spring Boot3, Spring Security, querydsl, 
@@ -18,7 +18,7 @@ Server : 온프레임, 클라우드(AWS, Azure)
 OS : 리눅스, 윈도우서버 등  
 ```
 
-## 실무 경력 
+## 경력 상세
 ### 회사명 : NHNDATA 2022.12 ~ 재직중
 * 기술 스택: Java, Spring Boot, Spring Security, MySQL, MariaDB, JPA, Querydsl, Meta API (Facebook, Instagram), Vue.js, Jenkins, Gradle, Linux
 * 클라우드 인프라 : AWS (RDS, S3, CloudWatch, EKS)
@@ -67,47 +67,7 @@ OS : 리눅스, 윈도우서버 등
 
 ### 한국상조공제조합 2016.01 ~ 2017.04
 * 기술스택 : JAVA, SpringFW, Bootstrap, JS, AJAX, JQUERY, ORACLE, I-BATIS, SVN, JSTL, Mybatis
-* 온프레임인프라 : TMAX(JEUS, WEBTOB), LINUX, WINDOW SERVER, NETBACKUP
-* 솔루션 : 웹스퀘어, 오즈리포트, SMS API 등
-
-업무 : 내부 서비스 통합정보시스템 개발, 반응형 웹, 소켓 모듈 운영, 인프라 관제, 운영 등
-
-## 교육이수 이력  
-호돌맨의 요절 복통 개발 인프런 NHN교육
-2023. 09 ~ 2023. 11
-Spring Boot를 활용한 백엔드부터 Vue.js 모던 프론트엔드 스택을 연동한 서비스 완성 교육 - JAVA, SpringBoot, springsecurity, Vue.js AWS 클라우드
-
-토비의 스프링부트 인프런 NHN교육
-2023. 03 ~ 2023. 05
-스프링 부트의 동작 원리, 스프링 부트가 제공하는 기술과 구성을 파악하고 활용하는 방법, 스프링 프레임워크의 핵심 기술과 활용법, 나만의 스프링 부트 모듈을 만드는 방법
-
-코스콤 역량강화 교육 코스콤  
-2022.06.14 ~ 2022.06.17 이도원
-java, spring cloud로 배우는 MSA 설계와 DEVOPS 개발 교육  
-  
-2021.09.07 ~ 2021.09.09 이동욱
-SPRING BOOT를 사용한 웹서비스 백엔드 개발 교육  
-  
-2021.12.08 ~ 2021.12.10 최원영
-APACHE KAFKA 애플리케이션 프로그래밍  
-
-2019.01.15 ~ 2019.01.18	MS-Azure 클라우드 실무자 교육 
-MS-Azure의 서버 담당자들의 교육과정으로 서버 생성, 네트워크 구성, 스토리지 관리, Paas 등 클라우드 관리의 기초에 대한 전반적인 교육을 수료 
-
-2013.10.01 ~ 2014.01.31	웹 콘텐츠 개발 전문과정  
-JAVA기반 웹 시스템 개발, MVC패턴, 포트폴리오(분석, 설계, 구현, 운영 테스트)  
-
-## 보유 자격증
-1. 정보처리기사
-2. 컴퓨터 활용능력 1급
-3. MOS MASTER
-4. 정보기기운용기능사
-
-
-
-
-
-## 개인프로젝트 
+* 온프레임인프라 : TMAX(JEUS, WEBTOB), LINUX,오 
 ![screencapture-localhost-9110-dashboard-2019-12-28-13_21_32](https://user-images.githubusercontent.com/12209348/71538837-455f3000-2975-11ea-9f2c-240ce6180186.png)  
 
 바로가기 : https://github.com/ldk-hub/DashBoard  
