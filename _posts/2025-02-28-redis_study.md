@@ -15,6 +15,7 @@ categories: 열공모드
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+layout: single
 ---
 
 
