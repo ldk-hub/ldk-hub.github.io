@@ -17,18 +17,72 @@ draft: "no"
 toc: true
 ---
 
-##  프로젝트 
-[깃허브 프로젝트 코드 경로](https://github.com/ldk-hub/DashBoard)
+## 프로젝트 개요
+- 다양한 데이터를 한 화면에서 직관적으로 시각화하는 통합 대시보드 시스템 구축
+- 모듈화와 확장성을 고려한 반응형 Hybrid Web UI 개발
+- 카카오맵, 카카오 OAuth 등 외부 오픈 API 적극 활용
 
-## 개발자 기술스택
-![화면 캡처 2024-10-19 124502](https://github.com/user-attachments/assets/25e51d9b-f190-4e40-88a6-298fb694277a)
+[GitHub 프로젝트 코드](https://github.com/ldk-hub/DashBoard)
 
-##  개발 컨셉 
- - 데이터 도식화를 통해 보기 쉽게 모듈화
- - 한 화면에서 다양한 데이터를 볼 수 있도록 통합정보시스템 구축
- - 다양한 데이터 표현방식을 위한 오픈소스 및 오픈 API를 활용한 플랫폼 구성
- - 실험적 샘플 기능을 활용한 다양한 확장성 실무에 접목 
+---
 
+## 개발자 기술 스택
+![기술 스택 이미지](https://github.com/user-attachments/assets/25e51d9b-f190-4e40-88a6-298fb694277a)
+
+---
+## 개발 컨셉
+- 데이터 도식화 기반의 직관적 정보 제공
+- 다양한 데이터 표현을 위한 오픈소스 및 API 활용
+- 실험적 샘플 기능 접목을 통한 확장성 확보
+- 한 화면 내 다양한 데이터 통합 조회 가능
+
+---
+
+## 주요 기능 및 완료 내역
+- ✅ Spring Security 기반 로그인/로그아웃 및 세션 처리 (JPA 사용)
+- ✅ 카카오 OAuth2 소셜 로그인 연동 및 자동 로그인 처리
+- ✅ 실시간 웹소켓 채팅 기능 (룸 형식, 70% 개발 완료)
+- ✅ 대시보드 실시간 교통·자전거 도로 정보 API 연동
+- ✅ PC/서버 실시간 상태 모니터링 (Sigar API + amCharts4)
+- ✅ Oracle → PostgreSQL DB 마이그레이션 완료
+- ✅ UI 다크테마 적용 및 사이드바 시계 컬러 변경 기능
+- ✅ 이미지 업로드 및 팝업 호출 기능 구현
+- ✅ SpotBugs 정적 분석으로 취약점 개선 완료
+
+---
+
+## 개발 예정 사항
+- JPA 양방향/역방향 조회, fetch join, Lazy 옵션 활용 및 최적화
+- 람다, 스트림, Optional, LocalDateTime 활용 리팩토링
+- 주요 기능 테스트 코드 작성 및 보완
+
+---
+
+## 개발 환경
+| 구분       | 상세 내용                                      |
+|------------|-----------------------------------------------|
+| 언어       | Java 8                                        |
+| 프레임워크 | Spring Boot, Spring Security                   |
+| DB         | OracleDB (기존), PostgreSQL (이관 완료)       |
+| UI         | gentelella, Tiles3, Bootstrap, TUI-GRID, amCharts4 |
+| API        | Kakao Maps, Kakao OAuth2, FullCalendar, Skycons |
+| 기타       | MyBatis, JPA, Lombok                           |
+
+---
+
+## 개발 이슈 및 개선 과제
+| 이슈 내용                              | 대응 및 계획                                  |
+|-------------------------------------|---------------------------------------------|
+| 날씨 API 서비스 종료로 인한 정보 부재      | 공공데이터 기반 API로 전환 예정                |
+| 대시보드 성능 저하 문제                  | 라이브러리 최적화 및 불필요 코드 제거 진행 중     |
+| 이미지 처리 시 OS별 경로 차이               | 서버별 분기 처리 로직 개선 예정                   |
+| 다크테마 적용 중 UI 크래시 발생              | UI 리팩토링 및 버그 수정 완료                     |
+| MyBatis → JPA 전환 과정에서 호환성 문제 발생  | 단계적 전환과 테스트 보완 진행 중                  |
+| 카카오맵 API 변경에 따른 CORS 이슈 발생      | API 호출 방식 및 CORS 정책 재설정 작업 진행 중      |
+
+---
+
+## 이미지 갤러리
 ##  Main Page
 ![녹화_2019_12_28_13_50_01_980](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif)
 
@@ -73,11 +127,6 @@ toc: true
 
 ### Trade Page
 ![5page](https://user-images.githubusercontent.com/12209348/162602694-10ef290d-82fa-4b89-8cea-536b934f73ac.png)
-
-### 개발예정
-1. jpa - 양방향조회, 역방향조회, fetch조인, lazy옵션, spring jpa, querydsl   
-2. 주요 기능 테스트 코드 작성
-3. 람다, 스트림 LocalTimeDate, Optional 사용 및 리팩토링 작업 
 
 
 ### 완료내역
@@ -135,36 +184,3 @@ toc: true
  - 차트 : amcharts4  
  - 캘린더 : fullcalendar, bootstrap-daterangepicker, DateJS  
  - 기타 : Dropzone, NProgress, iCheck, Flot  
-  
-###  개발환경  
-  - language : JAVA1.8  
-  - framework : Spring Boot, Spring Security  
-  - DB : OracleDB, Postgresql-DB  
-  - UI : gentelella, Tiles3, Bootstrap  
-  - etc : Mybatis, jpa, lombok  
-
-### 개발이슈
-1. SMTP 비밀번호 찾기 properties 정보 계정 정보 삭제
-2. 날씨 API darksky(유료), 구글 웨더(서비스 종료), skplant 웨더 API(서비스종료)로 인한 날씨정보 API 부재로 하드코딩 -> 공공데이터 전환예정
-3. 풀캘린더 일정 등록 및 삭제 로직 개발 중 
-4. local 장비 서버 및 pc 정보 차트연동
-5. 세계 인구수 정보 보다 다음(카카오) 지도 api를 통한 지역정보를 가져오는게 효율적일것으로 판단하여 변경 
-6. 시각적효과를 위한 백그라운드 컬러 검정(Dark)계열로 변경
-7. 사이드바 시계 30초 단위 컬러변경 기능 추가
-9. tui-grid 업데이트 bootstrap-timepicker 업데이트 완료
-10. 이미지 처리시 서버의 OS에 따라 path 설정 및 처리방식이 다름.
-11. 기존 oracle -> postgresql DB변환 하였음.
-12. echart경우 중국어라서 한계점이 많았음. ->amchart4같은 경우 최근 이슈되기도하고 반응형에서도 대응이 확실하여 전환결정.
-13. 멀티라인차트 DB 연동 중 누적방식을 채택(DB데이터정보 바로 찍는방식,누적방식 등 커스터마이징 가능) 차트내 표출갯수 15개 한계(인터벌로 호출주기로 갱신가능)
-14. 멀티라인차트,게이지차트 두가지를 한화면 내에서 동시 처리하는 과정에서 속도이슈 발생 최적화 방안 검토예정
-15. 쓰지 않는 라이브러리들 전부 제거 작업 ->로딩 및 속도저하 이슈 발생
-16. 다크테마 전환 과정 중 발생한 UI크래시  부분 개선
-17. 오라클 -> postgresql 전환중 마이바티스 전면 수정으로인한 이슈로 Mybatis -> JPA 전환 검토
-18. daum 지도에서 카카오 지도 API 제공 기한 지나서 크로스 오리진 이슈 발생 -> kakao로 소스 변경완료
-19. tui-grid ver up 마이그레이션작업(그리드 최적화 및 속도 개선) 타입스크립트 기반 최신버전
-20. 카카오맵 API 최적화 및 amcharts  
-
-##  개선해야하는부분
-1. 라이브러리 통합 저장소 추가 /dist 디렉토리 사라지는 버그발생
-2. 일부 라이브러리 CORS 이슈 발생
-3. dashboard 속도저하 이슈 발생
