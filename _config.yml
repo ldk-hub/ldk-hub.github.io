@@ -81,19 +81,7 @@ analytics:
 
 
 # Site Author
-author:
-  name             : "이동옥 Lee Dong-ok"
-  avatar           : "/assets/images/profile.PNG" 
-  bio              : "JAVA Developer"
-  location         : "Korea, Seoul"
-  email            : 
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/ldk-hub"
+author: ldk
  
 # Site Footer
 footer:
