@@ -2,8 +2,8 @@
 title: "2016 KSUG 세미나"
 author: "이동옥"
 date: 2020-03-20 08:26:28 +0900
-categories: [민망함은 나의몫, spring 세미나]
-draft: false
+categories: [민망함은 나의몫]
+draft: "no"
 toc: true
 ---
 ## POST STORY
