@@ -1,9 +1,10 @@
 ---
-permalink: /about/
+layout: single
 title: "개발자 소개"
-excerpt: "About Me"
-last_modified_at: 2025-06-29T11:00:00+09:00
+permalink: /about/
 toc: true
+toc_sticky: true
+toc_label: "On this page"
 ---
 
 # 👨‍💻 소개
