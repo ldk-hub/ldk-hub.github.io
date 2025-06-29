@@ -10,10 +10,6 @@ date: 2025-06-29 02:00:00 +0900
 # 태그를 입력
 tags: ["API연동","자바개발"]
 categories: 대시보드
-# 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
-# image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
-# 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
-draft: "no"
 toc: true
 ---
 
