@@ -1,5 +1,9 @@
 main:
-  - title: "개발자소개"
-    url: "/about/"
   - title: "포스트"
-    url: https://ldk-hub.github.io/
+    url: "/"
+  - title: "카테고리"
+    url: "/categories/"
+  - title: "태그"
+    url: "/tags/"
+  - title: "소개"
+    url: "/about/"

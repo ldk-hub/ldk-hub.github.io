@@ -1,8 +1,8 @@
 ldk:
   name        : "이동옥 Lee Dong-ok"
   avatar      : "/assets/images/profile.PNG"
-  bio         : "JAVA Developer"
-  location    : "Korea, Seoul"
+  bio         : "Senior Full-stack Engineer | AI Harness Engineering | BMAD Specialist"
+  location    : "Seoul, South Korea"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope"

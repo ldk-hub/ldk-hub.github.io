@@ -3,12 +3,12 @@ remote_theme           : "ldk-hub/minimal-mistakes" # 원격테마 설정
 minimal_mistakes_skin    : "dark" # "air", "aqua","default", "contrast", "neon", "dirt", "mint", "plum", "sunrise" 테마내부 디자인변경
 
 # Site Settings
-locale                   : "en-US"
-title                    : "Devlog"
+locale                   : "ko-KR"
+title                    : "LDK Intelligence"
 title_separator          : 
-subtitle                 : "LDK`s Coding Study Story"
-name                     : "개발 히스토리"
-description              : "develope Blog"
+subtitle                 : "AI 에이전트와 하네스 엔지니어링의 기록"
+name                     : "LDK Intelligence"
+description              : "AI-Driven Development & Harness Engineering Devlog"
 url                      : "https://ldk-hub.github.io"        # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ldk-hub/ldk-hub"
@@ -63,7 +63,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : "/assets/images/bmad-monitor-preview.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
