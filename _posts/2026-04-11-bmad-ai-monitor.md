@@ -1,6 +1,9 @@
 ---
 title: "[BMAD] AI 모니터링의 진화: 2D 픽셀 RPG 스타일 가상 오피스 구현기"
 excerpt: "단순한 대시보드를 넘어, BMAD 방법론과 픽셀 아트를 결합한 생동감 넘치는 AI 에이전트 모니터링 시스템 구축기입니다."
+date: 2026-04-11 14:00:00 +0900
+author: ldk
+author_profile: true
 categories:
   - Project
   - AI
@@ -14,6 +17,8 @@ header:
   teaser: /assets/images/bmad-monitor-preview.png
   overlay_image: /assets/images/bmad-monitor-preview.png
   overlay_filter: 0.5
+toc: true
+toc_sticky: true
 ---
 
 어제 개발을 마친 **BMAD 2D Pixel RPG Monitor** 프로젝트의 핵심 내용과 구현 과정을 공유합니다.
