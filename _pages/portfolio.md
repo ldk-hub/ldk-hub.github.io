@@ -17,18 +17,13 @@ author_profile: true
 
 단순 텍스트 기반의 로그 뷰어 한계를 탈피하고, AI 에이전트들의 사고 과정과 협업 상태를 **16-bit 픽셀아트 기반의 가상 오피스**로 시각화한 지능형 모니터링 생태계 프로젝트입니다.
 
-<div class="notice--info">
-  <h4>🔗 프로젝트 바로가기</h4>
-  <a href="https://github.com/ldk-hub/bmad-2d-monitor" class="btn btn--primary" target="_blank">GitHub Repository</a>
-  <a href="/project/ai/bmad-ai-monitor/" class="btn btn--success">프론트엔드 아키텍처 리뷰</a>
-  <a href="/project/ai/bmad-ai-monitor-system/" class="btn btn--success">백엔드 아키텍처 리뷰</a>
-</div>
+**🔗 프로젝트 바로가기**  
+[GitHub Repository](https://github.com/ldk-hub/bmad-2d-monitor){: .btn .btn--primary} [프론트엔드 아키텍처 리뷰](/project/ai/bmad-ai-monitor/){: .btn .btn--success} [백엔드 아키텍처 리뷰](/project/ai/bmad-ai-monitor-system/){: .btn .btn--success}
+{: .notice--info}
 
 ### 🖼 시스템 렌더링 화면
-![AI Monitor Preview](/assets/images/bmad-monitor-preview.png)
-*(위 뷰어는 DOM이 아닌 Canvas 렌더링으로 60FPS를 유지하며 2.5D 입체 환경을 시각화합니다.)*
-
-<br/>
+![AI Monitor Preview](/assets/images/bmad-monitor-preview.png){: .align-center style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 0.5rem;"}
+<div class="text-center" style="font-size: 0.9em; color: gray; margin-bottom: 2rem;">(위 뷰어는 DOM이 아닌 Canvas 렌더링으로 60FPS를 유지하며 2.5D 입체 환경을 시각화합니다.)</div>
 
 ### 💡 Engineering Highlights (핵심 기술 및 문제 해결)
 
@@ -56,31 +51,22 @@ author_profile: true
 
 이기종 데이터베이스 마이그레이션부터 외부 오픈 API 통합, 그리고 실시간 시스템 메트릭 시각화까지 백엔드 코어 엔지니어링의 정수를 담아낸 **하이브리드 웹 기반 통합 대시보드 시스템**입니다.
 
-<div class="notice--info">
-  <h4>🔗 프로젝트 바로가기</h4>
-  <a href="https://github.com/ldk-hub/DashBoard" class="btn btn--primary" target="_blank">GitHub Repository</a>
-  <a href="/대시보드/realtime_system/" class="btn btn--success">마이그레이션 및 최적화 리뷰</a>
-</div>
+**🔗 프로젝트 바로가기**  
+[GitHub Repository](https://github.com/ldk-hub/DashBoard){: .btn .btn--primary} [마이그레이션 및 최적화 리뷰](/대시보드/realtime_system/){: .btn .btn--success}
+{: .notice--info}
 
 ### 🖼 시스템 렌더링 및 인터랙션 화면
 
 **1. 대시보드 메인 & 실시간 시스템 자원 모니터링**  
 *(Sigar API 및 amCharts4를 활용한 실시간 메트릭 모니터링 렌더링)*
-<div style="text-align:center; margin-bottom: 2rem;">
-  <img src="https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif" alt="Main Dashboard" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-</div>
+![Main Dashboard](https://user-images.githubusercontent.com/12209348/71539042-5dd14980-2979-11ea-973a-dc58d91aa385.gif){: .align-center style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;"}
 
 **2. 실시간 양방향 WebSocket 채팅 인터페이스**
-<div style="text-align:center; margin-bottom: 2rem;">
-  <img src="https://user-images.githubusercontent.com/12209348/170851816-fd207a88-1003-4120-bb40-73d88d1864f4.gif" alt="Chatting" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-</div>
+![Chatting](https://user-images.githubusercontent.com/12209348/170851816-fd207a88-1003-4120-bb40-73d88d1864f4.gif){: .align-center style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;"}
 
 **3. Kakao OAuth2 소셜 로그인 통합 연동**
-<div style="text-align:center; margin-bottom: 2rem;">
-  <img src="https://user-images.githubusercontent.com/12209348/93009605-071aa700-f5be-11ea-919d-d857eb2b3f91.gif" alt="Social Login" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-</div>
+![Social Login](https://user-images.githubusercontent.com/12209348/93009605-071aa700-f5be-11ea-919d-d857eb2b3f91.gif){: .align-center style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 2rem;"}
 
-<br/>
 
 ### 💡 Troubleshooting & Architecture (문제 해결 과정)
 
@@ -104,4 +90,4 @@ author_profile: true
 ---
 
 <br/>
-<p class="text-center"><em>본 포트폴리오의 각 프로젝트는 기획부터 프론트엔드 최적화, 백엔드 아키텍처 설계 및 인프라 운영까지 본인이 주도적으로 진행한 내역입니다.</em></p>
+<div class="text-center" style="font-style: italic; color: gray;">본 포트폴리오의 각 프로젝트는 기획부터 프론트엔드 최적화, 백엔드 아키텍처 설계 및 인프라 운영까지 본인이 주도적으로 진행한 내역입니다.</div>
