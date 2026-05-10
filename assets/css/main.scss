@@ -4,65 +4,70 @@
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
-
 // 1. Import Trendy Korean & English Font (Pretendard)
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 // ==========================================
-// CLEAN MINIMALIST UI (Premium Dark)
+// VARIABLE OVERRIDES (Clean Minimalist Dark)
+// ==========================================
+// These must be defined before importing the theme
+$sans-serif: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$serif: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$monospace: "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace !default;
+
+$background-color: #121212 !default; // Clean minimalist dark
+$text-color: #d1d5db !default;
+$muted-text-color: #9ca3af !default;
+$primary-color: #60a5fa !default;
+$border-color: rgba(255, 255, 255, 0.08) !default;
+$footer-background-color: #0a0a0a !default;
+
+$masthead-link-color: #d1d5db !default;
+$masthead-link-color-hover: #ffffff !default;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+// ==========================================
+// EXTRA CUSTOM UI OVERRIDES
 // ==========================================
 
-// 1. Global Typography
+// Global Typography overrides
 body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #111111 !important; 
-  color: #d1d5db; // Soft gray
-}
-
-h1, h2, h3, h4, h5, h6, .site-title {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  color: #ffffff !important;
+  font-family: $sans-serif;
   letter-spacing: -0.01em;
 }
 
-// 2. Clean Navigation (Masthead)
+h1, h2, h3, h4, h5, h6, .site-title {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+// 1. Clean Navigation (Masthead)
 .masthead {
-  background: rgba(17, 17, 17, 0.8) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(18, 18, 18, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.masthead__menu-item a {
-  font-weight: 400;
-  color: #9ca3af !important;
-  transition: color 0.2s ease;
-  &:hover {
-    color: #ffffff !important;
-  }
-}
-
-// 3. Simple & Elegant Post Cards
-.entries-grid .archive__item {
-  height: 100%;
-}
+// 2. Simple & Elegant Post Cards
 .archive__item {
   background: #1a1a1a;
   border-radius: 12px;
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: translateY(-2px);
     border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -74,7 +79,8 @@ h1, h2, h3, h4, h5, h6, .site-title {
     color: #ffffff;
     text-decoration: none;
     &:hover {
-      text-decoration: underline;
+      color: $primary-color;
+      text-decoration: none;
     }
   }
 }
@@ -85,26 +91,45 @@ h1, h2, h3, h4, h5, h6, .site-title {
   line-height: 1.6;
 }
 
+// 3. Sidebar Profile Fixes
+.author__avatar img {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px;
+  background-color: #1a1a1a;
+  max-width: 110px;
+  width: 110px;
+  height: 110px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover; /* Prevents oval shape if image is not square */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.author__name {
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.author__bio {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
 // 4. Buttons and Tags (Subtle)
 .btn {
   border-radius: 6px;
   font-weight: 500;
-}
-.btn--primary {
-  background-color: #333333 !important;
-  border-color: #333333 !important;
-  color: #ffffff !important;
-  &:hover {
-    background-color: #444444 !important;
-    border-color: #444444 !important;
-  }
+  transition: all 0.2s;
 }
 
 .page__taxonomy-item {
   border-radius: 4px;
   background-color: #262626;
   color: #d1d5db;
-  padding: 0.2em 0.5em;
+  padding: 0.3em 0.6em;
+  font-size: 0.85em;
+  transition: all 0.2s;
   &:hover {
     background-color: #333333;
     color: #ffffff;
@@ -112,24 +137,18 @@ h1, h2, h3, h4, h5, h6, .site-title {
   }
 }
 
-// 5. Sidebar Profile
-.author__avatar img {
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2px;
-  background-color: #1a1a1a;
-  max-width: 110px;
-}
-.author__name {
-  color: #ffffff;
-  font-weight: 600;
-}
-.author__bio {
-  color: #9ca3af;
-  font-size: 0.9rem;
+// 5. Code blocks styling
+div.highlighter-rouge, figure.highlight {
+  background: #0d0d0d !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
-// 6. Content Post Area
+// 6. Fix for mismatched backgrounds across layouts
+.page__inner-wrap, .sidebar, .archive {
+  background-color: transparent !important;
+}
+
 .page__content {
   color: #d1d5db;
   line-height: 1.7;
@@ -140,7 +159,7 @@ h1, h2, h3, h4, h5, h6, .site-title {
   }
   
   a {
-    color: #60a5fa; // Soft blue for links
+    color: $primary-color;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -150,7 +169,7 @@ h1, h2, h3, h4, h5, h6, .site-title {
 
 // 7. Footer
 .page__footer {
-  background-color: #111111 !important;
+  background-color: $footer-background-color !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
   color: #6b7280 !important;
 }
