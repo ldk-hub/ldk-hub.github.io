@@ -15,6 +15,7 @@ categories: 클라우드 서버
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "1. 클라우드 보안 TIP"
 ---
 ### Azure 클라우드 운영
 1. 클라우드 보안 TIP  

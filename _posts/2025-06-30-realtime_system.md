@@ -19,6 +19,7 @@ author_profile: true
 toc: true
 toc_sticky: true
 toc_label: "On this page"
+excerpt: "다양한 오픈 API와 시스템 메트릭을 한 화면에서 직관적으로 시각화하고, 실시간 통신 및 상태 모니터링 기능을 제공하는 **하이브리드 웹 기반의 통합 대시보드 시스템**입니다."
 ---
 
 ## 📌 프로젝트 개요

@@ -15,6 +15,7 @@ categories: JAVA
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "프로젝트 개요 : MSA 프로젝트를 직접 구성해보고 앱에서 각종 제어를 실습해보는 목적으로 프로젝트를 진행 중."
 ---
 
 # Micro Service Architecture (MSA)

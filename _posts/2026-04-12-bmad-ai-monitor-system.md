@@ -1,13 +1,11 @@
 ---
-title: "[Project] BMAD AI Monitoring System: Pixel Art로 진화하는 에이전트 생태계"
+title: "[Project] AI Monitoring System: Pixel Art로 진화하는 에이전트 생태계"
 excerpt: "Spring AI와 BMAD 방법론을 결합하여 구축한 차세대 AI 에이전트 모니터링 시스템 구축기"
 categories:
   - Project
   - AI
 tags:
-  - Spring AI
-  - BMAD
-  - React
+  - Spring AI  - React
   - Pixel Art
   - Monitoring
 last_modified_at: 2026-04-12T15:20:00+09:00

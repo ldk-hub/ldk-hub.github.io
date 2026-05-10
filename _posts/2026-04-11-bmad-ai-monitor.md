@@ -1,5 +1,5 @@
 ---
-title: "[BMAD] AI 모니터링의 진화: 2D 픽셀 RPG 스타일 가상 오피스 구현기"
+title: "AI 모니터링의 진화: 2D 픽셀 RPG 스타일 가상 오피스 구현기"
 excerpt: "단순한 대시보드를 넘어, BMAD 방법론과 픽셀 아트를 결합한 생동감 넘치는 AI 에이전트 모니터링 시스템 구축기입니다."
 date: 2026-04-11 14:00:00 +0900
 author: ldk
@@ -7,9 +7,7 @@ author_profile: true
 categories:
   - Project
   - AI
-tags:
-  - BMAD
-  - React
+tags:  - React
   - Konva.js
   - Pixel Art
   - Harness Engineering

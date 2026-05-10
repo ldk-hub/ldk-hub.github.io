@@ -16,6 +16,7 @@ categories: 열공모드
 draft: "no"
 toc: true
 layout: single
+excerpt: "- 캐시, 캐싱"
 ---
 
 

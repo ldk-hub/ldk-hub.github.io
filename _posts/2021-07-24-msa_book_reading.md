@@ -15,6 +15,7 @@ categories: JAVA
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "요즘 다양한 플랫폼에서 클라우드 기반전략으로 시스템을 전향하고 있는추세였다. 내가근무했던 회사역시 클라우드화로 전향하기 시작했었고 클라우드 운영을 진행하는 과정에서 msa에 ..."
 ---
 ![gg](https://user-images.githubusercontent.com/12209348/100605351-26b6a580-334b-11eb-9785-7e1e5d79dbd0.PNG)
 

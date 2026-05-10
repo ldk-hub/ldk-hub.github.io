@@ -14,6 +14,7 @@ categories: 초보시절
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
+excerpt: "- 개발초보시절 개발했던 것이라 지금바라보면 한없이 초라한 내용이지만 이러한 것도 해보았다라는 점을 포스트하고싶어 올리게되었다."
 ---
 
 # SocketChatting App Sample Code

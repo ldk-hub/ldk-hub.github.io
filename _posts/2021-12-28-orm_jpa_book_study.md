@@ -9,12 +9,13 @@ date: 2021-12-28 08:26:28 -0400
 # abstract:
 # 태그를 입력
 tags: ["백엔드"]
-categories: 열공해야한다.
+categories: [Study]
 # 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "jpa예제코드 : https://github.com/holyeye/jpabook"
 ---
 
 # 자바 ORM 표준 JPA 프로그래밍 스터디 리뷰

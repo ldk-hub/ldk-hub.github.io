@@ -15,6 +15,7 @@ categories: DataBase
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "- DB사용빈도 높은 실무용 함수"
 ---
 
 ## DB 관련 리스트  

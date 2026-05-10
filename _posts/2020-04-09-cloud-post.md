@@ -15,6 +15,7 @@ categories: 클라우드 서버
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
 draft: "no"
 toc: true
+excerpt: "- 클라우드 네트워크 구성"
 ---
 ### MS-Azure Cloud Platform as a Service 교육 
 ### 서버 엔지니어 파트(2019.01.30)
