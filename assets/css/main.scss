@@ -11,215 +11,146 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 // ==========================================
-// MODERN UI OVERRIDES (Premium Trendy Dark Mode)
+// CLEAN MINIMALIST UI (Premium Dark)
 // ==========================================
 
-// 1. Typography & Global Colors
+// 1. Global Typography
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #e2e8f0; // Soft white for dark mode text
-  background-color: #0f172a !important; // Trendy Slate Dark background
+  background-color: #111111 !important; 
+  color: #d1d5db; // Soft gray
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .site-title {
   font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
-  color: #f8fafc;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #ffffff !important;
+  letter-spacing: -0.01em;
 }
 
-// 2. Glassmorphism Masthead (Navigation)
+// 2. Clean Navigation (Masthead)
 .masthead {
-  background: rgba(15, 23, 42, 0.75) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(17, 17, 17, 0.8) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: all 0.3s ease;
 }
 
 .masthead__menu-item a {
-  font-weight: 500;
+  font-weight: 400;
+  color: #9ca3af !important;
   transition: color 0.2s ease;
   &:hover {
-    color: #38bdf8 !important; // Neon Blue accent
+    color: #ffffff !important;
   }
 }
 
-.site-title {
-  font-weight: 800 !important;
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-// 3. Post Cards & Archive Items
+// 3. Simple & Elegant Post Cards
 .entries-grid .archive__item {
   height: 100%;
 }
 .archive__item {
-  background: #1e293b;
-  border-radius: 16px;
+  background: #1a1a1a;
+  border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s ease, border-color 0.2s ease;
   margin-bottom: 1.5rem;
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-    border-color: rgba(56, 189, 248, 0.3);
-  }
-}
-
-.archive__item-teaser {
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  img {
-    transition: transform 0.3s ease;
-  }
-  &:hover img {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 }
 
 .archive__item-title {
   margin-top: 0;
   font-size: 1.25em;
+  font-weight: 600;
   a {
-    color: #f8fafc;
+    color: #ffffff;
     text-decoration: none;
-    transition: color 0.2s;
     &:hover {
-      color: #38bdf8;
+      text-decoration: underline;
     }
   }
 }
 
 .archive__item-excerpt {
-  color: #94a3b8;
+  color: #9ca3af;
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-// 4. Buttons and Tags
-.btn, .pagination a, .pagination .current {
-  border-radius: 8px;
-  font-weight: 600;
-  text-transform: none;
-  transition: all 0.2s ease;
+// 4. Buttons and Tags (Subtle)
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
 }
-
 .btn--primary {
-  background-color: #38bdf8 !important;
-  border-color: #38bdf8 !important;
-  color: #0f172a !important;
-  
+  background-color: #333333 !important;
+  border-color: #333333 !important;
+  color: #ffffff !important;
   &:hover {
-    background-color: #0ea5e9 !important;
-    border-color: #0ea5e9 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+    background-color: #444444 !important;
+    border-color: #444444 !important;
   }
 }
 
 .page__taxonomy-item {
-  border-radius: 6px;
-  background-color: #334155;
-  color: #cbd5e1;
-  padding: 0.2em 0.6em;
-  transition: background-color 0.2s, color 0.2s;
-  
+  border-radius: 4px;
+  background-color: #262626;
+  color: #d1d5db;
+  padding: 0.2em 0.5em;
   &:hover {
-    background-color: #38bdf8;
-    color: #0f172a;
+    background-color: #333333;
+    color: #ffffff;
     text-decoration: none;
   }
 }
 
-// 5. Sidebar Profile & Elements
+// 5. Sidebar Profile
 .author__avatar img {
   border-radius: 50%;
-  border: 3px solid rgba(56, 189, 248, 0.5);
-  padding: 3px;
-  background-color: #1e293b;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-  
-  &:hover {
-    border-color: #38bdf8;
-    transform: scale(1.05);
-  }
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px;
+  background-color: #1a1a1a;
+  max-width: 110px;
 }
-
 .author__name {
-  color: #f8fafc;
-  font-weight: 800;
+  color: #ffffff;
+  font-weight: 600;
 }
-
 .author__bio {
-  color: #cbd5e1;
-}
-
-.author__urls-wrapper {
-  button {
-    border-radius: 8px;
-  }
+  color: #9ca3af;
+  font-size: 0.9rem;
 }
 
 // 6. Content Post Area
 .page__content {
-  color: #cbd5e1;
-  line-height: 1.8;
+  color: #d1d5db;
+  line-height: 1.7;
   
   h2, h3, h4 {
-    color: #f8fafc;
-    margin-top: 2em;
+    color: #ffffff;
+    margin-top: 1.5em;
   }
   
   a {
-    color: #38bdf8;
+    color: #60a5fa; // Soft blue for links
     text-decoration: none;
-    border-bottom: 1px dashed #38bdf8;
-    transition: border-color 0.2s;
     &:hover {
-      border-bottom: 1px solid #38bdf8;
-    }
-  }
-  
-  code {
-    background: #1e293b;
-    border-radius: 4px;
-    padding: 0.2em 0.4em;
-    font-size: 0.9em;
-    color: #38bdf8;
-  }
-  
-  pre {
-    border-radius: 12px;
-    background: #0f172a !important;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 1.2em;
-    code {
-      background: transparent;
-      color: inherit;
+      text-decoration: underline;
     }
   }
 }
 
 // 7. Footer
 .page__footer {
-  background-color: #0f172a !important;
+  background-color: #111111 !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-  color: #64748b !important;
-  
-  a {
-    color: #94a3b8;
-    &:hover {
-      color: #38bdf8;
-    }
-  }
+  color: #6b7280 !important;
 }
