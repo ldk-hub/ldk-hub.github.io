@@ -7,3 +7,5 @@ main:
     url: "/tags/"
   - title: "소개"
     url: "/about/"
+  - title: "포트폴리오"
+    url: "/portfolio/"
