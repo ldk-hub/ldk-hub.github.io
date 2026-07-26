@@ -33,7 +33,9 @@ AI위클리는 사람의 개입 없이 **100% 자동화된 AI 에이전트(Claud
 
 ### 1. 📰 데일리뉴스: "출근길 3분 컷! 매일 아침 AI 3줄 요약"
 
-![데일리뉴스 화면 캡처](/assets/images/ai-weekly/news.png)
+<div align="center">
+  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/news.png" alt="데일리뉴스 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
 여기저기 흩어진 매체들의 뉴스를 돌아다닐 필요가 없습니다. 
 AI위클리는 매일 아침 글로벌 주요 커뮤니티의 피드를 싹 긁어모은 뒤, **Gemini API**를 활용해 가장 주목받는 핫이슈를 선별합니다. 
@@ -41,14 +43,18 @@ AI위클리는 매일 아침 글로벌 주요 커뮤니티의 피드를 싹 긁�
 
 ### 2. 🧩 인기 플러그인: "이번 주 뜨는 Claude Code 도구들"
 
-![인기 플러그인 화면 캡처](/assets/images/ai-weekly/plugins.png)
+<div align="center">
+  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/plugins.png" alt="인기 플러그인 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
 요즘 개발자들 사이에서 핫한 'Claude Code' 생태계. 수많은 플러그인과 도구들이 쏟아지지만 정작 쓸만한 걸 찾기는 모래사장에서 바늘 찾기입니다.
 AI위클리는 매주 월요일마다 GitHub 트렌딩과 커뮤니티 반응을 종합하여 **'이번 주 핫하게 뜨는 도구(Rising)'**와 **'이미 검증된 필수 레퍼런스(Classic)'**를 딱 정리해서 보여줍니다.
 
 ### 3. 📚 스터디: "뉴스는 가볍게, 스터디는 무겁게"
 
-![스터디 화면 캡처](/assets/images/ai-weekly/study.png)
+<div align="center">
+  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/study.png" alt="스터디 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+</div>
 
 매일 쏟아지는 휘발성 뉴스만 따라가다 보면 정작 기술의 '본질'을 놓치기 쉽습니다. 
 그래서 AI위클리에는 개발자와 기획자가 반드시 숙지하면 좋은 **파운데이션 논문, 심층 아티클, 공식 문서(Official Docs)**를 엄선하여 큐레이션하는 '스터디' 공간을 따로 마련했습니다. 
