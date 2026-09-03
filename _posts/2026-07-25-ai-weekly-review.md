@@ -13,7 +13,9 @@ tags:
   - 자동화
   - 아키텍처
   - 데이터파이프라인
-last_modified_at: 2026-09-03T12:15:00+09:00
+header:
+  teaser: /assets/images/ai-weekly/news-v2.png
+last_modified_at: 2026-09-03T12:21:00+09:00
 sticky: true
 ---
 
@@ -46,7 +48,7 @@ AI위클리는 사람의 개입 없이 **결정적 데이터 수집(Deterministi
 ### 1. 📰 데일리뉴스: "3초 스캐닝 3대 포인트 배지 & 아코디언 심층 해설"
 
 <div align="center">
-  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/news.png" alt="개편된 데일리뉴스 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
+  <img src="/assets/images/ai-weekly/news-v2.png" alt="개편된 데일리뉴스 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
 </div>
 
 기존에는 카드마다 요약과 본문 해설이 세로로 길게 나열되어 스크롤 압박이 심했습니다.
@@ -64,7 +66,7 @@ AI위클리는 사람의 개입 없이 **결정적 데이터 수집(Deterministi
 ### 2. 🧩 인기 플러그인: "원형 체크 불릿 & 원클릭 미니 CLI 설치 칩"
 
 <div align="center">
-  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/plugins.png" alt="개편된 인기 플러그인 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
+  <img src="/assets/images/ai-weekly/plugins-v2.png" alt="개편된 인기 플러그인 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
 </div>
 
 Claude Code 생태계에서 수많은 스킬과 MCP 도구들이 쏟아지지만, 정작 쓸만한 걸 찾기는 모래사장에서 바늘 찾기입니다.
@@ -81,7 +83,7 @@ Claude Code 생태계에서 수많은 스킬과 MCP 도구들이 쏟아지지만
 ### 3. 📈 스타보드: "한국어 한 줄 설명 우선 노출 & 주간 급상승 불꽃 배지"
 
 <div align="center">
-  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/starboard.png" alt="개편된 스타보드 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
+  <img src="/assets/images/ai-weekly/starboard-v2.png" alt="개편된 스타보드 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
 </div>
 
 생태계 내 560여 개 핵심 오픈소스의 일간/주간 성장 궤적을 시각화하는 리더보드입니다.
@@ -98,7 +100,7 @@ Claude Code 생태계에서 수많은 스킬과 MCP 도구들이 쏟아지지만
 ### 4. 💬 AI 라운지: "개발자 소통을 이끄는 추천 토픽 가이드 칩"
 
 <div align="center">
-  <img src="https://ldk-hub.github.io/assets/images/ai-weekly/lounge.png" alt="개편된 AI 라운지 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
+  <img src="/assets/images/ai-weekly/lounge-v2.png" alt="개편된 AI 라운지 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);" />
 </div>
 
 - **온보딩 가이드 칩 4종**:
