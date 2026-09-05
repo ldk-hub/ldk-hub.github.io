@@ -9,7 +9,7 @@ date: 2020-04-29 08:26:28 -0400
 # abstract:
 # 태그를 입력
 tags: ["알고리즘", "개념정리"]
-categories: 자바개발
+categories: Backend
 # 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.

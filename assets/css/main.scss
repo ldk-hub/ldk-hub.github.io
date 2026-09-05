@@ -10,154 +10,327 @@
 // ==========================================
 // VARIABLE OVERRIDES (Clean Minimalist Dark)
 // ==========================================
-// These must be defined before importing the theme
 $sans-serif: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $serif: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $monospace: "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace !default;
 
-$background-color: #121212 !default; // Clean minimalist dark
-$text-color: #d1d5db !default;
-$muted-text-color: #9ca3af !default;
-$primary-color: #60a5fa !default;
+$background-color: #0f1117 !default; // Modern deep slate dark
+$text-color: #e2e8f0 !default;
+$muted-text-color: #94a3b8 !default;
+$primary-color: #38bdf8 !default;
 $border-color: rgba(255, 255, 255, 0.08) !default;
-$footer-background-color: #0a0a0a !default;
+$footer-background-color: #090a0f !default;
 
-$masthead-link-color: #d1d5db !default;
+$masthead-link-color: #cbd5e1 !default;
 $masthead-link-color-hover: #ffffff !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 // ==========================================
-// EXTRA CUSTOM UI OVERRIDES
+// EXTRA CUSTOM UI OVERRIDES (Modern 2026 UI/UX)
 // ==========================================
 
-// Global Typography overrides
 body {
   font-family: $sans-serif;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 h1, h2, h3, h4, h5, h6, .site-title {
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
 // 1. Clean Navigation (Masthead)
 .masthead {
-  background: rgba(18, 18, 18, 0.85) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(15, 17, 23, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
-}
 
-// 2. Simple & Elegant Post Cards
-.archive__item {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  .site-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
+// 2. Modern CSS Grid & Post Cards
+.entries-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 3rem !important;
+
+  .grid__item {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.archive__item {
+  background: #181b26;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.archive__item-teaser-link {
+  display: block;
+  text-decoration: none;
+}
+
+.archive__item-teaser {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #242938;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
+.archive__item-body {
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.archive__item-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.archive__item-category {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.archive__item-date {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .archive__item-title {
-  margin-top: 0;
-  font-size: 1.25em;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0.2rem 0 0.6rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
   a {
-    color: #ffffff;
+    color: #f8fafc;
     text-decoration: none;
+    transition: color 0.2s ease;
     &:hover {
-      color: $primary-color;
-      text-decoration: none;
+      color: #38bdf8;
     }
   }
 }
 
 .archive__item-excerpt {
-  color: #9ca3af;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
   line-height: 1.6;
+  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
 }
 
-// 3. Sidebar Profile Fixes
+.archive__item-meta-bottom {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// 3. Sidebar Profile Enhancements
 .author__avatar img {
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2px;
-  background-color: #1a1a1a;
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  padding: 3px;
+  background-color: #181b26;
   max-width: 110px;
   width: 110px;
   height: 110px;
   aspect-ratio: 1 / 1;
-  object-fit: cover; /* Prevents oval shape if image is not square */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .author__name {
   color: #ffffff;
-  font-weight: 600;
-  margin-top: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 12px;
 }
 
 .author__bio {
-  color: #9ca3af;
-  font-size: 0.9rem;
+  color: #94a3b8;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 0.4rem;
 }
 
-// 4. Buttons and Tags (Subtle)
+.author__urls-wrapper {
+  margin-top: 1rem;
+}
+
+// 4. Buttons and Tags (Modern Glass / Pill)
 .btn {
-  border-radius: 6px;
-  font-weight: 500;
-  transition: all 0.2s;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  transition: all 0.2s ease;
 }
 
 .page__taxonomy-item {
-  border-radius: 4px;
-  background-color: #262626;
-  color: #d1d5db;
-  padding: 0.3em 0.6em;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  padding: 0.35em 0.7em;
   font-size: 0.85em;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.2s;
   &:hover {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+    color: #38bdf8;
     text-decoration: none;
   }
 }
 
-// 5. Code blocks styling
+// 5. Code blocks & Copy Button
 div.highlighter-rouge, figure.highlight {
-  background: #0d0d0d !important;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  position: relative;
+  background: #0d1117 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  margin: 1.5em 0;
+  overflow: hidden;
+
+  pre {
+    padding: 1.2em 1.4em !important;
+    font-family: $monospace;
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
 }
 
-// 6. Fix for mismatched backgrounds across layouts
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-family: $sans-serif;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+
+  &:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  &.copied {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.4);
+  }
+}
+
+// 6. Layout fixes
 .page__inner-wrap, .sidebar, .archive {
   background-color: transparent !important;
 }
 
 .page__content {
-  color: #d1d5db;
-  line-height: 1.7;
-  
-  h2, h3, h4 {
+  color: #cbd5e1;
+  line-height: 1.75;
+  font-size: 1.05rem;
+
+  h2 {
     color: #ffffff;
-    margin-top: 1.5em;
+    font-size: 1.65rem;
+    margin-top: 2em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  
+
+  h3 {
+    color: #f1f5f9;
+    font-size: 1.35rem;
+    margin-top: 1.6em;
+  }
+
+  h4 {
+    color: #e2e8f0;
+    font-size: 1.15rem;
+  }
+
   a {
     color: $primary-color;
     text-decoration: none;
@@ -165,11 +338,35 @@ div.highlighter-rouge, figure.highlight {
       text-decoration: underline;
     }
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    th, td {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    th {
+      background: #181b26;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    td {
+      background: rgba(24, 27, 38, 0.4);
+    }
+  }
 }
 
 // 7. Footer
 .page__footer {
   background-color: $footer-background-color !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
-  color: #6b7280 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+  color: #64748b !important;
 }

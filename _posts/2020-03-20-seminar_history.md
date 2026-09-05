@@ -8,7 +8,7 @@ date: 2020-03-20 08:26:28 -0400
 # 블로그 메인페이지에 썸네일과 함께 노출될 텍스트 설정 일정 길이를 초과하면 잘려서 표시됨.
 # abstract:
 # 태그를 입력
-categories: spring 세미나
+categories: Backend
 # 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.

@@ -4,7 +4,7 @@ layout: archive
 
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "포스팅 리스트" }}</h3>
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "최신 포스트" }}</h3>
 
 {% if paginator %}
   {% assign posts = paginator.posts %}
@@ -12,8 +12,10 @@ layout: archive
   {% assign posts = site.posts %}
 {% endif %}
 
-{% for post in posts %}
-  {% include archive-single.html %}
-{% endfor %}
+<div class="entries-grid">
+  {% for post in posts %}
+    {% include archive-single.html type="grid" %}
+  {% endfor %}
+</div>
 
 {% include paginator.html %}

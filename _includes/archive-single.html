@@ -1,7 +1,7 @@
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
 {% else %}
-  {% assign teaser = site.teaser %}
+  {% assign teaser = site.teaser | default: "/assets/images/desk.jpg" %}
 {% endif %}
 
 {% if post.id %}
@@ -10,23 +10,37 @@
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    {% if include.type == "grid" and teaser %}
+    <a href="{{ post.url | relative_url }}" class="archive__item-teaser-link" rel="permalink">
       <div class="archive__item-teaser">
-        <img src="{{ teaser | relative_url }}" alt="">
+        <img src="{{ teaser | relative_url }}" alt="{{ title }}" loading="lazy">
       </div>
-    {% endif %}
-    <h2 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
+    </a>
+    
+    <div class="archive__item-body">
+      <div class="archive__item-meta-top">
+        {% if post.categories[0] %}
+          <span class="archive__item-category">{{ post.categories[0] }}</span>
+        {% else %}
+          <span class="archive__item-category">Tech</span>
+        {% endif %}
+        <span class="archive__item-date"><i class="far fa-calendar-alt"></i> {{ post.date | date: "%Y.%m.%d" }}</span>
+      </div>
+
+      <h2 class="archive__item-title" itemprop="headline">
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
+      </h2>
+
+      {% if post.excerpt %}
+        <p class="archive__item-excerpt" itemprop="description">
+          {{ post.excerpt | markdownify | strip_html | truncate: 120 }}
+        </p>
       {% endif %}
-    </h2>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+
+      <div class="archive__item-meta-bottom">
+        <span class="archive__item-readtime"><i class="far fa-clock"></i> {% include read-time.html %}</span>
+      </div>
+    </div>
   </article>
 </div>

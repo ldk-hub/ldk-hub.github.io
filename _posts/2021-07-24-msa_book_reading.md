@@ -9,7 +9,7 @@ date: 2021-07-24 08:26:28 -0400
 # abstract:
 # 태그를 입력
 tags: ["MSA","마이크로서비스아키텍처","스프링클라우드"]
-categories: JAVA
+categories: Backend
 # 대표 이미지를 입력합니다. 이미지 업로드 위치는 아래에 기술합니다.
 # image: /assets/images/posts/nerdfactory-documentation-history/main.jpg
 # 포스트의 초안 여부를 입력합니다. "no" 로 입력할 경우 공개됩니다.
