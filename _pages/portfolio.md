@@ -182,7 +182,7 @@ toc: false
         <div class="pf-media-caption">[스타보드] 580개 OSS 대상 3대 체급별 실시간 GitHub Star 트래커</div>
       </div>
       <div class="pf-media-item">
-        <img src="/assets/images/ai-weekly/trends-v2.png" alt="트렌드 인덱싱">
+        <img src="/assets/images/ai-weekly/plugins-v2.png" alt="트렌드 인덱싱">
         <div class="pf-media-caption">[에이전트 트렌드] Claude Code 에이전트·스킬·하네스 생태계 분석</div>
       </div>
     </div>
