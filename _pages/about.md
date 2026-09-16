@@ -2,7 +2,7 @@
 layout: single                 
 title: "개발자 소개"
 permalink: /about/
-excerpt: "About Me - Senior Full-stack & AI Harness Engineer"
+excerpt: "About Me - Senior Full-stack & AI Systems Engineer"
 toc: true                      
 toc_sticky: true             
 author_profile: true          
@@ -11,7 +11,7 @@ classes: wide
 
 # 👨‍💻 개발자 소개
 
-**Senior Full-Stack & AI Harness Engineer (8+ Years)**  
+**Senior Full-Stack & AI Systems Engineer (8+ Years)**  
 고성능 분산 시스템 설계와 견고한 클린 아키텍처, 그리고 최신 LLM / 자율 에이전트(Autonomous Agents) 오케스트레이션을 결합해 실용적인 비즈니스 문제를 해결합니다.
 
 ---

@@ -1,7 +1,7 @@
 ldk:
   name        : "이동옥 (Lee Dong-ok)"
   avatar      : "/assets/images/profile.PNG"
-  bio         : "Senior Full-Stack & AI Harness Engineer (8+ Years)"
+  bio         : "Senior Full-Stack & AI Systems Engineer (8+ Years)"
   location    : "Seoul, South Korea"
   links:
     - label: "Portfolio"
