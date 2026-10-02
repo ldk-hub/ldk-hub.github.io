@@ -11,20 +11,20 @@ toc: false
 
   <!-- 1. HERO SHOWCASE -->
   <section class="pf-hero">
-    <div class="pf-tag-pill">Senior Full-Stack & AI Systems Engineer</div>
+    <div class="pf-tag-pill">Backend Tech Lead & AX Practitioner</div>
     <h1 class="pf-hero-title">
       견고한 분산 아키텍처와 자율 AI 시스템을 결합하여<br>
       비즈니스의 복잡한 엔지니어링 난제를 해결합니다.
     </h1>
     <p class="pf-hero-desc">
-      8년 이상의 백엔드 코어 설계 및 고성능 분산 시스템 운영 경험을 바탕으로, 
+      10년 차 백엔드 코어 설계 및 고성능 분산 시스템 운영 경험을 바탕으로, 
       최신 <strong>LLM 자율 에이전트 오케스트레이션</strong>과 <strong>Canvas 2D 실시간 데이터 시각화</strong>를 결합해 
       엔터프라이즈 수준의 고신뢰성 소프트웨어를 설계하고 구현합니다.
     </p>
 
     <div class="pf-metrics">
       <div class="pf-metric-item">
-        <span class="pf-metric-val">8+ Years</span>
+        <span class="pf-metric-val">10 Years</span>
         <span class="pf-metric-lbl">금융·이커머스·AI 백엔드 코어 & 풀스택</span>
       </div>
       <div class="pf-metric-item">

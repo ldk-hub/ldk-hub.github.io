@@ -1,11 +1,12 @@
 ---
 title: "정보 과잉 시대, 나는 AI로 AI 뉴스를 읽는다 (feat. AI위클리 2.0 UX 대개편)"
-excerpt: "매일 쏟아지는 AI 뉴스와 도구들을 3초 만에 훑어보는 초압축 정보 구조와 100% 자율 자동화 파이프라인 구축기"
+excerpt: "매일 쏟아지는 AI 뉴스와 도구들을 3초 만에 훑어보는 초압축 정보 구조와 AX 기반 4단계 Quality Gate 자율 파이프라인 구축기"
 categories:
   - Project
   - AI
 tags:
   - AI
+  - AX
   - 사이드프로젝트
   - ClaudeCode
   - 트렌드
@@ -16,7 +17,7 @@ tags:
   - 포트폴리오
 header:
   teaser: /assets/images/ai-weekly/news-v2.png
-last_modified_at: 2026-10-02T16:45:00+09:00
+last_modified_at: 2026-10-02T22:05:00+09:00
 sticky: true
 ---
 
@@ -25,6 +26,8 @@ sticky: true
 매일 아침 눈을 뜨면 새로운 AI 논문과 모델이 쏟아지고, 퇴근할 때쯤이면 어제 배운 프롬프트 기법과 워크플로우가 구식이 되어버리는 시대입니다. 
 
 Hacker News, GeekNews, Reddit, GitHub, Hugging Face Daily Papers, Bluesky... 정보의 출처는 넘쳐나는데, 정작 개발자로서 내 업무와 기술적 성장에 **'진짜 필요한' 엑기스**만 걸러내기란 쉽지 않습니다. 결국 북마크만 잔뜩 쌓아두고 *"나중에 읽어야지"* 하며 스크롤만 넘기다 피로에 지쳐버린 경험, 다들 한 번쯤 있으실 겁니다.
+
+일 50만 건 규모의 트래픽을 처리하는 글로벌 SaaS 플랫폼의 백엔드 아키텍처와 운영을 책임지는 테크 리드로서, 제가 가장 경계하는 것은 시스템의 기술 부채뿐만 아니라 **'엔지니어의 정보 부채(Information Debt)'**였습니다.
 
 > **"매일 쏟아지는 방대한 AI 뉴스와 오픈소스 도구들을 피로도 없이 한곳에서 스캐닝할 수는 없을까?"**
 
@@ -92,17 +95,17 @@ Claude Code 생태계에서 수많은 스킬과 MCP 도구들이 쏟아지지만
 
 <div align="center" style="margin: 1.5rem 0;">
   <img src="/assets/images/ai-weekly/starboard-v2.png" alt="개편된 스타보드 화면 캡처" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.08);" />
-  <div style="font-size: 0.85em; color: #94a3b8; margin-top: 0.5rem;">▲ [스타보드] 569개 오픈소스 리포지토리 모멘텀 및 4대 체급 리그 랭킹</div>
+  <div style="font-size: 0.85em; color: #94a3b8; margin-top: 0.5rem;">▲ [스타보드] 580개 오픈소스 리포지토리 모멘텀 및 3대 체급 리그 랭킹</div>
 </div>
 
-생태계 내 **569개 핵심 오픈소스**의 일간/주간 성장 궤적을 실시간으로 시각화하는 리더보드입니다.
+생태계 내 **580개 핵심 오픈소스**의 일간/주간 성장 궤적을 실시간으로 시각화하는 리더보드입니다.
 
 - **한국어 핵심 설명 우선 박스 (`desc_ko`)**:
   - 낯선 영문 오픈소스라도 무슨 역할을 하는 도구인지 한눈에 파악할 수 있도록 친절한 한국어 요약을 가장 먼저, 읽기 편한 전용 박스로 배치했습니다.
 - **주간 급상승 불꽃 모멘텀 배지 (`🔥 +5,679/wk`)**:
   - 주간 스타 유입 속도(Velocity)가 가파른 프로젝트에는 빨간 불꽃 배지를 달아 생태계의 대세 흐름을 즉각 식별할 수 있습니다.
-- **4대 체급 리그 정규화 (League System)**:
-  - 스타 수 규모에 따라 `Legend`, `Premier`, `Major`, `Minor`로 체급을 구분하여 대규모 프로젝트와 신생 프로젝트가 공정하게 성장 속도를 겨루도록 구성했습니다.
+- **3대 체급 리그 정규화 (League System)**:
+  - 스타 수 규모에 따라 `헤비급(10,000★ 이상)`, `미들급(1,000★ ~ 10,000★)`, `라이트급(1,000★ 미만)`으로 체급을 구분하여 대규모 프로젝트와 신생 프로젝트가 공정하게 성장 속도를 겨루도록 구성했습니다.
 - **기술 스택 태그 (`🏷️ TypeScript`, `🏷️ Python`, `🏷️ Rust`)**:
   - 리포지토리의 메인 개발 언어를 칩 형태로 함께 제공합니다.
 
@@ -122,43 +125,45 @@ Claude Code 생태계에서 수많은 스킬과 MCP 도구들이 쏟아지지만
 
 ---
 
-## 🛠 엔지니어링 비하인드: "보이지 않는 백엔드의 무결성 파이프라인"
+## 🛠 엔지니어링 비하인드: "AX 기반 4단계 Quality Gate와 무결성 파이프라인"
 
-AI위클리의 가장 큰 매력은 겉으로 보이는 심플한 UI 뒤에 숨겨진 **무결성 지향 자동화 파이프라인**입니다.
+AI위클리의 핵심 경쟁력은 겉으로 보이는 심플한 UI 뒤에 숨겨진 **AX(AI Transformation) 개발 방법론 기반의 무결성 자동화 파이프라인**에 있습니다.
+
+단순히 AI 프롬프트에 기사를 던져주고 나온 결과를 맹신하는 방식은 프로덕션 파이프라인에서 치명적인 장애를 유발합니다. 백엔드 테크 리드로서 저는 **"비결정적(Non-Deterministic) AI 연산과 결정적(Deterministic) 백엔드 파이프라인의 명확한 경계 분리"**를 설계 철학으로 삼았습니다.
 
 ```
 [ 7개 글로벌 매체 크롤링 / GitHub GraphQL API ]
                       │
-                      ▼ (결정적 팩트 확보 & Cheerio 본문 텍스트 추출)
-[ .tmp/candidates.json ] ─── (Stars, 원문 URL, 발행 날짜 강제 고정)
+                      ▼ 1단계: Spec 정의 & 결정적 팩트 확보
+[ .tmp/candidates.json ] ─── (Stars, 원문 URL, 발행 날짜 Hard Override)
                       │
-                      ▼ (원격 페이로드 로더 / 악성 코드 진입점 AST 스캔)
+                      ▼ 2단계: 공급망 보안 AST 정적 스캔
 [ node scripts/plugins/scan-install-entry.js ] ──→ 악성 드로퍼 자동 격리 차단!
                       │
-                      ▼ (맥락 심층 분석 & 한국어 3초 압축 요약: 키워드 볼드 규격)
+                      ▼ 3단계: Spec-Driven Prompting & Context Engineering
 [ Claude Code / Gemini 에이전트 큐레이션 ]
                       │
-                      ▼ (다단계 품질 검증 게이트: 단 1건 위반 시에도 배포 차단)
+                      ▼ 4단계: 배포 전 심층 검증 (Quality Gate: 단 1건 위반 시에도 배포 차단)
 [ node scripts/news/curate_news.js --validate ]
                       │
-                      ▼ (0.2초 초고속 정적 번들링 & 무중단 배포)
-[ Vite 빌드 ──→ GitHub Pages 배포 ──→ 옵시디언 볼트(Second Brain) 동기화 ]
+                      ▼ 무중단 배포 및 지식 그래프 역동기화
+[ Vite 정적 빌드 ──→ GitHub Pages 배포 ──→ 로컬 옵시디언(Second Brain) 자동 동기화 ]
 ```
 
-### 1) 결정적 수집기(Deterministic Collector)와 자율 에이전트의 2단계 결합
-웹 크롤링, HTML 파싱, 네트워크 재시도, JSON 정규화 등 I/O 바운드 작업은 `Node.js` 기반의 결정적(Deterministic) 스크립트로 처리합니다. 반면 원문 맥락 분석, 3초 요약 배지 생성, 기술 신호 분류는 LLM 에이전트에 위임하는 **2단계 이원화 파이프라인**을 구축했습니다. 이를 통해 파이프라인 안정성을 99.9%로 확보했습니다.
+### 1) 결정적 수집기(Deterministic Collector)와 자율 에이전트의 완전한 분리
+웹 크롤링, HTML 파싱, 네트워크 재시도, JSON 스키마 정규화 등 I/O 바운드 작업은 `Node.js` 기반의 결정적(Deterministic) 스크립트로 처리합니다. 반면 원문 맥락 분석, 3초 요약 배지 생성, 기술 신호 6축 분류는 LLM 에이전트에 위임하는 **2단계 하이브리드 파이프라인**을 구축했습니다. 이를 통해 파이프라인 가동률을 99.9%로 확보했습니다.
 
 ### 2) 원격 페이로드 로더 차단 보안 스캐너 (`scan-install-entry.js`)
-실제로 오픈소스 후보 중 `setup.py`에 도메인 없는 공개 IP를 하드코딩하고 원격 코드를 내려받아 `exec()` 하려던 악성 드로퍼(`tokentab`)를 자동으로 탐지하여 즉시 격리 차단했습니다. 단순 지표(스타 수, 성장률)만으로는 거를 수 없는 공급망 보안 위협을 진입점 정적 분석으로 완벽히 방어합니다.
+실제로 오픈소스 후보 중 `setup.py`에 도메인 없는 공개 IP를 하드코딩하고 원격 코드를 내려받아 `exec()` 하려던 악성 드로퍼(`tokentab`)를 자동으로 탐지하여 즉시 격리 차단했습니다. 단순 지표(스타 수, 커뮤니티 버즈)만으로는 거를 수 없는 오픈소스 공급망 보안 위협을 진입점 정적 분석(AST Analysis)으로 원천 차단합니다.
 
 ### 3) LLM 환각(Hallucination) 0% 격리 아키텍처
-AI에게 요약을 맡길 때 가장 위험한 것은 가짜 URL이나 날짜, 왜곡된 스타 수를 지어내는 '환각'입니다. AI위클리는 **사실 메타데이터(Stars, 날짜, URL, 작성자)를 원천 크롤러가 수집한 값으로 강제 덮어쓰기(Hard Override)**하고, LLM에는 오직 '분류 및 한국어 해설 문장 생성'만 위임하여 사실 왜곡을 원천 차단했습니다.
+AI에게 요약을 맡길 때 가장 위험한 것은 가짜 URL이나 날짜, 왜곡된 스타 수를 지어내는 '환각'입니다. AI위클리는 **사실 메타데이터(Stars, 날짜, URL, 작성자)를 원천 크롤러가 수집한 값으로 강제 덮어쓰기(Hard Override)**하고, LLM에는 오직 '분류 및 한국어 해설 문장 생성'만 위임하여 데이터 왜곡을 100% 방지했습니다.
 
-### 4) CLI 기반 다단계 품질 게이트 (`--validate`)
-배포 전 자동 검증기가 아래 규칙을 100% 검사하며, 단 1건이라도 위반 시 배포 파이프라인이 즉시 중단됩니다:
-- `summary_ko` 3대 핵심 포인트 및 `• **키워드**: 설명` 형식 엄수
-- `body_ko` 5~10문장 완결성 검증 (마침표 개수 및 한글 비율 검사)
-- 금융/주식/투자성 기사 자동 필터링 (`FINANCE_RE`)
+### 4) 실무 AX의 핵심: 4단계 Quality Gate 자동 검증 (`--validate`)
+제가 실무 개발 워크플로우에 도입한 **AX 4단계 Quality Gate (Spec 정의 → 테스트 주도 검증 → AI 코드/콘텐츠 생성 → 심층 정적 분석 및 리뷰)**를 배포 파이프라인에 그대로 이식했습니다. 배포 전 자동 검증기가 아래 규칙을 전수 검사하며, 단 1건이라도 위반 시 파이프라인이 즉시 중단됩니다:
+- `summary_ko` 3대 핵심 포인트 및 `• **키워드**: 설명` 포맷 규격 엄수
+- `body_ko` 5~10문장 완결성 검증 (마침표 개수 및 한글 문장 비율 검사)
+- 금융/주식/투자성 기사 자동 필터링 정규식 검증 (`FINANCE_RE`)
 - 단일 매체 편향 방지를 위한 7대 플랫폼별 쿼터 균형(3~5건) 검증
 
 ### 5) Serverless 정적 인프라 & 옵시디언 볼트(Second Brain) 자동 동기화
@@ -168,7 +173,7 @@ AI에게 요약을 맡길 때 가장 위험한 것은 가짜 URL이나 날짜, �
 
 ## 💼 엔지니어링 포트폴리오 연계: "실시간 대시보드와 자율 AI 시스템의 결합"
 
-AI위클리 2.0 프로젝트는 단순한 토이 프로젝트가 아닌, 저의 **엔지니어링 포트폴리오([LDK Devlog Technical Portfolio](/portfolio/))**에서 가장 중추적인 시스템 엔지니어링 쇼케이스 중 하나입니다.
+AI위클리 2.0 프로젝트는 단순한 토이 프로젝트가 아닌, 저의 **엔지니어링 포트폴리오([LDK Devlog Technical Portfolio](/portfolio/))**에서 가장 중추적인 자율 시스템 엔지니어링 쇼케이스 중 하나입니다.
 
 <div align="center" style="margin: 1.5rem 0;">
   <a href="/portfolio/">
@@ -177,11 +182,11 @@ AI위클리 2.0 프로젝트는 단순한 토이 프로젝트가 아닌, 저의 
   <div style="font-size: 0.85em; color: #94a3b8; margin-top: 0.5rem;">▲ [LDK Devlog Technical Portfolio] 견고한 분산 아키텍처와 자율 AI 시스템 결합 쇼케이스</div>
 </div>
 
-8년 이상의 백엔드 코어 설계 및 고성능 분산 시스템 운영 경험을 바탕으로, AI위클리 2.0에서는 다음 세 가지 핵심 엔지니어링 가치를 실현했습니다:
+10년 차 백엔드 테크 리드이자 AX 프랙티셔너로서 축적한 **대규모 트래픽 안정 운영 및 분산 시스템 설계 노하우**를 바탕으로, AI위클리 2.0에서는 다음 세 가지 핵심 엔지니어링 가치를 실현했습니다:
 
-1. **무인 자율 오케스트레이션**: 장애 허용(Fault-Tolerance) 구조와 자동 롤백, 다단계 유효성 검증을 통해 사람의 개입 없이 99.9% 가동률을 달성한 자동화 파이프라인.
-2. **인지 공학적 UI/UX 설계**: 정보 과잉 시대에 개발자가 겪는 인지 부하를 최소화하기 위해 '3초 스캐닝'과 '점진적 공개'라는 철저한 정보 계층 구조를 프론트엔드에 구현.
-3. **지식 생태계의 선순환**: 수집·정제된 데이터가 웹 배포에 그치지 않고 로컬 옵시디언(Second Brain) 지식 베이스로 누적되어, 추가적인 시스템 분석과 에이전트 스킬 고도화의 밑거름으로 작용.
+1. **무인 자율 오케스트레이션**: 장애 허용(Fault-Tolerance) 구조와 자동 롤백, 4단계 Quality Gate를 통해 사람의 개입 없이 99.9% 가동률을 달성한 자동화 파이프라인.
+2. **인지 공학적 UI/UX 설계**: 정보 과잉 시대에 개발자가 겪는 인지 부하를 최소화하기 위해 '3초 스캐닝'과 '점진적 공개(Progressive Disclosure)'라는 철저한 정보 계층 구조를 프론트엔드에 구현.
+3. **지식 생태계의 선순환**: 수집·정제된 데이터가 웹 배포에 그치지 않고 로컬 옵시디언(Second Brain) 지식 베이스로 누적되어, 추가적인 시스템 분석과 사내 에이전트 스킬 고도화의 밑거름으로 작용.
 
 <div align="center" style="margin: 1.5rem 0;">
   <a href="/portfolio/">
@@ -218,4 +223,5 @@ AI위클리 2.0 프로젝트는 단순한 토이 프로젝트가 아닌, 저의 
 - **🌐 AI위클리 실서비스**: [https://ldk-hub.github.io/ai-weekly/](https://ldk-hub.github.io/ai-weekly/)
 - **⭐ GitHub 오픈소스 저장소**: [https://github.com/ldk-hub/ai-weekly](https://github.com/ldk-hub/ai-weekly)
 - **💼 엔지니어링 포트폴리오**: [https://ldk-hub.github.io/portfolio/](https://ldk-hub.github.io/portfolio/)
+- **👨‍💻 개발자 소개 (About)**: [https://ldk-hub.github.io/about/](https://ldk-hub.github.io/about/)
 - **📡 통합 RSS 피드**: [feed.xml](https://ldk-hub.github.io/ai-weekly/feed.xml) · [news-feed.xml](https://ldk-hub.github.io/ai-weekly/news-feed.xml)
